@@ -19,6 +19,7 @@
     --sad:#ec7a72; --sad-d:#dd625a;         /* light red: "still to learn" */
     --b0:#d9d3c7; --b1:#ec7a72; --b2:#f2a65a; --b3:#e9cf5b; --b4:#9fd18a; --b5:#34a35a;  /* Leitner boxes */
     --primary:#1f2a2e; --primary-fg:#ffffff;
+    --start:#16a34a; --start-d:#128a3e; --start-fg:#ffffff;   /* bright green Start button */
     --ar:"Noto Naskh Arabic Local","Noto Naskh Arabic","Geeza Pro","Arabic Typesetting","Traditional Arabic",serif;
     --ui:-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;
   }
@@ -28,14 +29,14 @@
     --hl-bg:#1d3a26; --hl-border:#4f9a63; --hl-letter:#7fe0a0;
     --flip:#2f8a50; --flip-d:#27744a; --happy:#3aa862; --happy-d:#2f8f53; --sad:#e2716a; --sad-d:#cc5e57;
     --b0:#3a4346; --b1:#c95c55; --b2:#c98a45; --b3:#bfa640; --b4:#6fa860; --b5:#3aa862;
-    --primary:#e9e5dd; --primary-fg:#15191b; color-scheme:dark } }
+    --primary:#e9e5dd; --primary-fg:#15191b; --start:#22c55e; --start-d:#1fb055; --start-fg:#0b1f12; color-scheme:dark } }
   :root[data-theme="dark"]{
     --bg:#15191b; --card:#20272a; --ink:#e9e5dd; --ink-soft:#a4adb0; --ink-faint:#5f686b; --line:#e9e5dd;
     --surface:#283033; --border:#354044; --border-strong:#46524f; --ru:#c3ced1; --shadow:rgba(0,0,0,.45);
     --hl-bg:#1d3a26; --hl-border:#4f9a63; --hl-letter:#7fe0a0;
     --flip:#2f8a50; --flip-d:#27744a; --happy:#3aa862; --happy-d:#2f8f53; --sad:#e2716a; --sad-d:#cc5e57;
     --b0:#3a4346; --b1:#c95c55; --b2:#c98a45; --b3:#bfa640; --b4:#6fa860; --b5:#3aa862;
-    --primary:#e9e5dd; --primary-fg:#15191b; color-scheme:dark }
+    --primary:#e9e5dd; --primary-fg:#15191b; --start:#22c55e; --start-d:#1fb055; --start-fg:#0b1f12; color-scheme:dark }
 
   *{box-sizing:border-box}
   html,body{margin:0}
@@ -53,6 +54,9 @@
   button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--hl-border);outline-offset:2px}
   .btn{padding:10px 16px;border-radius:10px;border:1px solid var(--border-strong);background:var(--surface);cursor:pointer;font-size:14px}
   .btn.primary{background:var(--primary);color:var(--primary-fg);border-color:var(--primary);font-weight:600}
+  #startBtn{background:var(--start);border-color:var(--start);color:var(--start-fg);font-size:16px;padding:12px 20px}
+  #startBtn:hover{background:var(--start-d);border-color:var(--start-d)}
+  #startBtn:disabled{opacity:.45;cursor:not-allowed}
   .btn.small{padding:6px 10px;font-size:13px}
   .linkbtn{background:none;border:0;padding:4px 0;color:var(--ink-soft);text-decoration:underline;cursor:pointer;font-size:13px}
   h1{font-size:20px;margin:4px 0 0;text-align:center}
@@ -222,6 +226,11 @@
         <button data-v="10">10</button><button data-v="20">20</button><button data-v="40">40</button><button data-v="0">All</button>
       </div>
     </div>
+    <div class="field"><label>Pronunciation</label>
+      <div class="seg" id="cfgVoice" data-key="voice">
+        <button data-v="both">Male + female</button><button data-v="male">Male</button><button data-v="female">Female</button>
+      </div>
+    </div>
     <div class="startrow">
       <span class="muted" id="avail"></span>
       <button class="btn primary" id="startBtn">Start</button>
@@ -291,7 +300,7 @@
 <div class="toast" id="toast" hidden></div>
 
 <!-- ===================== Embedded letter data ===================== -->
-<!-- Audio files: audio/letters/<letter id>.mp3 (letter sound with fatha), audio/words/<letter id>-<form>.mp3 -->
+<!-- Audio files: audio/{male,female}/letters/<letter id>.mp3 (letter sound with fatha), audio/{male,female}/words/<letter id>-<form>.mp3 -->
 <script type="application/json" id="db">
 {
  "forms": {
@@ -1670,7 +1679,7 @@ const BYID = Object.fromEntries(ALL.map(c => [c.id, c]));
 
 /* ---------- Storage (this browser only) ---------- */
 const KEY = 'arabicLetterCards.v2';
-const DEFAULT_CFG = {letters:'all', picked:[], types:'AB', focus:'mix', len:'20'};
+const DEFAULT_CFG = {letters:'all', picked:[], types:'AB', focus:'mix', len:'20', voice:'both'};
 let storageOK = true;
 function load(){
   try { const s = JSON.parse(localStorage.getItem(KEY)); if (s && s.cards) return {cards:s.cards, sessions:s.sessions||[], cfg:{...DEFAULT_CFG, ...(s.cfg||{})}}; }
@@ -1761,21 +1770,32 @@ function showScreen(id){ for (const s of ['home','session','summary','overview']
 function toast(msg){ const t=$('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>t.hidden=true, 2200); }
 
 /* ---------- Audio ---------- */
-const player = new Audio(); let playingBtn = null, fallback = '';
+const player = new Audio(); let playingBtn = null, fallback = '', seq = [], gapTimer = null;
+const VOICE_ORDER = {both:['male','female'], male:['male'], female:['female']};   // male = Miro, female = Dii
+const voicesFor = () => VOICE_ORDER[S.cfg.voice] || VOICE_ORDER.both;
 function speak(text){
   if (!text || !('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(text); u.lang = 'ar-SA'; speechSynthesis.cancel(); speechSynthesis.speak(u);
 }
-function play(src, text, btn){
-  if (playingBtn) playingBtn.classList.remove('playing');
-  playingBtn = btn; fallback = text; btn && btn.classList.add('playing');
+function stopAudio(){
+  clearTimeout(gapTimer); seq = []; player.pause();
+  if (playingBtn) playingBtn.classList.remove('playing'); playingBtn = null;
+}
+/* rel = 'letters/<id>.mp3' or 'words/<id>-<form>.mp3'; plays male, 1 s pause, female (or one voice, per setting) */
+function play(rel, text, btn){
+  stopAudio(); playingBtn = btn; fallback = text; btn && btn.classList.add('playing');
+  seq = voicesFor().map(v => `audio/${v}/${rel}`); playNext();
+}
+function playNext(){
+  const src = seq.shift();
+  if (!src) { if (playingBtn) playingBtn.classList.remove('playing'); playingBtn = null; return; }
   player.src = src; player.currentTime = 0;
   const p = player.play(); if (p && p.catch) p.catch(() => {});
 }
-player.addEventListener('ended', () => playingBtn && playingBtn.classList.remove('playing'));
-player.addEventListener('error', () => { playingBtn && playingBtn.classList.remove('playing'); speak(fallback); });
-const letterSrc = L => `audio/letters/${L.id}.mp3`;
-const wordSrc = (L, f) => `audio/words/${L.id}-${f}.mp3`;
+player.addEventListener('ended', () => { if (seq.length) gapTimer = setTimeout(playNext, 1000); else playNext(); });
+player.addEventListener('error', () => { stopAudio(); speak(fallback); });
+const letterSrc = L => `letters/${L.id}.mp3`;
+const wordSrc = (L, f) => `words/${L.id}-${f}.mp3`;
 const wordText = w => w.pre + w.t + w.post;
 
 /* ---------- Icons (Lucide style) ---------- */
@@ -1841,6 +1861,7 @@ function startSession(ids, label){
   showScreen('session'); showCard();
 }
 function showCard(){
+  stopAudio();
   const inner = card.querySelector('.inner');
   inner.style.transition='none'; card.classList.remove('flipped'); void inner.offsetWidth; inner.style.transition='';
   const c = BYID[sess.ids[sess.i]];
@@ -1856,7 +1877,7 @@ function answer(ok){
   if (sess.i >= sess.ids.length) finish(); else showCard();
 }
 function finish(){
-  player.pause();
+  stopAudio();
   const n = sess.ok.length + sess.bad.length;
   if (n) { S.sessions.unshift({d:Date.now(), label:sess.label, n, ok:sess.ok.length, bad:sess.bad.length}); S.sessions = S.sessions.slice(0,50); save(); }
   $('sumOk').textContent = sess.ok.length; $('sumBad').textContent = sess.bad.length;
