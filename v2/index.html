@@ -1781,7 +1781,7 @@ function stopAudio(){
   clearTimeout(gapTimer); seq = []; player.pause();
   if (playingBtn) playingBtn.classList.remove('playing'); playingBtn = null;
 }
-/* rel = 'letters/<id>.mp3' or 'words/<id>-<form>.mp3'; plays male, 1 s pause, female (or one voice, per setting) */
+/* rel = 'letters/<id>.mp3' or 'words/<id>-<form>.mp3'; plays male, 0.5 s pause, female (or one voice, per setting) */
 function play(rel, text, btn){
   stopAudio(); playingBtn = btn; fallback = text; btn && btn.classList.add('playing');
   seq = voicesFor().map(v => `audio/${v}/${rel}`); playNext();
@@ -1792,7 +1792,7 @@ function playNext(){
   player.src = src; player.currentTime = 0;
   const p = player.play(); if (p && p.catch) p.catch(() => {});
 }
-player.addEventListener('ended', () => { if (seq.length) gapTimer = setTimeout(playNext, 1000); else playNext(); });
+player.addEventListener('ended', () => { if (seq.length) gapTimer = setTimeout(playNext, 500); else playNext(); });
 player.addEventListener('error', () => { stopAudio(); speak(fallback); });
 const letterSrc = L => `letters/${L.id}.mp3`;
 const wordSrc = (L, f) => `words/${L.id}-${f}.mp3`;
