@@ -1,0 +1,12 @@
+Pronunciation audio for Arabic Letter Cards (v2)
+
+male/   – voice "Miro" (ar-SA, Piper high quality, OpenVoiceOS phoonnx_ar-SA_miro, via sherpa-onnx)
+female/ – voice "Dii"  (ar-SA, Piper high quality, OpenVoiceOS phoonnx_ar-SA_dii, via sherpa-onnx)
+
+Licence: the Dii model is Creative Commons Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA 4.0),
+https://creativecommons.org/licenses/by-nc-sa/4.0/ – free for non-commercial use; keep this notice when sharing.
+Miro is from the same model family; its licence could not be confirmed, so treat it the same way (non-commercial).
+Models: https://github.com/k2-fsa/sherpa-onnx/releases/tag/tts-models
+
+Files: letters/<letter id>.mp3 = letter sound with fatha; words/<letter id>-<form>.mp3 = example word.
+Generated with tools/gen2voices.py; text fixes for the voice in tools/norm.py.
