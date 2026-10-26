@@ -121,7 +121,7 @@
   .flipbtn:hover{background:var(--flip-d)} .flipbtn svg{width:30px;height:30px}
   .flipbtn:active,.abtn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
 
-  .back{display:grid;grid-template-rows:1fr 2fr}
+  .back{display:grid;grid-template-rows:1fr 2fr;grid-template-columns:minmax(0,1fr)}
   .b1{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:14px 12px 12px;border-bottom:3px solid var(--line)}
   .b1-top{display:flex;align-items:center;justify-content:center;gap:12px}
   .b1-letter{font-size:56px;line-height:1.15;font-weight:700}
@@ -223,7 +223,7 @@
   .v-b1 .exar{font-family:var(--ar);direction:rtl;font-size:22px;line-height:1.35}
   .v-b1 .tr{font-size:14px;color:var(--ru);line-height:1.3}
   .v-b1 .snd{right:8px;top:50%;transform:translateY(-50%)}
-  .v-b2{display:flex;flex-direction:column;padding:8px 12px 14px;min-height:0}
+  .v-b2{display:flex;flex-direction:column;padding:8px 12px 14px;min-height:0;min-width:0}
   .v-tab{flex:1;display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:0}
   .vrow{display:grid;grid-template-columns:4.2em 1fr;align-items:center;direction:rtl;gap:8px;padding:0 10px;border-radius:8px;border:1px solid transparent;
         background:none;cursor:pointer;font-family:var(--ar);font-size:21px;line-height:1.45;text-align:right;color:var(--ink);width:100%}
@@ -252,7 +252,33 @@
   .v-b2.solo{flex:0 0 auto;padding-top:0}
   .seg.multi button[aria-pressed="true"]{background:var(--hl-bg);color:var(--ink);border-color:var(--hl-border)}
   .vverbs button{font-size:13px}
-  .vverbs button .ar{font-family:var(--ar);font-size:17px;margin-left:4px}
+  .vverbs button .ar{font-family:var(--ar);font-size:17px;margin-right:6px;unicode-bidi:isolate}
+  /* special words + nouns */
+  .w-b1{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:12px 44px;border-bottom:3px solid var(--line);text-align:center;min-width:0}
+  .w-b1 .lbl,.w-ex .lbl{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  .w-b1 .wd{font-family:var(--ar);direction:rtl;font-size:58px;line-height:1.3;font-weight:700;white-space:nowrap;overflow:hidden;width:100%}
+  .w-b1 .tl{font-size:16px;line-height:1.35} .w-b1 .tl .sep{color:var(--ink-faint);margin:0 6px}
+  .w-b1 .tr{font-size:15px;color:var(--ru)}
+  .w-b1 .snd{right:8px;top:50%;transform:translateY(-50%)}
+  .w-ex{position:relative;flex:1;min-width:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:6px 40px;text-align:center;min-height:0}
+  .w-ex .sent{font-family:var(--ar);direction:rtl;font-size:40px;line-height:1.45;white-space:nowrap;overflow:hidden;width:100%}
+  .w-ex .sent .hw{color:var(--hl-letter);font-weight:700}
+  .w-ex .tl{font-size:15px;line-height:1.35} .w-ex .rs{color:var(--ink-soft);font-size:14px}
+  .w-ex .tr{font-size:16px;color:var(--ru);margin-top:6px}
+  .w-ex .snd{right:0;top:50%;transform:translateY(-50%)}
+  .back.wprep{grid-template-rows:auto 1fr} .back.wprep .w-b1{padding:10px 44px 8px} .back.wprep .w-b1 .wd{font-size:46px;line-height:1.25}
+  .back.wprep .v-b2{padding-top:4px}
+  .prow{display:grid;grid-template-columns:34% 1fr;align-items:center;direction:rtl;gap:8px;padding:2px 10px;border-radius:8px;border:1px solid transparent;
+        background:none;cursor:pointer;color:var(--ink);width:100%;text-align:right}
+  .prow + .prow{border-top-color:var(--border)}
+  .prow .pa .vaf{color:var(--hl-letter)} .prow .pa{font-family:var(--ar);font-size:23px;line-height:1.35;font-weight:700;white-space:nowrap;overflow:hidden}
+  .prow .pt{direction:ltr;text-align:left;font-size:13px;line-height:1.25;min-width:0}
+  .prow .pt .m{color:var(--ink)} .prow .pt .t{color:var(--ink-soft);font-size:12px}
+  .prow.playing{outline:2px solid var(--hl-border)}
+  .nw{white-space:nowrap}
+  .prow.arow{grid-template-columns:38% 1fr;padding:10px 10px} .prow.arow .pa{font-size:38px;line-height:1.5}
+  .prow.arow .pt{font-size:15px;line-height:1.35} .prow.arow .pt .t{font-size:14px} .prow.arow .pt .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+  @media (max-height:700px){ .back.wprep .w-b1 .wd{font-size:36px} .back.wprep .w-b1{padding:6px 44px 6px} .w-b1 .wd{font-size:48px} .w-ex .sent{font-size:34px} .prow .pa{font-size:20px} .prow .pt{font-size:12px} .prow .pt .t{font-size:11px} }
   /* verb tables screen */
   .vt-sec{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:10px 10px 12px}
   .vt-sec h3{margin:0 4px 6px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
@@ -281,12 +307,22 @@
     <h2 id="h-setup">New session</h2>
     <div class="field"><label>Deck</label>
       <div class="seg" id="cfgDeck" data-key="deck">
-        <button data-v="letters">Letters</button><button data-v="numbers">Numbers</button><button data-v="verbs">Verbs</button>
+        <button data-v="letters">Letters</button><button data-v="numbers">Numbers</button><button data-v="verbs">Verbs</button><button data-v="special">Special words</button><button data-v="nouns">Nouns</button><button data-v="time">Time</button><button data-v="adj">Adjectives</button>
       </div>
     </div>
     <div class="field" id="fNum"><label>Numbers</label>
       <div class="seg" id="cfgNum" data-key="ngroup">
         <button data-v="all">All</button><button data-v="units">0–10</button><button data-v="teens">11–19</button><button data-v="tens">20–90</button><button data-v="hundreds">100–900</button><button data-v="big">1000+</button>
+      </div>
+    </div>
+    <div class="field" id="fSW"><label>Words</label>
+      <div class="seg" id="cfgSW" data-key="swgroup">
+        <button data-v="all">All</button><button data-v="q">Question words</button><button data-v="prep">With · without · about · have</button>
+      </div>
+    </div>
+    <div class="field" id="fTG"><label>Words</label>
+      <div class="seg" id="cfgTG" data-key="tgroup">
+        <button data-v="all">All</button><button data-v="day">Days of the week</button><button data-v="word">Day · month · year …</button>
       </div>
     </div>
     <div class="field" id="fVPart"><label>Cards</label>
@@ -5042,7 +5078,7 @@
 ],
 "phrase": "أَنَا شَرِبْتُ",
 "lat": "anā sharibtu",
-"rus": "ана шарибто",
+"rus": "ана шаребто",
 "ru": "я пил(а)",
 "en": "I drank",
 "audio": [
@@ -5065,7 +5101,7 @@
 ],
 "phrase": "أَنْتَ شَرِبْتَ",
 "lat": "anta sharibta",
-"rus": "анта шарибта",
+"rus": "анта шаребта",
 "ru": "ты (м) пил",
 "en": "You (m.) drank",
 "audio": [
@@ -5088,7 +5124,7 @@
 ],
 "phrase": "أَنْتِ شَرِبْتِ",
 "lat": "anti sharibti",
-"rus": "анти шарибти",
+"rus": "анти шаребти",
 "ru": "ты (ж) пила",
 "en": "You (f.) drank",
 "audio": [
@@ -5111,7 +5147,7 @@
 ],
 "phrase": "أَنْتُمْ شَرِبْتُمْ",
 "lat": "antum sharibtum",
-"rus": "антом шарибтом",
+"rus": "антом шаребтом",
 "ru": "вы пили",
 "en": "You (pl.) drank",
 "audio": [
@@ -5134,7 +5170,7 @@
 ],
 "phrase": "هُوَ شَرِبَ",
 "lat": "huwa shariba",
-"rus": "хуа шариба",
+"rus": "хуа шареба",
 "ru": "он пил",
 "en": "He drank",
 "audio": [
@@ -5157,7 +5193,7 @@
 ],
 "phrase": "هِيَ شَرِبَتْ",
 "lat": "hiya sharibat",
-"rus": "хия шарибат",
+"rus": "хия шаребат",
 "ru": "она пила",
 "en": "She drank",
 "audio": [
@@ -5180,7 +5216,7 @@
 ],
 "phrase": "هُمْ شَرِبُوا",
 "lat": "hum sharibū",
-"rus": "хом шарибо",
+"rus": "хом шаребо",
 "ru": "они пили",
 "en": "They drank",
 "audio": [
@@ -5203,7 +5239,7 @@
 ],
 "phrase": "نَحْنُ شَرِبْنَا",
 "lat": "naḥnu sharibnā",
-"rus": "нахно шарибна",
+"rus": "нахно шаребна",
 "ru": "мы пили",
 "en": "We drank",
 "audio": [
@@ -5482,7 +5518,7 @@
 ],
 "phrase": "هَلْ أَنَا شَرِبْتُ",
 "lat": "hal anā sharibtu?",
-"rus": "халь ана шарибто?",
+"rus": "халь ана шаребто?",
 "ru": "я пил(а)?",
 "en": "Did I drink?",
 "audio": [
@@ -5509,7 +5545,7 @@
 ],
 "phrase": "هَلْ أَنْتَ شَرِبْتَ",
 "lat": "hal anta sharibta?",
-"rus": "халь анта шарибта?",
+"rus": "халь анта шаребта?",
 "ru": "ты (м) пил?",
 "en": "Did you (m.) drink?",
 "audio": [
@@ -5536,7 +5572,7 @@
 ],
 "phrase": "هَلْ أَنْتِ شَرِبْتِ",
 "lat": "hal anti sharibti?",
-"rus": "халь анти шарибти?",
+"rus": "халь анти шаребти?",
 "ru": "ты (ж) пила?",
 "en": "Did you (f.) drink?",
 "audio": [
@@ -5563,7 +5599,7 @@
 ],
 "phrase": "هَلْ أَنْتُمْ شَرِبْتُمْ",
 "lat": "hal antum sharibtum?",
-"rus": "халь антом шарибтом?",
+"rus": "халь антом шаребтом?",
 "ru": "вы пили?",
 "en": "Did you (pl.) drink?",
 "audio": [
@@ -5590,7 +5626,7 @@
 ],
 "phrase": "هَلْ هُوَ شَرِبَ",
 "lat": "hal huwa shariba?",
-"rus": "халь хуа шариба?",
+"rus": "халь хуа шареба?",
 "ru": "он пил?",
 "en": "Did he drink?",
 "audio": [
@@ -5617,7 +5653,7 @@
 ],
 "phrase": "هَلْ هِيَ شَرِبَتْ",
 "lat": "hal hiya sharibat?",
-"rus": "халь хия шарибат?",
+"rus": "халь хия шаребат?",
 "ru": "она пила?",
 "en": "Did she drink?",
 "audio": [
@@ -5644,7 +5680,7 @@
 ],
 "phrase": "هَلْ هُمْ شَرِبُوا",
 "lat": "hal hum sharibū?",
-"rus": "халь хом шарибо?",
+"rus": "халь хом шаребо?",
 "ru": "они пили?",
 "en": "Did they drink?",
 "audio": [
@@ -5671,7 +5707,7 @@
 ],
 "phrase": "هَلْ نَحْنُ شَرِبْنَا",
 "lat": "hal naḥnu sharibnā?",
-"rus": "халь нахно шарибна?",
+"rus": "халь нахно шаребна?",
 "ru": "мы пили?",
 "en": "Did we drink?",
 "audio": [
@@ -6422,7 +6458,7 @@
 ],
 "phrase": "أَنَا سَأَشْرَبُ",
 "lat": "anā sa-ashrabu",
-"rus": "ана са ашрабо",
+"rus": "ана са-ашрабо",
 "ru": "я буду пить",
 "en": "I will drink",
 "audio": [
@@ -6449,7 +6485,7 @@
 ],
 "phrase": "أَنْتَ سَتَشْرَبُ",
 "lat": "anta sa-tashrabu",
-"rus": "анта саташрабо",
+"rus": "анта са-ташрабо",
 "ru": "ты (м) будешь пить",
 "en": "You (m.) will drink",
 "audio": [
@@ -6476,7 +6512,7 @@
 ],
 "phrase": "أَنْتِ سَتَشْرَبِينَ",
 "lat": "anti sa-tashrabīn",
-"rus": "анти саташрабин",
+"rus": "анти са-ташрабин",
 "ru": "ты (ж) будешь пить",
 "en": "You (f.) will drink",
 "audio": [
@@ -6503,7 +6539,7 @@
 ],
 "phrase": "أَنْتُمْ سَتَشْرَبُونَ",
 "lat": "antum sa-tashrabūn",
-"rus": "антом саташрабон",
+"rus": "антом са-ташрабон",
 "ru": "вы будете пить",
 "en": "You (pl.) will drink",
 "audio": [
@@ -6530,7 +6566,7 @@
 ],
 "phrase": "هُوَ سَيَشْرَبُ",
 "lat": "huwa sa-yashrabu",
-"rus": "хуа саяшрабо",
+"rus": "хуа са-яшрабо",
 "ru": "он будет пить",
 "en": "He will drink",
 "audio": [
@@ -6557,7 +6593,7 @@
 ],
 "phrase": "هِيَ سَتَشْرَبُ",
 "lat": "hiya sa-tashrabu",
-"rus": "хия саташрабо",
+"rus": "хия са-ташрабо",
 "ru": "она будет пить",
 "en": "She will drink",
 "audio": [
@@ -6584,7 +6620,7 @@
 ],
 "phrase": "هُمْ سَيَشْرَبُونَ",
 "lat": "hum sa-yashrabūn",
-"rus": "хом саяшрабон",
+"rus": "хом са-яшрабон",
 "ru": "они будут пить",
 "en": "They will drink",
 "audio": [
@@ -6611,7 +6647,7 @@
 ],
 "phrase": "نَحْنُ سَنَشْرَبُ",
 "lat": "naḥnu sa-nashrabu",
-"rus": "нахно санашрабо",
+"rus": "нахно са-нашрабо",
 "ru": "мы будем пить",
 "en": "We will drink",
 "audio": [
@@ -6894,7 +6930,7 @@
 ],
 "phrase": "هَلْ أَنَا سَأَشْرَبُ",
 "lat": "hal anā sa-ashrabu?",
-"rus": "халь ана са ашрабо?",
+"rus": "халь ана са-ашрабо?",
 "ru": "я буду пить?",
 "en": "Will I drink?",
 "audio": [
@@ -6925,7 +6961,7 @@
 ],
 "phrase": "هَلْ أَنْتَ سَتَشْرَبُ",
 "lat": "hal anta sa-tashrabu?",
-"rus": "халь анта саташрабо?",
+"rus": "халь анта са-ташрабо?",
 "ru": "ты (м) будешь пить?",
 "en": "Will you (m.) drink?",
 "audio": [
@@ -6956,7 +6992,7 @@
 ],
 "phrase": "هَلْ أَنْتِ سَتَشْرَبِينَ",
 "lat": "hal anti sa-tashrabīn?",
-"rus": "халь анти саташрабин?",
+"rus": "халь анти са-ташрабин?",
 "ru": "ты (ж) будешь пить?",
 "en": "Will you (f.) drink?",
 "audio": [
@@ -6987,7 +7023,7 @@
 ],
 "phrase": "هَلْ أَنْتُمْ سَتَشْرَبُونَ",
 "lat": "hal antum sa-tashrabūn?",
-"rus": "халь антом саташрабон?",
+"rus": "халь антом са-ташрабон?",
 "ru": "вы будете пить?",
 "en": "Will you (pl.) drink?",
 "audio": [
@@ -7018,7 +7054,7 @@
 ],
 "phrase": "هَلْ هُوَ سَيَشْرَبُ",
 "lat": "hal huwa sa-yashrabu?",
-"rus": "халь хуа саяшрабо?",
+"rus": "халь хуа са-яшрабо?",
 "ru": "он будет пить?",
 "en": "Will he drink?",
 "audio": [
@@ -7049,7 +7085,7 @@
 ],
 "phrase": "هَلْ هِيَ سَتَشْرَبُ",
 "lat": "hal hiya sa-tashrabu?",
-"rus": "халь хия саташрабо?",
+"rus": "халь хия са-ташрабо?",
 "ru": "она будет пить?",
 "en": "Will she drink?",
 "audio": [
@@ -7080,7 +7116,7 @@
 ],
 "phrase": "هَلْ هُمْ سَيَشْرَبُونَ",
 "lat": "hal hum sa-yashrabūn?",
-"rus": "халь хом саяшрабон?",
+"rus": "халь хом са-яшрабон?",
 "ru": "они будут пить?",
 "en": "Will they drink?",
 "audio": [
@@ -7111,7 +7147,7 @@
 ],
 "phrase": "هَلْ نَحْنُ سَنَشْرَبُ",
 "lat": "hal naḥnu sa-nashrabu?",
-"rus": "халь нахно санашрабо?",
+"rus": "халь нахно са-нашрабо?",
 "ru": "мы будем пить?",
 "en": "Will we drink?",
 "audio": [
@@ -8528,7 +8564,7 @@
 ],
 "phrase": "أَنَا سَأَذْهَبُ",
 "lat": "anā sa-adhhabu",
-"rus": "ана са азхабо",
+"rus": "ана са-азхабо",
 "ru": "я пойду",
 "en": "I will go",
 "audio": [
@@ -8555,7 +8591,7 @@
 ],
 "phrase": "أَنْتَ سَتَذْهَبُ",
 "lat": "anta sa-tadhhabu",
-"rus": "анта сатазхабо",
+"rus": "анта са-тазхабо",
 "ru": "ты (м) пойдёшь",
 "en": "You (m.) will go",
 "audio": [
@@ -8582,7 +8618,7 @@
 ],
 "phrase": "أَنْتِ سَتَذْهَبِينَ",
 "lat": "anti sa-tadhhabīn",
-"rus": "анти сатазхабин",
+"rus": "анти са-тазхабин",
 "ru": "ты (ж) пойдёшь",
 "en": "You (f.) will go",
 "audio": [
@@ -8609,7 +8645,7 @@
 ],
 "phrase": "أَنْتُمْ سَتَذْهَبُونَ",
 "lat": "antum sa-tadhhabūn",
-"rus": "антом сатазхабон",
+"rus": "антом са-тазхабон",
 "ru": "вы пойдёте",
 "en": "You (pl.) will go",
 "audio": [
@@ -8636,7 +8672,7 @@
 ],
 "phrase": "هُوَ سَيَذْهَبُ",
 "lat": "huwa sa-yadhhabu",
-"rus": "хуа саязхабо",
+"rus": "хуа са-язхабо",
 "ru": "он пойдёт",
 "en": "He will go",
 "audio": [
@@ -8663,7 +8699,7 @@
 ],
 "phrase": "هِيَ سَتَذْهَبُ",
 "lat": "hiya sa-tadhhabu",
-"rus": "хия сатазхабо",
+"rus": "хия са-тазхабо",
 "ru": "она пойдёт",
 "en": "She will go",
 "audio": [
@@ -8690,7 +8726,7 @@
 ],
 "phrase": "هُمْ سَيَذْهَبُونَ",
 "lat": "hum sa-yadhhabūn",
-"rus": "хом саязхабон",
+"rus": "хом са-язхабон",
 "ru": "они пойдут",
 "en": "They will go",
 "audio": [
@@ -8717,7 +8753,7 @@
 ],
 "phrase": "نَحْنُ سَنَذْهَبُ",
 "lat": "naḥnu sa-nadhhabu",
-"rus": "нахно саназхабо",
+"rus": "нахно са-назхабо",
 "ru": "мы пойдём",
 "en": "We will go",
 "audio": [
@@ -9000,7 +9036,7 @@
 ],
 "phrase": "هَلْ أَنَا سَأَذْهَبُ",
 "lat": "hal anā sa-adhhabu?",
-"rus": "халь ана са азхабо?",
+"rus": "халь ана са-азхабо?",
 "ru": "я пойду?",
 "en": "Will I go?",
 "audio": [
@@ -9031,7 +9067,7 @@
 ],
 "phrase": "هَلْ أَنْتَ سَتَذْهَبُ",
 "lat": "hal anta sa-tadhhabu?",
-"rus": "халь анта сатазхабо?",
+"rus": "халь анта са-тазхабо?",
 "ru": "ты (м) пойдёшь?",
 "en": "Will you (m.) go?",
 "audio": [
@@ -9062,7 +9098,7 @@
 ],
 "phrase": "هَلْ أَنْتِ سَتَذْهَبِينَ",
 "lat": "hal anti sa-tadhhabīn?",
-"rus": "халь анти сатазхабин?",
+"rus": "халь анти са-тазхабин?",
 "ru": "ты (ж) пойдёшь?",
 "en": "Will you (f.) go?",
 "audio": [
@@ -9093,7 +9129,7 @@
 ],
 "phrase": "هَلْ أَنْتُمْ سَتَذْهَبُونَ",
 "lat": "hal antum sa-tadhhabūn?",
-"rus": "халь антом сатазхабон?",
+"rus": "халь антом са-тазхабон?",
 "ru": "вы пойдёте?",
 "en": "Will you (pl.) go?",
 "audio": [
@@ -9124,7 +9160,7 @@
 ],
 "phrase": "هَلْ هُوَ سَيَذْهَبُ",
 "lat": "hal huwa sa-yadhhabu?",
-"rus": "халь хуа саязхабо?",
+"rus": "халь хуа са-язхабо?",
 "ru": "он пойдёт?",
 "en": "Will he go?",
 "audio": [
@@ -9155,7 +9191,7 @@
 ],
 "phrase": "هَلْ هِيَ سَتَذْهَبُ",
 "lat": "hal hiya sa-tadhhabu?",
-"rus": "халь хия сатазхабо?",
+"rus": "халь хия са-тазхабо?",
 "ru": "она пойдёт?",
 "en": "Will she go?",
 "audio": [
@@ -9186,7 +9222,7 @@
 ],
 "phrase": "هَلْ هُمْ سَيَذْهَبُونَ",
 "lat": "hal hum sa-yadhhabūn?",
-"rus": "халь хом саязхабон?",
+"rus": "халь хом са-язхабон?",
 "ru": "они пойдут?",
 "en": "Will they go?",
 "audio": [
@@ -9217,7 +9253,7 @@
 ],
 "phrase": "هَلْ نَحْنُ سَنَذْهَبُ",
 "lat": "hal naḥnu sa-nadhhabu?",
-"rus": "халь нахно саназхабо?",
+"rus": "халь нахно са-назхабо?",
 "ru": "мы пойдём?",
 "en": "Will we go?",
 "audio": [
@@ -9254,7 +9290,7 @@
 ],
 "phrase": "أَنَا تَكَلَّمْتُ",
 "lat": "anā takallamtu",
-"rus": "ана такалламто",
+"rus": "ана такаламто",
 "ru": "я говорил(а)",
 "en": "I spoke",
 "audio": [
@@ -9277,7 +9313,7 @@
 ],
 "phrase": "أَنْتَ تَكَلَّمْتَ",
 "lat": "anta takallamta",
-"rus": "анта такалламта",
+"rus": "анта такаламта",
 "ru": "ты (м) говорил",
 "en": "You (m.) spoke",
 "audio": [
@@ -9300,7 +9336,7 @@
 ],
 "phrase": "أَنْتِ تَكَلَّمْتِ",
 "lat": "anti takallamti",
-"rus": "анти такалламти",
+"rus": "анти такаламти",
 "ru": "ты (ж) говорила",
 "en": "You (f.) spoke",
 "audio": [
@@ -9323,7 +9359,7 @@
 ],
 "phrase": "أَنْتُمْ تَكَلَّمْتُمْ",
 "lat": "antum takallamtum",
-"rus": "антом такалламтом",
+"rus": "антом такаламтом",
 "ru": "вы говорили",
 "en": "You (pl.) spoke",
 "audio": [
@@ -9346,7 +9382,7 @@
 ],
 "phrase": "هُوَ تَكَلَّمَ",
 "lat": "huwa takallama",
-"rus": "хуа такаллама",
+"rus": "хуа такалама",
 "ru": "он говорил",
 "en": "He spoke",
 "audio": [
@@ -9369,7 +9405,7 @@
 ],
 "phrase": "هِيَ تَكَلَّمَتْ",
 "lat": "hiya takallamat",
-"rus": "хия такалламат",
+"rus": "хия такаламат",
 "ru": "она говорила",
 "en": "She spoke",
 "audio": [
@@ -9392,7 +9428,7 @@
 ],
 "phrase": "هُمْ تَكَلَّمُوا",
 "lat": "hum takallamū",
-"rus": "хом такалламо",
+"rus": "хом такаламо",
 "ru": "они говорили",
 "en": "They spoke",
 "audio": [
@@ -9415,7 +9451,7 @@
 ],
 "phrase": "نَحْنُ تَكَلَّمْنَا",
 "lat": "naḥnu takallamnā",
-"rus": "нахно такалламна",
+"rus": "нахно такаламна",
 "ru": "мы говорили",
 "en": "We spoke",
 "audio": [
@@ -9448,7 +9484,7 @@
 ],
 "phrase": "أَنَا لَمْ أَتَكَلَّمْ",
 "lat": "anā lam atakallam",
-"rus": "ана лам атакаллам",
+"rus": "ана лам атакалам",
 "ru": "я не говорил(а)",
 "en": "I didn't speak",
 "audio": [
@@ -9479,7 +9515,7 @@
 ],
 "phrase": "أَنْتَ لَمْ تَتَكَلَّمْ",
 "lat": "anta lam tatakallam",
-"rus": "анта лам татакаллам",
+"rus": "анта лам татакалам",
 "ru": "ты (м) не говорил",
 "en": "You (m.) didn't speak",
 "audio": [
@@ -9510,7 +9546,7 @@
 ],
 "phrase": "أَنْتِ لَمْ تَتَكَلَّمِي",
 "lat": "anti lam tatakallamī",
-"rus": "анти лам татакаллами",
+"rus": "анти лам татакалами",
 "ru": "ты (ж) не говорила",
 "en": "You (f.) didn't speak",
 "audio": [
@@ -9541,7 +9577,7 @@
 ],
 "phrase": "أَنْتُمْ لَمْ تَتَكَلَّمُوا",
 "lat": "antum lam tatakallamū",
-"rus": "антом лам татакалламо",
+"rus": "антом лам татакаламо",
 "ru": "вы не говорили",
 "en": "You (pl.) didn't speak",
 "audio": [
@@ -9572,7 +9608,7 @@
 ],
 "phrase": "هُوَ لَمْ يَتَكَلَّمْ",
 "lat": "huwa lam yatakallam",
-"rus": "хуа лам ятакаллам",
+"rus": "хуа лам ятакалам",
 "ru": "он не говорил",
 "en": "He didn't speak",
 "audio": [
@@ -9603,7 +9639,7 @@
 ],
 "phrase": "هِيَ لَمْ تَتَكَلَّمْ",
 "lat": "hiya lam tatakallam",
-"rus": "хия лам татакаллам",
+"rus": "хия лам татакалам",
 "ru": "она не говорила",
 "en": "She didn't speak",
 "audio": [
@@ -9634,7 +9670,7 @@
 ],
 "phrase": "هُمْ لَمْ يَتَكَلَّمُوا",
 "lat": "hum lam yatakallamū",
-"rus": "хом лам ятакалламо",
+"rus": "хом лам ятакаламо",
 "ru": "они не говорили",
 "en": "They didn't speak",
 "audio": [
@@ -9665,7 +9701,7 @@
 ],
 "phrase": "نَحْنُ لَمْ نَتَكَلَّمْ",
 "lat": "naḥnu lam natakallam",
-"rus": "нахно лам натакаллам",
+"rus": "нахно лам натакалам",
 "ru": "мы не говорили",
 "en": "We didn't speak",
 "audio": [
@@ -9694,7 +9730,7 @@
 ],
 "phrase": "هَلْ أَنَا تَكَلَّمْتُ",
 "lat": "hal anā takallamtu?",
-"rus": "халь ана такалламто?",
+"rus": "халь ана такаламто?",
 "ru": "я говорил(а)?",
 "en": "Did I speak?",
 "audio": [
@@ -9721,7 +9757,7 @@
 ],
 "phrase": "هَلْ أَنْتَ تَكَلَّمْتَ",
 "lat": "hal anta takallamta?",
-"rus": "халь анта такалламта?",
+"rus": "халь анта такаламта?",
 "ru": "ты (м) говорил?",
 "en": "Did you (m.) speak?",
 "audio": [
@@ -9748,7 +9784,7 @@
 ],
 "phrase": "هَلْ أَنْتِ تَكَلَّمْتِ",
 "lat": "hal anti takallamti?",
-"rus": "халь анти такалламти?",
+"rus": "халь анти такаламти?",
 "ru": "ты (ж) говорила?",
 "en": "Did you (f.) speak?",
 "audio": [
@@ -9775,7 +9811,7 @@
 ],
 "phrase": "هَلْ أَنْتُمْ تَكَلَّمْتُمْ",
 "lat": "hal antum takallamtum?",
-"rus": "халь антом такалламтом?",
+"rus": "халь антом такаламтом?",
 "ru": "вы говорили?",
 "en": "Did you (pl.) speak?",
 "audio": [
@@ -9802,7 +9838,7 @@
 ],
 "phrase": "هَلْ هُوَ تَكَلَّمَ",
 "lat": "hal huwa takallama?",
-"rus": "халь хуа такаллама?",
+"rus": "халь хуа такалама?",
 "ru": "он говорил?",
 "en": "Did he speak?",
 "audio": [
@@ -9829,7 +9865,7 @@
 ],
 "phrase": "هَلْ هِيَ تَكَلَّمَتْ",
 "lat": "hal hiya takallamat?",
-"rus": "халь хия такалламат?",
+"rus": "халь хия такаламат?",
 "ru": "она говорила?",
 "en": "Did she speak?",
 "audio": [
@@ -9856,7 +9892,7 @@
 ],
 "phrase": "هَلْ هُمْ تَكَلَّمُوا",
 "lat": "hal hum takallamū?",
-"rus": "халь хом такалламо?",
+"rus": "халь хом такаламо?",
 "ru": "они говорили?",
 "en": "Did they speak?",
 "audio": [
@@ -9883,7 +9919,7 @@
 ],
 "phrase": "هَلْ نَحْنُ تَكَلَّمْنَا",
 "lat": "hal naḥnu takallamnā?",
-"rus": "халь нахно такалламна?",
+"rus": "халь нахно такаламна?",
 "ru": "мы говорили?",
 "en": "Did we speak?",
 "audio": [
@@ -9914,7 +9950,7 @@
 ],
 "phrase": "أَنَا أَتَكَلَّمُ",
 "lat": "anā atakallamu",
-"rus": "ана атакалламо",
+"rus": "ана атакаламо",
 "ru": "я говорю",
 "en": "I speak",
 "audio": [
@@ -9941,7 +9977,7 @@
 ],
 "phrase": "أَنْتَ تَتَكَلَّمُ",
 "lat": "anta tatakallamu",
-"rus": "анта татакалламо",
+"rus": "анта татакаламо",
 "ru": "ты (м) говоришь",
 "en": "You (m.) speak",
 "audio": [
@@ -9968,7 +10004,7 @@
 ],
 "phrase": "أَنْتِ تَتَكَلَّمِينَ",
 "lat": "anti tatakallamīn",
-"rus": "анти татакалламин",
+"rus": "анти татакаламин",
 "ru": "ты (ж) говоришь",
 "en": "You (f.) speak",
 "audio": [
@@ -9995,7 +10031,7 @@
 ],
 "phrase": "أَنْتُمْ تَتَكَلَّمُونَ",
 "lat": "antum tatakallamūn",
-"rus": "антом татакалламон",
+"rus": "антом татакаламон",
 "ru": "вы говорите",
 "en": "You (pl.) speak",
 "audio": [
@@ -10022,7 +10058,7 @@
 ],
 "phrase": "هُوَ يَتَكَلَّمُ",
 "lat": "huwa yatakallamu",
-"rus": "хуа ятакалламо",
+"rus": "хуа ятакаламо",
 "ru": "он говорит",
 "en": "He speaks",
 "audio": [
@@ -10049,7 +10085,7 @@
 ],
 "phrase": "هِيَ تَتَكَلَّمُ",
 "lat": "hiya tatakallamu",
-"rus": "хия татакалламо",
+"rus": "хия татакаламо",
 "ru": "она говорит",
 "en": "She speaks",
 "audio": [
@@ -10076,7 +10112,7 @@
 ],
 "phrase": "هُمْ يَتَكَلَّمُونَ",
 "lat": "hum yatakallamūn",
-"rus": "хом ятакалламон",
+"rus": "хом ятакаламон",
 "ru": "они говорят",
 "en": "They speak",
 "audio": [
@@ -10103,7 +10139,7 @@
 ],
 "phrase": "نَحْنُ نَتَكَلَّمُ",
 "lat": "naḥnu natakallamu",
-"rus": "нахно натакалламо",
+"rus": "нахно натакаламо",
 "ru": "мы говорим",
 "en": "We speak",
 "audio": [
@@ -10136,7 +10172,7 @@
 ],
 "phrase": "أَنَا لَا أَتَكَلَّمُ",
 "lat": "anā lā atakallamu",
-"rus": "ана ла атакалламо",
+"rus": "ана ла атакаламо",
 "ru": "я не говорю",
 "en": "I don't speak",
 "audio": [
@@ -10167,7 +10203,7 @@
 ],
 "phrase": "أَنْتَ لَا تَتَكَلَّمُ",
 "lat": "anta lā tatakallamu",
-"rus": "анта ла татакалламо",
+"rus": "анта ла татакаламо",
 "ru": "ты (м) не говоришь",
 "en": "You (m.) don't speak",
 "audio": [
@@ -10198,7 +10234,7 @@
 ],
 "phrase": "أَنْتِ لَا تَتَكَلَّمِينَ",
 "lat": "anti lā tatakallamīn",
-"rus": "анти ла татакалламин",
+"rus": "анти ла татакаламин",
 "ru": "ты (ж) не говоришь",
 "en": "You (f.) don't speak",
 "audio": [
@@ -10229,7 +10265,7 @@
 ],
 "phrase": "أَنْتُمْ لَا تَتَكَلَّمُونَ",
 "lat": "antum lā tatakallamūn",
-"rus": "антом ла татакалламон",
+"rus": "антом ла татакаламон",
 "ru": "вы не говорите",
 "en": "You (pl.) don't speak",
 "audio": [
@@ -10260,7 +10296,7 @@
 ],
 "phrase": "هُوَ لَا يَتَكَلَّمُ",
 "lat": "huwa lā yatakallamu",
-"rus": "хуа ла ятакалламо",
+"rus": "хуа ла ятакаламо",
 "ru": "он не говорит",
 "en": "He doesn't speak",
 "audio": [
@@ -10291,7 +10327,7 @@
 ],
 "phrase": "هِيَ لَا تَتَكَلَّمُ",
 "lat": "hiya lā tatakallamu",
-"rus": "хия ла татакалламо",
+"rus": "хия ла татакаламо",
 "ru": "она не говорит",
 "en": "She doesn't speak",
 "audio": [
@@ -10322,7 +10358,7 @@
 ],
 "phrase": "هُمْ لَا يَتَكَلَّمُونَ",
 "lat": "hum lā yatakallamūn",
-"rus": "хом ла ятакалламон",
+"rus": "хом ла ятакаламон",
 "ru": "они не говорят",
 "en": "They don't speak",
 "audio": [
@@ -10353,7 +10389,7 @@
 ],
 "phrase": "نَحْنُ لَا نَتَكَلَّمُ",
 "lat": "naḥnu lā natakallamu",
-"rus": "нахно ла натакалламо",
+"rus": "нахно ла натакаламо",
 "ru": "мы не говорим",
 "en": "We don't speak",
 "audio": [
@@ -10386,7 +10422,7 @@
 ],
 "phrase": "هَلْ أَنَا أَتَكَلَّمُ",
 "lat": "hal anā atakallamu?",
-"rus": "халь ана атакалламо?",
+"rus": "халь ана атакаламо?",
 "ru": "я говорю?",
 "en": "Do I speak?",
 "audio": [
@@ -10417,7 +10453,7 @@
 ],
 "phrase": "هَلْ أَنْتَ تَتَكَلَّمُ",
 "lat": "hal anta tatakallamu?",
-"rus": "халь анта татакалламо?",
+"rus": "халь анта татакаламо?",
 "ru": "ты (м) говоришь?",
 "en": "Do you (m.) speak?",
 "audio": [
@@ -10448,7 +10484,7 @@
 ],
 "phrase": "هَلْ أَنْتِ تَتَكَلَّمِينَ",
 "lat": "hal anti tatakallamīn?",
-"rus": "халь анти татакалламин?",
+"rus": "халь анти татакаламин?",
 "ru": "ты (ж) говоришь?",
 "en": "Do you (f.) speak?",
 "audio": [
@@ -10479,7 +10515,7 @@
 ],
 "phrase": "هَلْ أَنْتُمْ تَتَكَلَّمُونَ",
 "lat": "hal antum tatakallamūn?",
-"rus": "халь антом татакалламон?",
+"rus": "халь антом татакаламон?",
 "ru": "вы говорите?",
 "en": "Do you (pl.) speak?",
 "audio": [
@@ -10510,7 +10546,7 @@
 ],
 "phrase": "هَلْ هُوَ يَتَكَلَّمُ",
 "lat": "hal huwa yatakallamu?",
-"rus": "халь хуа ятакалламо?",
+"rus": "халь хуа ятакаламо?",
 "ru": "он говорит?",
 "en": "Does he speak?",
 "audio": [
@@ -10541,7 +10577,7 @@
 ],
 "phrase": "هَلْ هِيَ تَتَكَلَّمُ",
 "lat": "hal hiya tatakallamu?",
-"rus": "халь хия татакалламо?",
+"rus": "халь хия татакаламо?",
 "ru": "она говорит?",
 "en": "Does she speak?",
 "audio": [
@@ -10572,7 +10608,7 @@
 ],
 "phrase": "هَلْ هُمْ يَتَكَلَّمُونَ",
 "lat": "hal hum yatakallamūn?",
-"rus": "халь хом ятакалламон?",
+"rus": "халь хом ятакаламон?",
 "ru": "они говорят?",
 "en": "Do they speak?",
 "audio": [
@@ -10603,7 +10639,7 @@
 ],
 "phrase": "هَلْ نَحْنُ نَتَكَلَّمُ",
 "lat": "hal naḥnu natakallamu?",
-"rus": "халь нахно натакалламо?",
+"rus": "халь нахно натакаламо?",
 "ru": "мы говорим?",
 "en": "Do we speak?",
 "audio": [
@@ -10634,7 +10670,7 @@
 ],
 "phrase": "أَنَا سَأَتَكَلَّمُ",
 "lat": "anā sa-atakallamu",
-"rus": "ана са атакалламо",
+"rus": "ана са-атакаламо",
 "ru": "я буду говорить",
 "en": "I will speak",
 "audio": [
@@ -10661,7 +10697,7 @@
 ],
 "phrase": "أَنْتَ سَتَتَكَلَّمُ",
 "lat": "anta sa-tatakallamu",
-"rus": "анта сататакалламо",
+"rus": "анта са-татакаламо",
 "ru": "ты (м) будешь говорить",
 "en": "You (m.) will speak",
 "audio": [
@@ -10688,7 +10724,7 @@
 ],
 "phrase": "أَنْتِ سَتَتَكَلَّمِينَ",
 "lat": "anti sa-tatakallamīn",
-"rus": "анти сататакалламин",
+"rus": "анти са-татакаламин",
 "ru": "ты (ж) будешь говорить",
 "en": "You (f.) will speak",
 "audio": [
@@ -10715,7 +10751,7 @@
 ],
 "phrase": "أَنْتُمْ سَتَتَكَلَّمُونَ",
 "lat": "antum sa-tatakallamūn",
-"rus": "антом сататакалламон",
+"rus": "антом са-татакаламон",
 "ru": "вы будете говорить",
 "en": "You (pl.) will speak",
 "audio": [
@@ -10742,7 +10778,7 @@
 ],
 "phrase": "هُوَ سَيَتَكَلَّمُ",
 "lat": "huwa sa-yatakallamu",
-"rus": "хуа саятакалламо",
+"rus": "хуа са-ятакаламо",
 "ru": "он будет говорить",
 "en": "He will speak",
 "audio": [
@@ -10769,7 +10805,7 @@
 ],
 "phrase": "هِيَ سَتَتَكَلَّمُ",
 "lat": "hiya sa-tatakallamu",
-"rus": "хия сататакалламо",
+"rus": "хия са-татакаламо",
 "ru": "она будет говорить",
 "en": "She will speak",
 "audio": [
@@ -10796,7 +10832,7 @@
 ],
 "phrase": "هُمْ سَيَتَكَلَّمُونَ",
 "lat": "hum sa-yatakallamūn",
-"rus": "хом саятакалламон",
+"rus": "хом са-ятакаламон",
 "ru": "они будут говорить",
 "en": "They will speak",
 "audio": [
@@ -10823,7 +10859,7 @@
 ],
 "phrase": "نَحْنُ سَنَتَكَلَّمُ",
 "lat": "naḥnu sa-natakallamu",
-"rus": "нахно санатакалламо",
+"rus": "нахно са-натакаламо",
 "ru": "мы будем говорить",
 "en": "We will speak",
 "audio": [
@@ -10856,7 +10892,7 @@
 ],
 "phrase": "أَنَا لَنْ أَتَكَلَّمَ",
 "lat": "anā lan atakallama",
-"rus": "ана лан атакаллама",
+"rus": "ана лан атакалама",
 "ru": "я не буду говорить",
 "en": "I won't speak",
 "audio": [
@@ -10887,7 +10923,7 @@
 ],
 "phrase": "أَنْتَ لَنْ تَتَكَلَّمَ",
 "lat": "anta lan tatakallama",
-"rus": "анта лан татакаллама",
+"rus": "анта лан татакалама",
 "ru": "ты (м) не будешь говорить",
 "en": "You (m.) won't speak",
 "audio": [
@@ -10918,7 +10954,7 @@
 ],
 "phrase": "أَنْتِ لَنْ تَتَكَلَّمِي",
 "lat": "anti lan tatakallamī",
-"rus": "анти лан татакаллами",
+"rus": "анти лан татакалами",
 "ru": "ты (ж) не будешь говорить",
 "en": "You (f.) won't speak",
 "audio": [
@@ -10949,7 +10985,7 @@
 ],
 "phrase": "أَنْتُمْ لَنْ تَتَكَلَّمُوا",
 "lat": "antum lan tatakallamū",
-"rus": "антом лан татакалламо",
+"rus": "антом лан татакаламо",
 "ru": "вы не будете говорить",
 "en": "You (pl.) won't speak",
 "audio": [
@@ -10980,7 +11016,7 @@
 ],
 "phrase": "هُوَ لَنْ يَتَكَلَّمَ",
 "lat": "huwa lan yatakallama",
-"rus": "хуа лан ятакаллама",
+"rus": "хуа лан ятакалама",
 "ru": "он не будет говорить",
 "en": "He won't speak",
 "audio": [
@@ -11011,7 +11047,7 @@
 ],
 "phrase": "هِيَ لَنْ تَتَكَلَّمَ",
 "lat": "hiya lan tatakallama",
-"rus": "хия лан татакаллама",
+"rus": "хия лан татакалама",
 "ru": "она не будет говорить",
 "en": "She won't speak",
 "audio": [
@@ -11042,7 +11078,7 @@
 ],
 "phrase": "هُمْ لَنْ يَتَكَلَّمُوا",
 "lat": "hum lan yatakallamū",
-"rus": "хом лан ятакалламо",
+"rus": "хом лан ятакаламо",
 "ru": "они не будут говорить",
 "en": "They won't speak",
 "audio": [
@@ -11073,7 +11109,7 @@
 ],
 "phrase": "نَحْنُ لَنْ نَتَكَلَّمَ",
 "lat": "naḥnu lan natakallama",
-"rus": "нахно лан натакаллама",
+"rus": "нахно лан натакалама",
 "ru": "мы не будем говорить",
 "en": "We won't speak",
 "audio": [
@@ -11106,7 +11142,7 @@
 ],
 "phrase": "هَلْ أَنَا سَأَتَكَلَّمُ",
 "lat": "hal anā sa-atakallamu?",
-"rus": "халь ана са атакалламо?",
+"rus": "халь ана са-атакаламо?",
 "ru": "я буду говорить?",
 "en": "Will I speak?",
 "audio": [
@@ -11137,7 +11173,7 @@
 ],
 "phrase": "هَلْ أَنْتَ سَتَتَكَلَّمُ",
 "lat": "hal anta sa-tatakallamu?",
-"rus": "халь анта сататакалламо?",
+"rus": "халь анта са-татакаламо?",
 "ru": "ты (м) будешь говорить?",
 "en": "Will you (m.) speak?",
 "audio": [
@@ -11168,7 +11204,7 @@
 ],
 "phrase": "هَلْ أَنْتِ سَتَتَكَلَّمِينَ",
 "lat": "hal anti sa-tatakallamīn?",
-"rus": "халь анти сататакалламин?",
+"rus": "халь анти са-татакаламин?",
 "ru": "ты (ж) будешь говорить?",
 "en": "Will you (f.) speak?",
 "audio": [
@@ -11199,7 +11235,7 @@
 ],
 "phrase": "هَلْ أَنْتُمْ سَتَتَكَلَّمُونَ",
 "lat": "hal antum sa-tatakallamūn?",
-"rus": "халь антом сататакалламон?",
+"rus": "халь антом са-татакаламон?",
 "ru": "вы будете говорить?",
 "en": "Will you (pl.) speak?",
 "audio": [
@@ -11230,7 +11266,7 @@
 ],
 "phrase": "هَلْ هُوَ سَيَتَكَلَّمُ",
 "lat": "hal huwa sa-yatakallamu?",
-"rus": "халь хуа саятакалламо?",
+"rus": "халь хуа са-ятакаламо?",
 "ru": "он будет говорить?",
 "en": "Will he speak?",
 "audio": [
@@ -11261,7 +11297,7 @@
 ],
 "phrase": "هَلْ هِيَ سَتَتَكَلَّمُ",
 "lat": "hal hiya sa-tatakallamu?",
-"rus": "халь хия сататакалламо?",
+"rus": "халь хия са-татакаламо?",
 "ru": "она будет говорить?",
 "en": "Will she speak?",
 "audio": [
@@ -11292,7 +11328,7 @@
 ],
 "phrase": "هَلْ هُمْ سَيَتَكَلَّمُونَ",
 "lat": "hal hum sa-yatakallamūn?",
-"rus": "халь хом саятакалламон?",
+"rus": "халь хом са-ятакаламон?",
 "ru": "они будут говорить?",
 "en": "Will they speak?",
 "audio": [
@@ -11323,7 +11359,7 @@
 ],
 "phrase": "هَلْ نَحْنُ سَنَتَكَلَّمُ",
 "lat": "hal naḥnu sa-natakallamu?",
-"rus": "халь нахно санатакалламо?",
+"rus": "халь нахно са-натакаламо?",
 "ru": "мы будем говорить?",
 "en": "Will we speak?",
 "audio": [
@@ -13442,11 +13478,12031 @@
 }
 }
 }
+},
+{
+"id": "jalas",
+"dict": "جَلَسَ – يَجْلِسُ",
+"dictLat": "jalasa – yajlisu",
+"dictRus": "жаласа – яжлисо",
+"en": "to sit",
+"ru": "сидеть",
+"forms": {
+"past": {
+"pos": {
+"ana": {
+"segs": [
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "أَنَا جَلَسْتُ",
+"lat": "anā jalastu",
+"rus": "ана жаласто",
+"ru": "я сидел(а)",
+"en": "I sat",
+"audio": [
+"verbs/jalas",
+"past-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا جَلَسْتُ"
+},
+"anta": {
+"segs": [
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "أَنْتَ جَلَسْتَ",
+"lat": "anta jalasta",
+"rus": "анта жаласта",
+"ru": "ты (м) сидел",
+"en": "You (m.) sat",
+"audio": [
+"verbs/jalas",
+"past-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ جَلَسْتَ"
+},
+"anti": {
+"segs": [
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "أَنْتِ جَلَسْتِ",
+"lat": "anti jalasti",
+"rus": "анти жаласти",
+"ru": "ты (ж) сидела",
+"en": "You (f.) sat",
+"audio": [
+"verbs/jalas",
+"past-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ جَلَسْتِ"
+},
+"antum": {
+"segs": [
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "أَنْتُمْ جَلَسْتُمْ",
+"lat": "antum jalastum",
+"rus": "антом жаластом",
+"ru": "вы сидели",
+"en": "You (pl.) sat",
+"audio": [
+"verbs/jalas",
+"past-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ جَلَسْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"rt",
+"جَلَسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ جَلَسَ",
+"lat": "huwa jalasa",
+"rus": "хуа жаласа",
+"ru": "он сидел",
+"en": "He sat",
+"audio": [
+"verbs/jalas",
+"past-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ جَلَسَ"
+},
+"hiya": {
+"segs": [
+[
+"rt",
+"جَلَسَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هِيَ جَلَسَتْ",
+"lat": "hiya jalasat",
+"rus": "хия жаласат",
+"ru": "она сидела",
+"en": "She sat",
+"audio": [
+"verbs/jalas",
+"past-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ جَلَسَتْ"
+},
+"hum": {
+"segs": [
+[
+"rt",
+"جَلَسُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ جَلَسُوا",
+"lat": "hum jalasū",
+"rus": "хом жаласо",
+"ru": "они сидели",
+"en": "They sat",
+"audio": [
+"verbs/jalas",
+"past-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ جَلَسُو"
+},
+"nahnu": {
+"segs": [
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "نَحْنُ جَلَسْنَا",
+"lat": "naḥnu jalasnā",
+"rus": "нахно жаласна",
+"ru": "мы сидели",
+"en": "We sat",
+"audio": [
+"verbs/jalas",
+"past-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ جَلَسْنَا"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"جْلِسْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَمْ أَجْلِسْ",
+"lat": "anā lam ajlis",
+"rus": "ана лам ажлис",
+"ru": "я не сидел(а)",
+"en": "I didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَمْ أَجْلِسْ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَمْ تَجْلِسْ",
+"lat": "anta lam tajlis",
+"rus": "анта лам тажлис",
+"ru": "ты (м) не сидел",
+"en": "You (m.) didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَمْ تَجْلِسْ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَمْ تَجْلِسِي",
+"lat": "anti lam tajlisī",
+"rus": "анти лам тажлиси",
+"ru": "ты (ж) не сидела",
+"en": "You (f.) didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَمْ تَجْلِسِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَمْ تَجْلِسُوا",
+"lat": "antum lam tajlisū",
+"rus": "антом лам тажлисо",
+"ru": "вы не сидели",
+"en": "You (pl.) didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَمْ تَجْلِسُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَمْ يَجْلِسْ",
+"lat": "huwa lam yajlis",
+"rus": "хуа лам яжлис",
+"ru": "он не сидел",
+"en": "He didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَمْ يَجْلِسْ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَمْ تَجْلِسْ",
+"lat": "hiya lam tajlis",
+"rus": "хия лам тажлис",
+"ru": "она не сидела",
+"en": "She didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَمْ تَجْلِسْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَمْ يَجْلِسُوا",
+"lat": "hum lam yajlisū",
+"rus": "хом лам яжлисо",
+"ru": "они не сидели",
+"en": "They didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَمْ يَجْلِسُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"جْلِسْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَمْ نَجْلِسْ",
+"lat": "naḥnu lam najlis",
+"rus": "нахно лам нажлис",
+"ru": "мы не сидели",
+"en": "We didn't sit",
+"audio": [
+"verbs/jalas",
+"past-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَمْ نَجْلِسْ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "هَلْ أَنَا جَلَسْتُ",
+"lat": "hal anā jalastu?",
+"rus": "халь ана жаласто?",
+"ru": "я сидел(а)?",
+"en": "Did I sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا جَلَسْتُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "هَلْ أَنْتَ جَلَسْتَ",
+"lat": "hal anta jalasta?",
+"rus": "халь анта жаласта?",
+"ru": "ты (м) сидел?",
+"en": "Did you (m.) sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ جَلَسْتَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "هَلْ أَنْتِ جَلَسْتِ",
+"lat": "hal anti jalasti?",
+"rus": "халь анти жаласти?",
+"ru": "ты (ж) сидела?",
+"en": "Did you (f.) sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ جَلَسْتِ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ جَلَسْتُمْ",
+"lat": "hal antum jalastum?",
+"rus": "халь антом жаластом?",
+"ru": "вы сидели?",
+"en": "Did you (pl.) sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ جَلَسْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ جَلَسَ",
+"lat": "hal huwa jalasa?",
+"rus": "халь хуа жаласа?",
+"ru": "он сидел?",
+"en": "Did he sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ جَلَسَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هَلْ هِيَ جَلَسَتْ",
+"lat": "hal hiya jalasat?",
+"rus": "халь хия жаласат?",
+"ru": "она сидела?",
+"en": "Did she sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ جَلَسَتْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هَلْ هُمْ جَلَسُوا",
+"lat": "hal hum jalasū?",
+"rus": "халь хом жаласо?",
+"ru": "они сидели?",
+"en": "Did they sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ جَلَسُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"جَلَسْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "هَلْ نَحْنُ جَلَسْنَا",
+"lat": "hal naḥnu jalasnā?",
+"rus": "халь нахно жаласна?",
+"ru": "мы сидели?",
+"en": "Did we sit?",
+"audio": [
+"verbs/jalas",
+"past-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ جَلَسْنَا"
+}
+}
+},
+"pres": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا أَجْلِسُ",
+"lat": "anā ajlisu",
+"rus": "ана ажлисо",
+"ru": "я сижу",
+"en": "I sit",
+"audio": [
+"verbs/jalas",
+"pres-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا أَجْلِسُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ تَجْلِسُ",
+"lat": "anta tajlisu",
+"rus": "анта тажлисо",
+"ru": "ты (м) сидишь",
+"en": "You (m.) sit",
+"audio": [
+"verbs/jalas",
+"pres-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ تَجْلِسُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ تَجْلِسِينَ",
+"lat": "anti tajlisīn",
+"rus": "анти тажлисин",
+"ru": "ты (ж) сидишь",
+"en": "You (f.) sit",
+"audio": [
+"verbs/jalas",
+"pres-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ تَجْلِسِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ تَجْلِسُونَ",
+"lat": "antum tajlisūn",
+"rus": "антом тажлисон",
+"ru": "вы сидите",
+"en": "You (pl.) sit",
+"audio": [
+"verbs/jalas",
+"pres-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ تَجْلِسُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ يَجْلِسُ",
+"lat": "huwa yajlisu",
+"rus": "хуа яжлисо",
+"ru": "он сидит",
+"en": "He sits",
+"audio": [
+"verbs/jalas",
+"pres-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ يَجْلِسُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ تَجْلِسُ",
+"lat": "hiya tajlisu",
+"rus": "хия тажлисо",
+"ru": "она сидит",
+"en": "She sits",
+"audio": [
+"verbs/jalas",
+"pres-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ تَجْلِسُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ يَجْلِسُونَ",
+"lat": "hum yajlisūn",
+"rus": "хом яжлисон",
+"ru": "они сидят",
+"en": "They sit",
+"audio": [
+"verbs/jalas",
+"pres-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ يَجْلِسُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ نَجْلِسُ",
+"lat": "naḥnu najlisu",
+"rus": "нахно нажлисо",
+"ru": "мы сидим",
+"en": "We sit",
+"audio": [
+"verbs/jalas",
+"pres-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ نَجْلِسُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَا أَجْلِسُ",
+"lat": "anā lā ajlisu",
+"rus": "ана ла ажлисо",
+"ru": "я не сижу",
+"en": "I don't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَا أَجْلِسُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَا تَجْلِسُ",
+"lat": "anta lā tajlisu",
+"rus": "анта ла тажлисо",
+"ru": "ты (м) не сидишь",
+"en": "You (m.) don't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَا تَجْلِسُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ لَا تَجْلِسِينَ",
+"lat": "anti lā tajlisīn",
+"rus": "анти ла тажлисин",
+"ru": "ты (ж) не сидишь",
+"en": "You (f.) don't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَا تَجْلِسِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ لَا تَجْلِسُونَ",
+"lat": "antum lā tajlisūn",
+"rus": "антом ла тажлисон",
+"ru": "вы не сидите",
+"en": "You (pl.) don't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَا تَجْلِسُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَا يَجْلِسُ",
+"lat": "huwa lā yajlisu",
+"rus": "хуа ла яжлисо",
+"ru": "он не сидит",
+"en": "He doesn't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَا يَجْلِسُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَا تَجْلِسُ",
+"lat": "hiya lā tajlisu",
+"rus": "хия ла тажлисо",
+"ru": "она не сидит",
+"en": "She doesn't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَا تَجْلِسُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ لَا يَجْلِسُونَ",
+"lat": "hum lā yajlisūn",
+"rus": "хом ла яжлисон",
+"ru": "они не сидят",
+"en": "They don't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَا يَجْلِسُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَا نَجْلِسُ",
+"lat": "naḥnu lā najlisu",
+"rus": "нахно ла нажлисо",
+"ru": "мы не сидим",
+"en": "We don't sit",
+"audio": [
+"verbs/jalas",
+"pres-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَا نَجْلِسُ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا أَجْلِسُ",
+"lat": "hal anā ajlisu?",
+"rus": "халь ана ажлисо?",
+"ru": "я сижу?",
+"en": "Do I sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا أَجْلِسُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ تَجْلِسُ",
+"lat": "hal anta tajlisu?",
+"rus": "халь анта тажлисо?",
+"ru": "ты (м) сидишь?",
+"en": "Do you (m.) sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ تَجْلِسُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ تَجْلِسِينَ",
+"lat": "hal anti tajlisīn?",
+"rus": "халь анти тажлисин?",
+"ru": "ты (ж) сидишь?",
+"en": "Do you (f.) sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ تَجْلِسِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ تَجْلِسُونَ",
+"lat": "hal antum tajlisūn?",
+"rus": "халь антом тажлисон?",
+"ru": "вы сидите?",
+"en": "Do you (pl.) sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ تَجْلِسُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ يَجْلِسُ",
+"lat": "hal huwa yajlisu?",
+"rus": "халь хуа яжлисо?",
+"ru": "он сидит?",
+"en": "Does he sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ يَجْلِسُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ تَجْلِسُ",
+"lat": "hal hiya tajlisu?",
+"rus": "халь хия тажлисо?",
+"ru": "она сидит?",
+"en": "Does she sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ تَجْلِسُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ يَجْلِسُونَ",
+"lat": "hal hum yajlisūn?",
+"rus": "халь хом яжлисон?",
+"ru": "они сидят?",
+"en": "Do they sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ يَجْلِسُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ نَجْلِسُ",
+"lat": "hal naḥnu najlisu?",
+"rus": "халь нахно нажлисо?",
+"ru": "мы сидим?",
+"en": "Do we sit?",
+"audio": [
+"verbs/jalas",
+"pres-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ نَجْلِسُ"
+}
+}
+},
+"fut": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا سَأَجْلِسُ",
+"lat": "anā sa-ajlisu",
+"rus": "ана са-ажлисо",
+"ru": "я буду сидеть",
+"en": "I will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا سَأَجْلِسُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ سَتَجْلِسُ",
+"lat": "anta sa-tajlisu",
+"rus": "анта са-тажлисо",
+"ru": "ты (м) будешь сидеть",
+"en": "You (m.) will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ سَتَجْلِسُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ سَتَجْلِسِينَ",
+"lat": "anti sa-tajlisīn",
+"rus": "анти са-тажлисин",
+"ru": "ты (ж) будешь сидеть",
+"en": "You (f.) will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ سَتَجْلِسِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ سَتَجْلِسُونَ",
+"lat": "antum sa-tajlisūn",
+"rus": "антом са-тажлисон",
+"ru": "вы будете сидеть",
+"en": "You (pl.) will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ سَتَجْلِسُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ سَيَجْلِسُ",
+"lat": "huwa sa-yajlisu",
+"rus": "хуа са-яжлисо",
+"ru": "он будет сидеть",
+"en": "He will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ سَـيَجْلِسُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ سَتَجْلِسُ",
+"lat": "hiya sa-tajlisu",
+"rus": "хия са-тажлисо",
+"ru": "она будет сидеть",
+"en": "She will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ سَتَجْلِسُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ سَيَجْلِسُونَ",
+"lat": "hum sa-yajlisūn",
+"rus": "хом са-яжлисон",
+"ru": "они будут сидеть",
+"en": "They will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ سَـيَجْلِسُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ سَنَجْلِسُ",
+"lat": "naḥnu sa-najlisu",
+"rus": "нахно са-нажлисо",
+"ru": "мы будем сидеть",
+"en": "We will sit",
+"audio": [
+"verbs/jalas",
+"fut-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ سَنَجْلِسُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"جْلِسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَنْ أَجْلِسَ",
+"lat": "anā lan ajlisa",
+"rus": "ана лан ажлиса",
+"ru": "я не буду сидеть",
+"en": "I won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَنْ أَجْلِسَ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَنْ تَجْلِسَ",
+"lat": "anta lan tajlisa",
+"rus": "анта лан тажлиса",
+"ru": "ты (м) не будешь сидеть",
+"en": "You (m.) won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَنْ تَجْلِسَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَنْ تَجْلِسِي",
+"lat": "anti lan tajlisī",
+"rus": "анти лан тажлиси",
+"ru": "ты (ж) не будешь сидеть",
+"en": "You (f.) won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَنْ تَجْلِسِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَنْ تَجْلِسُوا",
+"lat": "antum lan tajlisū",
+"rus": "антом лан тажлисо",
+"ru": "вы не будете сидеть",
+"en": "You (pl.) won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَنْ تَجْلِسُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَنْ يَجْلِسَ",
+"lat": "huwa lan yajlisa",
+"rus": "хуа лан яжлиса",
+"ru": "он не будет сидеть",
+"en": "He won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَنْ يَجْلِسَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"جْلِسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَنْ تَجْلِسَ",
+"lat": "hiya lan tajlisa",
+"rus": "хия лан тажлиса",
+"ru": "она не будет сидеть",
+"en": "She won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَنْ تَجْلِسَ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَنْ يَجْلِسُوا",
+"lat": "hum lan yajlisū",
+"rus": "хом лан яжлисо",
+"ru": "они не будут сидеть",
+"en": "They won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَنْ يَجْلِسُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"جْلِسَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَنْ نَجْلِسَ",
+"lat": "naḥnu lan najlisa",
+"rus": "нахно лан нажлиса",
+"ru": "мы не будем сидеть",
+"en": "We won't sit",
+"audio": [
+"verbs/jalas",
+"fut-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَنْ نَجْلِسَ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا سَأَجْلِسُ",
+"lat": "hal anā sa-ajlisu?",
+"rus": "халь ана са-ажлисо?",
+"ru": "я буду сидеть?",
+"en": "Will I sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا سَأَجْلِسُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ سَتَجْلِسُ",
+"lat": "hal anta sa-tajlisu?",
+"rus": "халь анта са-тажлисо?",
+"ru": "ты (м) будешь сидеть?",
+"en": "Will you (m.) sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ سَتَجْلِسُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ سَتَجْلِسِينَ",
+"lat": "hal anti sa-tajlisīn?",
+"rus": "халь анти са-тажлисин?",
+"ru": "ты (ж) будешь сидеть?",
+"en": "Will you (f.) sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ سَتَجْلِسِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ سَتَجْلِسُونَ",
+"lat": "hal antum sa-tajlisūn?",
+"rus": "халь антом са-тажлисон?",
+"ru": "вы будете сидеть?",
+"en": "Will you (pl.) sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ سَتَجْلِسُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ سَيَجْلِسُ",
+"lat": "hal huwa sa-yajlisu?",
+"rus": "халь хуа са-яжлисо?",
+"ru": "он будет сидеть?",
+"en": "Will he sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ سَـيَجْلِسُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ سَتَجْلِسُ",
+"lat": "hal hiya sa-tajlisu?",
+"rus": "халь хия са-тажлисо?",
+"ru": "она будет сидеть?",
+"en": "Will she sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ سَتَجْلِسُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ سَيَجْلِسُونَ",
+"lat": "hal hum sa-yajlisūn?",
+"rus": "халь хом са-яжлисон?",
+"ru": "они будут сидеть?",
+"en": "Will they sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ سَـيَجْلِسُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"جْلِسُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ سَنَجْلِسُ",
+"lat": "hal naḥnu sa-najlisu?",
+"rus": "халь нахно са-нажлисо?",
+"ru": "мы будем сидеть?",
+"en": "Will we sit?",
+"audio": [
+"verbs/jalas",
+"fut-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ سَنَجْلِسُ"
+}
+}
+}
+}
+},
+{
+"id": "waqaf",
+"dict": "وَقَفَ – يَقِفُ",
+"dictLat": "waqafa – yaqifu",
+"dictRus": "уакафа – якифо",
+"en": "to stand",
+"ru": "стоять",
+"forms": {
+"past": {
+"pos": {
+"ana": {
+"segs": [
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "أَنَا وَقَفْتُ",
+"lat": "anā waqaftu",
+"rus": "ана уакафто",
+"ru": "я стоял(а)",
+"en": "I stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا وَقَفْتُ"
+},
+"anta": {
+"segs": [
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "أَنْتَ وَقَفْتَ",
+"lat": "anta waqafta",
+"rus": "анта уакафта",
+"ru": "ты (м) стоял",
+"en": "You (m.) stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ وَقَفْتَ"
+},
+"anti": {
+"segs": [
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "أَنْتِ وَقَفْتِ",
+"lat": "anti waqafti",
+"rus": "анти уакафти",
+"ru": "ты (ж) стояла",
+"en": "You (f.) stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ وَقَفْتِ"
+},
+"antum": {
+"segs": [
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "أَنْتُمْ وَقَفْتُمْ",
+"lat": "antum waqaftum",
+"rus": "антом уакафтом",
+"ru": "вы стояли",
+"en": "You (pl.) stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ وَقَفْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"rt",
+"وَقَفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ وَقَفَ",
+"lat": "huwa waqafa",
+"rus": "хуа уакафа",
+"ru": "он стоял",
+"en": "He stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ وَقَفَ"
+},
+"hiya": {
+"segs": [
+[
+"rt",
+"وَقَفَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هِيَ وَقَفَتْ",
+"lat": "hiya waqafat",
+"rus": "хия уакафат",
+"ru": "она стояла",
+"en": "She stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ وَقَفَتْ"
+},
+"hum": {
+"segs": [
+[
+"rt",
+"وَقَفُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ وَقَفُوا",
+"lat": "hum waqafū",
+"rus": "хом уакафо",
+"ru": "они стояли",
+"en": "They stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ وَقَفُو"
+},
+"nahnu": {
+"segs": [
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "نَحْنُ وَقَفْنَا",
+"lat": "naḥnu waqafnā",
+"rus": "нахно уакафна",
+"ru": "мы стояли",
+"en": "We stood",
+"audio": [
+"verbs/waqaf",
+"past-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ وَقَفْنَا"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قِفْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَمْ أَقِفْ",
+"lat": "anā lam aqif",
+"rus": "ана лам акеф",
+"ru": "я не стоял(а)",
+"en": "I didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَمْ أَقِفْ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَمْ تَقِفْ",
+"lat": "anta lam taqif",
+"rus": "анта лам такеф",
+"ru": "ты (м) не стоял",
+"en": "You (m.) didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَمْ تَقِفْ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَمْ تَقِفِي",
+"lat": "anti lam taqifī",
+"rus": "анти лам такефи",
+"ru": "ты (ж) не стояла",
+"en": "You (f.) didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَمْ تَقِفِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَمْ تَقِفُوا",
+"lat": "antum lam taqifū",
+"rus": "антом лам такефо",
+"ru": "вы не стояли",
+"en": "You (pl.) didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَمْ تَقِفُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَمْ يَقِفْ",
+"lat": "huwa lam yaqif",
+"rus": "хуа лам якеф",
+"ru": "он не стоял",
+"en": "He didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَمْ يَقِفْ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَمْ تَقِفْ",
+"lat": "hiya lam taqif",
+"rus": "хия лам такеф",
+"ru": "она не стояла",
+"en": "She didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَمْ تَقِفْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَمْ يَقِفُوا",
+"lat": "hum lam yaqifū",
+"rus": "хом лам якефо",
+"ru": "они не стояли",
+"en": "They didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَمْ يَقِفُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قِفْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَمْ نَقِفْ",
+"lat": "naḥnu lam naqif",
+"rus": "нахно лам накеф",
+"ru": "мы не стояли",
+"en": "We didn't stand",
+"audio": [
+"verbs/waqaf",
+"past-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَمْ نَقِفْ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "هَلْ أَنَا وَقَفْتُ",
+"lat": "hal anā waqaftu?",
+"rus": "халь ана уакафто?",
+"ru": "я стоял(а)?",
+"en": "Did I stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا وَقَفْتُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "هَلْ أَنْتَ وَقَفْتَ",
+"lat": "hal anta waqafta?",
+"rus": "халь анта уакафта?",
+"ru": "ты (м) стоял?",
+"en": "Did you (m.) stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ وَقَفْتَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "هَلْ أَنْتِ وَقَفْتِ",
+"lat": "hal anti waqafti?",
+"rus": "халь анти уакафти?",
+"ru": "ты (ж) стояла?",
+"en": "Did you (f.) stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ وَقَفْتِ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ وَقَفْتُمْ",
+"lat": "hal antum waqaftum?",
+"rus": "халь антом уакафтом?",
+"ru": "вы стояли?",
+"en": "Did you (pl.) stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ وَقَفْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ وَقَفَ",
+"lat": "hal huwa waqafa?",
+"rus": "халь хуа уакафа?",
+"ru": "он стоял?",
+"en": "Did he stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ وَقَفَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هَلْ هِيَ وَقَفَتْ",
+"lat": "hal hiya waqafat?",
+"rus": "халь хия уакафат?",
+"ru": "она стояла?",
+"en": "Did she stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ وَقَفَتْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هَلْ هُمْ وَقَفُوا",
+"lat": "hal hum waqafū?",
+"rus": "халь хом уакафо?",
+"ru": "они стояли?",
+"en": "Did they stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ وَقَفُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"وَقَفْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "هَلْ نَحْنُ وَقَفْنَا",
+"lat": "hal naḥnu waqafnā?",
+"rus": "халь нахно уакафна?",
+"ru": "мы стояли?",
+"en": "Did we stand?",
+"audio": [
+"verbs/waqaf",
+"past-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ وَقَفْنَا"
+}
+}
+},
+"pres": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا أَقِفُ",
+"lat": "anā aqifu",
+"rus": "ана акефо",
+"ru": "я стою",
+"en": "I stand",
+"audio": [
+"verbs/waqaf",
+"pres-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا أَقِفُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ تَقِفُ",
+"lat": "anta taqifu",
+"rus": "анта такефо",
+"ru": "ты (м) стоишь",
+"en": "You (m.) stand",
+"audio": [
+"verbs/waqaf",
+"pres-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ تَقِفُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ تَقِفِينَ",
+"lat": "anti taqifīn",
+"rus": "анти такефин",
+"ru": "ты (ж) стоишь",
+"en": "You (f.) stand",
+"audio": [
+"verbs/waqaf",
+"pres-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ تَقِفِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ تَقِفُونَ",
+"lat": "antum taqifūn",
+"rus": "антом такефон",
+"ru": "вы стоите",
+"en": "You (pl.) stand",
+"audio": [
+"verbs/waqaf",
+"pres-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ تَقِفُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ يَقِفُ",
+"lat": "huwa yaqifu",
+"rus": "хуа якефо",
+"ru": "он стоит",
+"en": "He stands",
+"audio": [
+"verbs/waqaf",
+"pres-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ يَقِفُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ تَقِفُ",
+"lat": "hiya taqifu",
+"rus": "хия такефо",
+"ru": "она стоит",
+"en": "She stands",
+"audio": [
+"verbs/waqaf",
+"pres-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ تَقِفُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ يَقِفُونَ",
+"lat": "hum yaqifūn",
+"rus": "хом якефон",
+"ru": "они стоят",
+"en": "They stand",
+"audio": [
+"verbs/waqaf",
+"pres-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ يَقِفُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ نَقِفُ",
+"lat": "naḥnu naqifu",
+"rus": "нахно накефо",
+"ru": "мы стоим",
+"en": "We stand",
+"audio": [
+"verbs/waqaf",
+"pres-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ نَقِفُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَا أَقِفُ",
+"lat": "anā lā aqifu",
+"rus": "ана ла акефо",
+"ru": "я не стою",
+"en": "I don't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَا أَقِفُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَا تَقِفُ",
+"lat": "anta lā taqifu",
+"rus": "анта ла такефо",
+"ru": "ты (м) не стоишь",
+"en": "You (m.) don't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَا تَقِفُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ لَا تَقِفِينَ",
+"lat": "anti lā taqifīn",
+"rus": "анти ла такефин",
+"ru": "ты (ж) не стоишь",
+"en": "You (f.) don't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَا تَقِفِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ لَا تَقِفُونَ",
+"lat": "antum lā taqifūn",
+"rus": "антом ла такефон",
+"ru": "вы не стоите",
+"en": "You (pl.) don't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَا تَقِفُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَا يَقِفُ",
+"lat": "huwa lā yaqifu",
+"rus": "хуа ла якефо",
+"ru": "он не стоит",
+"en": "He doesn't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَا يَقِفُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَا تَقِفُ",
+"lat": "hiya lā taqifu",
+"rus": "хия ла такефо",
+"ru": "она не стоит",
+"en": "She doesn't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَا تَقِفُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ لَا يَقِفُونَ",
+"lat": "hum lā yaqifūn",
+"rus": "хом ла якефон",
+"ru": "они не стоят",
+"en": "They don't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَا يَقِفُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَا نَقِفُ",
+"lat": "naḥnu lā naqifu",
+"rus": "нахно ла накефо",
+"ru": "мы не стоим",
+"en": "We don't stand",
+"audio": [
+"verbs/waqaf",
+"pres-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَا نَقِفُ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا أَقِفُ",
+"lat": "hal anā aqifu?",
+"rus": "халь ана акефо?",
+"ru": "я стою?",
+"en": "Do I stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا أَقِفُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ تَقِفُ",
+"lat": "hal anta taqifu?",
+"rus": "халь анта такефо?",
+"ru": "ты (м) стоишь?",
+"en": "Do you (m.) stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ تَقِفُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ تَقِفِينَ",
+"lat": "hal anti taqifīn?",
+"rus": "халь анти такефин?",
+"ru": "ты (ж) стоишь?",
+"en": "Do you (f.) stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ تَقِفِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ تَقِفُونَ",
+"lat": "hal antum taqifūn?",
+"rus": "халь антом такефон?",
+"ru": "вы стоите?",
+"en": "Do you (pl.) stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ تَقِفُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ يَقِفُ",
+"lat": "hal huwa yaqifu?",
+"rus": "халь хуа якефо?",
+"ru": "он стоит?",
+"en": "Does he stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ يَقِفُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ تَقِفُ",
+"lat": "hal hiya taqifu?",
+"rus": "халь хия такефо?",
+"ru": "она стоит?",
+"en": "Does she stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ تَقِفُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ يَقِفُونَ",
+"lat": "hal hum yaqifūn?",
+"rus": "халь хом якефон?",
+"ru": "они стоят?",
+"en": "Do they stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ يَقِفُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ نَقِفُ",
+"lat": "hal naḥnu naqifu?",
+"rus": "халь нахно накефо?",
+"ru": "мы стоим?",
+"en": "Do we stand?",
+"audio": [
+"verbs/waqaf",
+"pres-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ نَقِفُ"
+}
+}
+},
+"fut": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا سَأَقِفُ",
+"lat": "anā sa-aqifu",
+"rus": "ана са-акефо",
+"ru": "я буду стоять",
+"en": "I will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا سَأَقِفُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ سَتَقِفُ",
+"lat": "anta sa-taqifu",
+"rus": "анта са-такефо",
+"ru": "ты (м) будешь стоять",
+"en": "You (m.) will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ سَتَقِفُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ سَتَقِفِينَ",
+"lat": "anti sa-taqifīn",
+"rus": "анти са-такефин",
+"ru": "ты (ж) будешь стоять",
+"en": "You (f.) will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ سَتَقِفِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ سَتَقِفُونَ",
+"lat": "antum sa-taqifūn",
+"rus": "антом са-такефон",
+"ru": "вы будете стоять",
+"en": "You (pl.) will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ سَتَقِفُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ سَيَقِفُ",
+"lat": "huwa sa-yaqifu",
+"rus": "хуа са-якефо",
+"ru": "он будет стоять",
+"en": "He will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ سَـيَقِفُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ سَتَقِفُ",
+"lat": "hiya sa-taqifu",
+"rus": "хия са-такефо",
+"ru": "она будет стоять",
+"en": "She will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ سَتَقِفُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ سَيَقِفُونَ",
+"lat": "hum sa-yaqifūn",
+"rus": "хом са-якефон",
+"ru": "они будут стоять",
+"en": "They will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ سَـيَقِفُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ سَنَقِفُ",
+"lat": "naḥnu sa-naqifu",
+"rus": "нахно са-накефо",
+"ru": "мы будем стоять",
+"en": "We will stand",
+"audio": [
+"verbs/waqaf",
+"fut-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ سَنَقِفُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قِفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَنْ أَقِفَ",
+"lat": "anā lan aqifa",
+"rus": "ана лан акефа",
+"ru": "я не буду стоять",
+"en": "I won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَنْ أَقِفَ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَنْ تَقِفَ",
+"lat": "anta lan taqifa",
+"rus": "анта лан такефа",
+"ru": "ты (м) не будешь стоять",
+"en": "You (m.) won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَنْ تَقِفَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَنْ تَقِفِي",
+"lat": "anti lan taqifī",
+"rus": "анти лан такефи",
+"ru": "ты (ж) не будешь стоять",
+"en": "You (f.) won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَنْ تَقِفِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَنْ تَقِفُوا",
+"lat": "antum lan taqifū",
+"rus": "антом лан такефо",
+"ru": "вы не будете стоять",
+"en": "You (pl.) won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَنْ تَقِفُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَنْ يَقِفَ",
+"lat": "huwa lan yaqifa",
+"rus": "хуа лан якефа",
+"ru": "он не будет стоять",
+"en": "He won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَنْ يَقِفَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قِفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَنْ تَقِفَ",
+"lat": "hiya lan taqifa",
+"rus": "хия лан такефа",
+"ru": "она не будет стоять",
+"en": "She won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَنْ تَقِفَ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَنْ يَقِفُوا",
+"lat": "hum lan yaqifū",
+"rus": "хом лан якефо",
+"ru": "они не будут стоять",
+"en": "They won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَنْ يَقِفُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قِفَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَنْ نَقِفَ",
+"lat": "naḥnu lan naqifa",
+"rus": "нахно лан накефа",
+"ru": "мы не будем стоять",
+"en": "We won't stand",
+"audio": [
+"verbs/waqaf",
+"fut-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَنْ نَقِفَ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا سَأَقِفُ",
+"lat": "hal anā sa-aqifu?",
+"rus": "халь ана са-акефо?",
+"ru": "я буду стоять?",
+"en": "Will I stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا سَأَقِفُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ سَتَقِفُ",
+"lat": "hal anta sa-taqifu?",
+"rus": "халь анта са-такефо?",
+"ru": "ты (м) будешь стоять?",
+"en": "Will you (m.) stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ سَتَقِفُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ سَتَقِفِينَ",
+"lat": "hal anti sa-taqifīn?",
+"rus": "халь анти са-такефин?",
+"ru": "ты (ж) будешь стоять?",
+"en": "Will you (f.) stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ سَتَقِفِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ سَتَقِفُونَ",
+"lat": "hal antum sa-taqifūn?",
+"rus": "халь антом са-такефон?",
+"ru": "вы будете стоять?",
+"en": "Will you (pl.) stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ سَتَقِفُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ سَيَقِفُ",
+"lat": "hal huwa sa-yaqifu?",
+"rus": "халь хуа са-якефо?",
+"ru": "он будет стоять?",
+"en": "Will he stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ سَـيَقِفُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ سَتَقِفُ",
+"lat": "hal hiya sa-taqifu?",
+"rus": "халь хия са-такефо?",
+"ru": "она будет стоять?",
+"en": "Will she stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ سَتَقِفُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ سَيَقِفُونَ",
+"lat": "hal hum sa-yaqifūn?",
+"rus": "халь хом са-якефон?",
+"ru": "они будут стоять?",
+"en": "Will they stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ سَـيَقِفُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"قِفُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ سَنَقِفُ",
+"lat": "hal naḥnu sa-naqifu?",
+"rus": "халь нахно са-накефо?",
+"ru": "мы будем стоять?",
+"en": "Will we stand?",
+"audio": [
+"verbs/waqaf",
+"fut-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ سَنَقِفُ"
+}
+}
+}
+}
+},
+{
+"id": "akal",
+"dict": "أَكَلَ – يَأْكُلُ",
+"dictLat": "akala – yaʾkulu",
+"dictRus": "акала – я’коло",
+"en": "to eat",
+"ru": "есть",
+"forms": {
+"past": {
+"pos": {
+"ana": {
+"segs": [
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "أَنَا أَكَلْتُ",
+"lat": "anā akaltu",
+"rus": "ана акалто",
+"ru": "я ел(а)",
+"en": "I ate",
+"audio": [
+"verbs/akal",
+"past-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا أَكَلْتُ"
+},
+"anta": {
+"segs": [
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "أَنْتَ أَكَلْتَ",
+"lat": "anta akalta",
+"rus": "анта акалта",
+"ru": "ты (м) ел",
+"en": "You (m.) ate",
+"audio": [
+"verbs/akal",
+"past-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ أَكَلْتَ"
+},
+"anti": {
+"segs": [
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "أَنْتِ أَكَلْتِ",
+"lat": "anti akalti",
+"rus": "анти акалти",
+"ru": "ты (ж) ела",
+"en": "You (f.) ate",
+"audio": [
+"verbs/akal",
+"past-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ أَكَلْتِ"
+},
+"antum": {
+"segs": [
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "أَنْتُمْ أَكَلْتُمْ",
+"lat": "antum akaltum",
+"rus": "антом акалтом",
+"ru": "вы ели",
+"en": "You (pl.) ate",
+"audio": [
+"verbs/akal",
+"past-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ أَكَلْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"rt",
+"أَكَلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ أَكَلَ",
+"lat": "huwa akala",
+"rus": "хуа акала",
+"ru": "он ел",
+"en": "He ate",
+"audio": [
+"verbs/akal",
+"past-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ أَكَلَ"
+},
+"hiya": {
+"segs": [
+[
+"rt",
+"أَكَلَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هِيَ أَكَلَتْ",
+"lat": "hiya akalat",
+"rus": "хия акалат",
+"ru": "она ела",
+"en": "She ate",
+"audio": [
+"verbs/akal",
+"past-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ أَكَلَتْ"
+},
+"hum": {
+"segs": [
+[
+"rt",
+"أَكَلُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ أَكَلُوا",
+"lat": "hum akalū",
+"rus": "хом акало",
+"ru": "они ели",
+"en": "They ate",
+"audio": [
+"verbs/akal",
+"past-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ أَكَلُو"
+},
+"nahnu": {
+"segs": [
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "نَحْنُ أَكَلْنَا",
+"lat": "naḥnu akalnā",
+"rus": "нахно акална",
+"ru": "мы ели",
+"en": "We ate",
+"audio": [
+"verbs/akal",
+"past-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ أَكَلْنَا"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"آ"
+],
+[
+"rt",
+"كُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَمْ آكُلْ",
+"lat": "anā lam ākul",
+"rus": "ана лам акол",
+"ru": "я не ел(а)",
+"en": "I didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَمْ آكُلْ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَمْ تَأْكُلْ",
+"lat": "anta lam taʾkul",
+"rus": "анта лам такол",
+"ru": "ты (м) не ел",
+"en": "You (m.) didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَمْ تَأْكُلْ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَمْ تَأْكُلِي",
+"lat": "anti lam taʾkulī",
+"rus": "анти лам таколи",
+"ru": "ты (ж) не ела",
+"en": "You (f.) didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَمْ تَأْكُلِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَمْ تَأْكُلُوا",
+"lat": "antum lam taʾkulū",
+"rus": "антом лам таколо",
+"ru": "вы не ели",
+"en": "You (pl.) didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَمْ تَأْكُلُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَمْ يَأْكُلْ",
+"lat": "huwa lam yaʾkul",
+"rus": "хуа лам яакол",
+"ru": "он не ел",
+"en": "He didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَمْ يَأْكُلْ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَمْ تَأْكُلْ",
+"lat": "hiya lam taʾkul",
+"rus": "хия лам такол",
+"ru": "она не ела",
+"en": "She didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَمْ تَأْكُلْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَمْ يَأْكُلُوا",
+"lat": "hum lam yaʾkulū",
+"rus": "хом лам яаколо",
+"ru": "они не ели",
+"en": "They didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَمْ يَأْكُلُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"أْكُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَمْ نَأْكُلْ",
+"lat": "naḥnu lam naʾkul",
+"rus": "нахно лам накол",
+"ru": "мы не ели",
+"en": "We didn't eat",
+"audio": [
+"verbs/akal",
+"past-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَمْ نَأْكُلْ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "هَلْ أَنَا أَكَلْتُ",
+"lat": "hal anā akaltu?",
+"rus": "халь ана акалто?",
+"ru": "я ел(а)?",
+"en": "Did I eat?",
+"audio": [
+"verbs/akal",
+"past-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا أَكَلْتُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "هَلْ أَنْتَ أَكَلْتَ",
+"lat": "hal anta akalta?",
+"rus": "халь анта акалта?",
+"ru": "ты (м) ел?",
+"en": "Did you (m.) eat?",
+"audio": [
+"verbs/akal",
+"past-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ أَكَلْتَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "هَلْ أَنْتِ أَكَلْتِ",
+"lat": "hal anti akalti?",
+"rus": "халь анти акалти?",
+"ru": "ты (ж) ела?",
+"en": "Did you (f.) eat?",
+"audio": [
+"verbs/akal",
+"past-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ أَكَلْتِ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ أَكَلْتُمْ",
+"lat": "hal antum akaltum?",
+"rus": "халь антом акалтом?",
+"ru": "вы ели?",
+"en": "Did you (pl.) eat?",
+"audio": [
+"verbs/akal",
+"past-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ أَكَلْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ أَكَلَ",
+"lat": "hal huwa akala?",
+"rus": "халь хуа акала?",
+"ru": "он ел?",
+"en": "Did he eat?",
+"audio": [
+"verbs/akal",
+"past-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ أَكَلَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هَلْ هِيَ أَكَلَتْ",
+"lat": "hal hiya akalat?",
+"rus": "халь хия акалат?",
+"ru": "она ела?",
+"en": "Did she eat?",
+"audio": [
+"verbs/akal",
+"past-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ أَكَلَتْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هَلْ هُمْ أَكَلُوا",
+"lat": "hal hum akalū?",
+"rus": "халь хом акало?",
+"ru": "они ели?",
+"en": "Did they eat?",
+"audio": [
+"verbs/akal",
+"past-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ أَكَلُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"أَكَلْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "هَلْ نَحْنُ أَكَلْنَا",
+"lat": "hal naḥnu akalnā?",
+"rus": "халь нахно акална?",
+"ru": "мы ели?",
+"en": "Did we eat?",
+"audio": [
+"verbs/akal",
+"past-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ أَكَلْنَا"
+}
+}
+},
+"pres": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"آ"
+],
+[
+"rt",
+"كُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا آكُلُ",
+"lat": "anā ākulu",
+"rus": "ана аколо",
+"ru": "я ем",
+"en": "I eat",
+"audio": [
+"verbs/akal",
+"pres-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا آكُلُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ تَأْكُلُ",
+"lat": "anta taʾkulu",
+"rus": "анта таколо",
+"ru": "ты (м) ешь",
+"en": "You (m.) eat",
+"audio": [
+"verbs/akal",
+"pres-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ تَأْكُلُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ تَأْكُلِينَ",
+"lat": "anti taʾkulīn",
+"rus": "анти таколин",
+"ru": "ты (ж) ешь",
+"en": "You (f.) eat",
+"audio": [
+"verbs/akal",
+"pres-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ تَأْكُلِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ تَأْكُلُونَ",
+"lat": "antum taʾkulūn",
+"rus": "антом таколон",
+"ru": "вы едите",
+"en": "You (pl.) eat",
+"audio": [
+"verbs/akal",
+"pres-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ تَأْكُلُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ يَأْكُلُ",
+"lat": "huwa yaʾkulu",
+"rus": "хуа яаколо",
+"ru": "он ест",
+"en": "He eats",
+"audio": [
+"verbs/akal",
+"pres-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ يَأْكُلُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ تَأْكُلُ",
+"lat": "hiya taʾkulu",
+"rus": "хия таколо",
+"ru": "она ест",
+"en": "She eats",
+"audio": [
+"verbs/akal",
+"pres-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ تَأْكُلُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ يَأْكُلُونَ",
+"lat": "hum yaʾkulūn",
+"rus": "хом яаколон",
+"ru": "они едят",
+"en": "They eat",
+"audio": [
+"verbs/akal",
+"pres-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ يَأْكُلُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ نَأْكُلُ",
+"lat": "naḥnu naʾkulu",
+"rus": "нахно наколо",
+"ru": "мы едим",
+"en": "We eat",
+"audio": [
+"verbs/akal",
+"pres-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ نَأْكُلُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"آ"
+],
+[
+"rt",
+"كُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَا آكُلُ",
+"lat": "anā lā ākulu",
+"rus": "ана ла аколо",
+"ru": "я не ем",
+"en": "I don't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَا آكُلُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَا تَأْكُلُ",
+"lat": "anta lā taʾkulu",
+"rus": "анта ла таколо",
+"ru": "ты (м) не ешь",
+"en": "You (m.) don't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَا تَأْكُلُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ لَا تَأْكُلِينَ",
+"lat": "anti lā taʾkulīn",
+"rus": "анти ла таколин",
+"ru": "ты (ж) не ешь",
+"en": "You (f.) don't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَا تَأْكُلِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ لَا تَأْكُلُونَ",
+"lat": "antum lā taʾkulūn",
+"rus": "антом ла таколон",
+"ru": "вы не едите",
+"en": "You (pl.) don't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَا تَأْكُلُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَا يَأْكُلُ",
+"lat": "huwa lā yaʾkulu",
+"rus": "хуа ла яаколо",
+"ru": "он не ест",
+"en": "He doesn't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَا يَأْكُلُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَا تَأْكُلُ",
+"lat": "hiya lā taʾkulu",
+"rus": "хия ла таколо",
+"ru": "она не ест",
+"en": "She doesn't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَا تَأْكُلُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ لَا يَأْكُلُونَ",
+"lat": "hum lā yaʾkulūn",
+"rus": "хом ла яаколон",
+"ru": "они не едят",
+"en": "They don't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَا يَأْكُلُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَا نَأْكُلُ",
+"lat": "naḥnu lā naʾkulu",
+"rus": "нахно ла наколо",
+"ru": "мы не едим",
+"en": "We don't eat",
+"audio": [
+"verbs/akal",
+"pres-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَا نَأْكُلُ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"آ"
+],
+[
+"rt",
+"كُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا آكُلُ",
+"lat": "hal anā ākulu?",
+"rus": "халь ана аколо?",
+"ru": "я ем?",
+"en": "Do I eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا آكُلُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ تَأْكُلُ",
+"lat": "hal anta taʾkulu?",
+"rus": "халь анта таколо?",
+"ru": "ты (м) ешь?",
+"en": "Do you (m.) eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ تَأْكُلُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ تَأْكُلِينَ",
+"lat": "hal anti taʾkulīn?",
+"rus": "халь анти таколин?",
+"ru": "ты (ж) ешь?",
+"en": "Do you (f.) eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ تَأْكُلِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ تَأْكُلُونَ",
+"lat": "hal antum taʾkulūn?",
+"rus": "халь антом таколон?",
+"ru": "вы едите?",
+"en": "Do you (pl.) eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ تَأْكُلُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ يَأْكُلُ",
+"lat": "hal huwa yaʾkulu?",
+"rus": "халь хуа яаколо?",
+"ru": "он ест?",
+"en": "Does he eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ يَأْكُلُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ تَأْكُلُ",
+"lat": "hal hiya taʾkulu?",
+"rus": "халь хия таколо?",
+"ru": "она ест?",
+"en": "Does she eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ تَأْكُلُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ يَأْكُلُونَ",
+"lat": "hal hum yaʾkulūn?",
+"rus": "халь хом яаколон?",
+"ru": "они едят?",
+"en": "Do they eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ يَأْكُلُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ نَأْكُلُ",
+"lat": "hal naḥnu naʾkulu?",
+"rus": "халь нахно наколо?",
+"ru": "мы едим?",
+"en": "Do we eat?",
+"audio": [
+"verbs/akal",
+"pres-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ نَأْكُلُ"
+}
+}
+},
+"fut": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"سَآ"
+],
+[
+"rt",
+"كُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا سَآكُلُ",
+"lat": "anā sa-ākulu",
+"rus": "ана са-аколо",
+"ru": "я буду есть",
+"en": "I will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا سَآكُلُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ سَتَأْكُلُ",
+"lat": "anta sa-taʾkulu",
+"rus": "анта са-таколо",
+"ru": "ты (м) будешь есть",
+"en": "You (m.) will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ سَتَأْكُلُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ سَتَأْكُلِينَ",
+"lat": "anti sa-taʾkulīn",
+"rus": "анти са-таколин",
+"ru": "ты (ж) будешь есть",
+"en": "You (f.) will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ سَتَأْكُلِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ سَتَأْكُلُونَ",
+"lat": "antum sa-taʾkulūn",
+"rus": "антом са-таколон",
+"ru": "вы будете есть",
+"en": "You (pl.) will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ سَتَأْكُلُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ سَيَأْكُلُ",
+"lat": "huwa sa-yaʾkulu",
+"rus": "хуа са-яаколо",
+"ru": "он будет есть",
+"en": "He will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ سَـيَأْكُلُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ سَتَأْكُلُ",
+"lat": "hiya sa-taʾkulu",
+"rus": "хия са-таколо",
+"ru": "она будет есть",
+"en": "She will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ سَتَأْكُلُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ سَيَأْكُلُونَ",
+"lat": "hum sa-yaʾkulūn",
+"rus": "хом са-яаколон",
+"ru": "они будут есть",
+"en": "They will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ سَـيَأْكُلُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ سَنَأْكُلُ",
+"lat": "naḥnu sa-naʾkulu",
+"rus": "нахно са-наколо",
+"ru": "мы будем есть",
+"en": "We will eat",
+"audio": [
+"verbs/akal",
+"fut-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ سَنَأْكُلُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"آ"
+],
+[
+"rt",
+"كُلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَنْ آكُلَ",
+"lat": "anā lan ākula",
+"rus": "ана лан акола",
+"ru": "я не буду есть",
+"en": "I won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَنْ آكُلَ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَنْ تَأْكُلَ",
+"lat": "anta lan taʾkula",
+"rus": "анта лан такола",
+"ru": "ты (м) не будешь есть",
+"en": "You (m.) won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَنْ تَأْكُلَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَنْ تَأْكُلِي",
+"lat": "anti lan taʾkulī",
+"rus": "анти лан таколи",
+"ru": "ты (ж) не будешь есть",
+"en": "You (f.) won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَنْ تَأْكُلِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَنْ تَأْكُلُوا",
+"lat": "antum lan taʾkulū",
+"rus": "антом лан таколо",
+"ru": "вы не будете есть",
+"en": "You (pl.) won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَنْ تَأْكُلُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَنْ يَأْكُلَ",
+"lat": "huwa lan yaʾkula",
+"rus": "хуа лан яакола",
+"ru": "он не будет есть",
+"en": "He won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَنْ يَأْكُلَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"أْكُلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَنْ تَأْكُلَ",
+"lat": "hiya lan taʾkula",
+"rus": "хия лан такола",
+"ru": "она не будет есть",
+"en": "She won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَنْ تَأْكُلَ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَنْ يَأْكُلُوا",
+"lat": "hum lan yaʾkulū",
+"rus": "хом лан яаколо",
+"ru": "они не будут есть",
+"en": "They won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَنْ يَأْكُلُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"أْكُلَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَنْ نَأْكُلَ",
+"lat": "naḥnu lan naʾkula",
+"rus": "нахно лан накола",
+"ru": "мы не будем есть",
+"en": "We won't eat",
+"audio": [
+"verbs/akal",
+"fut-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَنْ نَأْكُلَ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَآ"
+],
+[
+"rt",
+"كُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا سَآكُلُ",
+"lat": "hal anā sa-ākulu?",
+"rus": "халь ана са-аколо?",
+"ru": "я буду есть?",
+"en": "Will I eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا سَآكُلُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ سَتَأْكُلُ",
+"lat": "hal anta sa-taʾkulu?",
+"rus": "халь анта са-таколо?",
+"ru": "ты (м) будешь есть?",
+"en": "Will you (m.) eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ سَتَأْكُلُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ سَتَأْكُلِينَ",
+"lat": "hal anti sa-taʾkulīn?",
+"rus": "халь анти са-таколин?",
+"ru": "ты (ж) будешь есть?",
+"en": "Will you (f.) eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ سَتَأْكُلِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ سَتَأْكُلُونَ",
+"lat": "hal antum sa-taʾkulūn?",
+"rus": "халь антом са-таколон?",
+"ru": "вы будете есть?",
+"en": "Will you (pl.) eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ سَتَأْكُلُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ سَيَأْكُلُ",
+"lat": "hal huwa sa-yaʾkulu?",
+"rus": "халь хуа са-яаколо?",
+"ru": "он будет есть?",
+"en": "Will he eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ سَـيَأْكُلُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ سَتَأْكُلُ",
+"lat": "hal hiya sa-taʾkulu?",
+"rus": "халь хия са-таколо?",
+"ru": "она будет есть?",
+"en": "Will she eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ سَتَأْكُلُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ سَيَأْكُلُونَ",
+"lat": "hal hum sa-yaʾkulūn?",
+"rus": "халь хом са-яаколон?",
+"ru": "они будут есть?",
+"en": "Will they eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ سَـيَأْكُلُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"أْكُلُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ سَنَأْكُلُ",
+"lat": "hal naḥnu sa-naʾkulu?",
+"rus": "халь нахно са-наколо?",
+"ru": "мы будем есть?",
+"en": "Will we eat?",
+"audio": [
+"verbs/akal",
+"fut-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ سَنَأْكُلُ"
+}
+}
+}
+}
+},
+{
+"id": "nam",
+"dict": "نَامَ – يَنَامُ",
+"dictLat": "nāma – yanāmu",
+"dictRus": "нама – янамо",
+"en": "to sleep",
+"ru": "спать",
+"forms": {
+"past": {
+"pos": {
+"ana": {
+"segs": [
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "أَنَا نِمْتُ",
+"lat": "anā nimtu",
+"rus": "ана немто",
+"ru": "я спал(а)",
+"en": "I slept",
+"audio": [
+"verbs/nam",
+"past-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا نِمْتُ"
+},
+"anta": {
+"segs": [
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "أَنْتَ نِمْتَ",
+"lat": "anta nimta",
+"rus": "анта немта",
+"ru": "ты (м) спал",
+"en": "You (m.) slept",
+"audio": [
+"verbs/nam",
+"past-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ نِمْتَ"
+},
+"anti": {
+"segs": [
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "أَنْتِ نِمْتِ",
+"lat": "anti nimti",
+"rus": "анти немти",
+"ru": "ты (ж) спала",
+"en": "You (f.) slept",
+"audio": [
+"verbs/nam",
+"past-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ نِمْتِ"
+},
+"antum": {
+"segs": [
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "أَنْتُمْ نِمْتُمْ",
+"lat": "antum nimtum",
+"rus": "антом немтом",
+"ru": "вы спали",
+"en": "You (pl.) slept",
+"audio": [
+"verbs/nam",
+"past-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ نِمْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ نَامَ",
+"lat": "huwa nāma",
+"rus": "хуа нама",
+"ru": "он спал",
+"en": "He slept",
+"audio": [
+"verbs/nam",
+"past-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ نَامَ"
+},
+"hiya": {
+"segs": [
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هِيَ نَامَتْ",
+"lat": "hiya nāmat",
+"rus": "хия намат",
+"ru": "она спала",
+"en": "She slept",
+"audio": [
+"verbs/nam",
+"past-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ نَامَتْ"
+},
+"hum": {
+"segs": [
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ نَامُوا",
+"lat": "hum nāmū",
+"rus": "хом намо",
+"ru": "они спали",
+"en": "They slept",
+"audio": [
+"verbs/nam",
+"past-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ نَامُو"
+},
+"nahnu": {
+"segs": [
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "نَحْنُ نِمْنَا",
+"lat": "naḥnu nimnā",
+"rus": "нахно немна",
+"ru": "мы спали",
+"en": "We slept",
+"audio": [
+"verbs/nam",
+"past-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ نِمْنَا"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"نَمْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَمْ أَنَمْ",
+"lat": "anā lam anam",
+"rus": "ана лам анам",
+"ru": "я не спал(а)",
+"en": "I didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَمْ أَنَمْ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَمْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَمْ تَنَمْ",
+"lat": "anta lam tanam",
+"rus": "анта лам танам",
+"ru": "ты (м) не спал",
+"en": "You (m.) didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَمْ تَنَمْ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَمْ تَنَامِي",
+"lat": "anti lam tanāmī",
+"rus": "анти лам танами",
+"ru": "ты (ж) не спала",
+"en": "You (f.) didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَمْ تَنَامِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَمْ تَنَامُوا",
+"lat": "antum lam tanāmū",
+"rus": "антом лам танамо",
+"ru": "вы не спали",
+"en": "You (pl.) didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَمْ تَنَامُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَمْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَمْ يَنَمْ",
+"lat": "huwa lam yanam",
+"rus": "хуа лам янам",
+"ru": "он не спал",
+"en": "He didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَمْ يَنَمْ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَمْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَمْ تَنَمْ",
+"lat": "hiya lam tanam",
+"rus": "хия лам танам",
+"ru": "она не спала",
+"en": "She didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَمْ تَنَمْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَمْ يَنَامُوا",
+"lat": "hum lam yanāmū",
+"rus": "хом лам янамо",
+"ru": "они не спали",
+"en": "They didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَمْ يَنَامُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"نَمْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَمْ نَنَمْ",
+"lat": "naḥnu lam nanam",
+"rus": "нахно лам нанам",
+"ru": "мы не спали",
+"en": "We didn't sleep",
+"audio": [
+"verbs/nam",
+"past-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَمْ نَنَمْ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "هَلْ أَنَا نِمْتُ",
+"lat": "hal anā nimtu?",
+"rus": "халь ана немто?",
+"ru": "я спал(а)?",
+"en": "Did I sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا نِمْتُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "هَلْ أَنْتَ نِمْتَ",
+"lat": "hal anta nimta?",
+"rus": "халь анта немта?",
+"ru": "ты (м) спал?",
+"en": "Did you (m.) sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ نِمْتَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "هَلْ أَنْتِ نِمْتِ",
+"lat": "hal anti nimti?",
+"rus": "халь анти немти?",
+"ru": "ты (ж) спала?",
+"en": "Did you (f.) sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ نِمْتِ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ نِمْتُمْ",
+"lat": "hal antum nimtum?",
+"rus": "халь антом немтом?",
+"ru": "вы спали?",
+"en": "Did you (pl.) sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ نِمْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ نَامَ",
+"lat": "hal huwa nāma?",
+"rus": "халь хуа нама?",
+"ru": "он спал?",
+"en": "Did he sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ نَامَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هَلْ هِيَ نَامَتْ",
+"lat": "hal hiya nāmat?",
+"rus": "халь хия намат?",
+"ru": "она спала?",
+"en": "Did she sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ نَامَتْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هَلْ هُمْ نَامُوا",
+"lat": "hal hum nāmū?",
+"rus": "халь хом намо?",
+"ru": "они спали?",
+"en": "Did they sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ نَامُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"نِمْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "هَلْ نَحْنُ نِمْنَا",
+"lat": "hal naḥnu nimnā?",
+"rus": "халь нахно немна?",
+"ru": "мы спали?",
+"en": "Did we sleep?",
+"audio": [
+"verbs/nam",
+"past-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ نِمْنَا"
+}
+}
+},
+"pres": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا أَنَامُ",
+"lat": "anā anāmu",
+"rus": "ана анамо",
+"ru": "я сплю",
+"en": "I sleep",
+"audio": [
+"verbs/nam",
+"pres-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا أَنَامُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ تَنَامُ",
+"lat": "anta tanāmu",
+"rus": "анта танамо",
+"ru": "ты (м) спишь",
+"en": "You (m.) sleep",
+"audio": [
+"verbs/nam",
+"pres-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ تَنَامُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ تَنَامِينَ",
+"lat": "anti tanāmīn",
+"rus": "анти танамин",
+"ru": "ты (ж) спишь",
+"en": "You (f.) sleep",
+"audio": [
+"verbs/nam",
+"pres-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ تَنَامِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ تَنَامُونَ",
+"lat": "antum tanāmūn",
+"rus": "антом танамон",
+"ru": "вы спите",
+"en": "You (pl.) sleep",
+"audio": [
+"verbs/nam",
+"pres-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ تَنَامُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ يَنَامُ",
+"lat": "huwa yanāmu",
+"rus": "хуа янамо",
+"ru": "он спит",
+"en": "He sleeps",
+"audio": [
+"verbs/nam",
+"pres-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ يَنَامُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ تَنَامُ",
+"lat": "hiya tanāmu",
+"rus": "хия танамо",
+"ru": "она спит",
+"en": "She sleeps",
+"audio": [
+"verbs/nam",
+"pres-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ تَنَامُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ يَنَامُونَ",
+"lat": "hum yanāmūn",
+"rus": "хом янамон",
+"ru": "они спят",
+"en": "They sleep",
+"audio": [
+"verbs/nam",
+"pres-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ يَنَامُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ نَنَامُ",
+"lat": "naḥnu nanāmu",
+"rus": "нахно нанамо",
+"ru": "мы спим",
+"en": "We sleep",
+"audio": [
+"verbs/nam",
+"pres-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ نَنَامُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَا أَنَامُ",
+"lat": "anā lā anāmu",
+"rus": "ана ла анамо",
+"ru": "я не сплю",
+"en": "I don't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَا أَنَامُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَا تَنَامُ",
+"lat": "anta lā tanāmu",
+"rus": "анта ла танамо",
+"ru": "ты (м) не спишь",
+"en": "You (m.) don't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَا تَنَامُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ لَا تَنَامِينَ",
+"lat": "anti lā tanāmīn",
+"rus": "анти ла танамин",
+"ru": "ты (ж) не спишь",
+"en": "You (f.) don't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَا تَنَامِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ لَا تَنَامُونَ",
+"lat": "antum lā tanāmūn",
+"rus": "антом ла танамон",
+"ru": "вы не спите",
+"en": "You (pl.) don't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَا تَنَامُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَا يَنَامُ",
+"lat": "huwa lā yanāmu",
+"rus": "хуа ла янамо",
+"ru": "он не спит",
+"en": "He doesn't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَا يَنَامُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَا تَنَامُ",
+"lat": "hiya lā tanāmu",
+"rus": "хия ла танамо",
+"ru": "она не спит",
+"en": "She doesn't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَا تَنَامُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ لَا يَنَامُونَ",
+"lat": "hum lā yanāmūn",
+"rus": "хом ла янамон",
+"ru": "они не спят",
+"en": "They don't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَا يَنَامُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَا نَنَامُ",
+"lat": "naḥnu lā nanāmu",
+"rus": "нахно ла нанамо",
+"ru": "мы не спим",
+"en": "We don't sleep",
+"audio": [
+"verbs/nam",
+"pres-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَا نَنَامُ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا أَنَامُ",
+"lat": "hal anā anāmu?",
+"rus": "халь ана анамо?",
+"ru": "я сплю?",
+"en": "Do I sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا أَنَامُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ تَنَامُ",
+"lat": "hal anta tanāmu?",
+"rus": "халь анта танамо?",
+"ru": "ты (м) спишь?",
+"en": "Do you (m.) sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ تَنَامُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ تَنَامِينَ",
+"lat": "hal anti tanāmīn?",
+"rus": "халь анти танамин?",
+"ru": "ты (ж) спишь?",
+"en": "Do you (f.) sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ تَنَامِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ تَنَامُونَ",
+"lat": "hal antum tanāmūn?",
+"rus": "халь антом танамон?",
+"ru": "вы спите?",
+"en": "Do you (pl.) sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ تَنَامُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ يَنَامُ",
+"lat": "hal huwa yanāmu?",
+"rus": "халь хуа янамо?",
+"ru": "он спит?",
+"en": "Does he sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ يَنَامُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ تَنَامُ",
+"lat": "hal hiya tanāmu?",
+"rus": "халь хия танамо?",
+"ru": "она спит?",
+"en": "Does she sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ تَنَامُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ يَنَامُونَ",
+"lat": "hal hum yanāmūn?",
+"rus": "халь хом янамон?",
+"ru": "они спят?",
+"en": "Do they sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ يَنَامُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ نَنَامُ",
+"lat": "hal naḥnu nanāmu?",
+"rus": "халь нахно нанамо?",
+"ru": "мы спим?",
+"en": "Do we sleep?",
+"audio": [
+"verbs/nam",
+"pres-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ نَنَامُ"
+}
+}
+},
+"fut": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا سَأَنَامُ",
+"lat": "anā sa-anāmu",
+"rus": "ана са-анамо",
+"ru": "я буду спать",
+"en": "I will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا سَأَنَامُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ سَتَنَامُ",
+"lat": "anta sa-tanāmu",
+"rus": "анта са-танамо",
+"ru": "ты (м) будешь спать",
+"en": "You (m.) will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ سَتَنَامُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ سَتَنَامِينَ",
+"lat": "anti sa-tanāmīn",
+"rus": "анти са-танамин",
+"ru": "ты (ж) будешь спать",
+"en": "You (f.) will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ سَتَنَامِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ سَتَنَامُونَ",
+"lat": "antum sa-tanāmūn",
+"rus": "антом са-танамон",
+"ru": "вы будете спать",
+"en": "You (pl.) will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ سَتَنَامُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ سَيَنَامُ",
+"lat": "huwa sa-yanāmu",
+"rus": "хуа са-янамо",
+"ru": "он будет спать",
+"en": "He will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ سَـيَنَامُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ سَتَنَامُ",
+"lat": "hiya sa-tanāmu",
+"rus": "хия са-танамо",
+"ru": "она будет спать",
+"en": "She will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ سَتَنَامُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ سَيَنَامُونَ",
+"lat": "hum sa-yanāmūn",
+"rus": "хом са-янамон",
+"ru": "они будут спать",
+"en": "They will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ سَـيَنَامُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ سَنَنَامُ",
+"lat": "naḥnu sa-nanāmu",
+"rus": "нахно са-нанамо",
+"ru": "мы будем спать",
+"en": "We will sleep",
+"audio": [
+"verbs/nam",
+"fut-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ سَنَنَامُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَنْ أَنَامَ",
+"lat": "anā lan anāma",
+"rus": "ана лан анама",
+"ru": "я не буду спать",
+"en": "I won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَنْ أَنَامَ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَنْ تَنَامَ",
+"lat": "anta lan tanāma",
+"rus": "анта лан танама",
+"ru": "ты (м) не будешь спать",
+"en": "You (m.) won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَنْ تَنَامَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَنْ تَنَامِي",
+"lat": "anti lan tanāmī",
+"rus": "анти лан танами",
+"ru": "ты (ж) не будешь спать",
+"en": "You (f.) won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَنْ تَنَامِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَنْ تَنَامُوا",
+"lat": "antum lan tanāmū",
+"rus": "антом лан танамо",
+"ru": "вы не будете спать",
+"en": "You (pl.) won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَنْ تَنَامُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَنْ يَنَامَ",
+"lat": "huwa lan yanāma",
+"rus": "хуа лан янама",
+"ru": "он не будет спать",
+"en": "He won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَنْ يَنَامَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَنْ تَنَامَ",
+"lat": "hiya lan tanāma",
+"rus": "хия лан танама",
+"ru": "она не будет спать",
+"en": "She won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَنْ تَنَامَ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَنْ يَنَامُوا",
+"lat": "hum lan yanāmū",
+"rus": "хом лан янамо",
+"ru": "они не будут спать",
+"en": "They won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَنْ يَنَامُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"نَامَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَنْ نَنَامَ",
+"lat": "naḥnu lan nanāma",
+"rus": "нахно лан нанама",
+"ru": "мы не будем спать",
+"en": "We won't sleep",
+"audio": [
+"verbs/nam",
+"fut-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَنْ نَنَامَ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا سَأَنَامُ",
+"lat": "hal anā sa-anāmu?",
+"rus": "халь ана са-анамо?",
+"ru": "я буду спать?",
+"en": "Will I sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا سَأَنَامُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ سَتَنَامُ",
+"lat": "hal anta sa-tanāmu?",
+"rus": "халь анта са-танамо?",
+"ru": "ты (м) будешь спать?",
+"en": "Will you (m.) sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ سَتَنَامُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ سَتَنَامِينَ",
+"lat": "hal anti sa-tanāmīn?",
+"rus": "халь анти са-танамин?",
+"ru": "ты (ж) будешь спать?",
+"en": "Will you (f.) sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ سَتَنَامِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ سَتَنَامُونَ",
+"lat": "hal antum sa-tanāmūn?",
+"rus": "халь антом са-танамон?",
+"ru": "вы будете спать?",
+"en": "Will you (pl.) sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ سَتَنَامُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ سَيَنَامُ",
+"lat": "hal huwa sa-yanāmu?",
+"rus": "халь хуа са-янамо?",
+"ru": "он будет спать?",
+"en": "Will he sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ سَـيَنَامُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ سَتَنَامُ",
+"lat": "hal hiya sa-tanāmu?",
+"rus": "халь хия са-танамо?",
+"ru": "она будет спать?",
+"en": "Will she sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ سَتَنَامُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ سَيَنَامُونَ",
+"lat": "hal hum sa-yanāmūn?",
+"rus": "халь хом са-янамон?",
+"ru": "они будут спать?",
+"en": "Will they sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ سَـيَنَامُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"نَامُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ سَنَنَامُ",
+"lat": "hal naḥnu sa-nanāmu?",
+"rus": "халь нахно са-нанамо?",
+"ru": "мы будем спать?",
+"en": "Will we sleep?",
+"audio": [
+"verbs/nam",
+"fut-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ سَنَنَامُ"
+}
+}
+}
+}
+},
+{
+"id": "qal",
+"dict": "قَالَ – يَقُولُ",
+"dictLat": "qāla – yaqūlu",
+"dictRus": "кала – яколо",
+"en": "to say",
+"ru": "сказать",
+"forms": {
+"past": {
+"pos": {
+"ana": {
+"segs": [
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "أَنَا قُلْتُ",
+"lat": "anā qultu",
+"rus": "ана коль-то",
+"ru": "я сказал(а)",
+"en": "I said",
+"audio": [
+"verbs/qal",
+"past-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا قُلْتُ"
+},
+"anta": {
+"segs": [
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "أَنْتَ قُلْتَ",
+"lat": "anta qulta",
+"rus": "анта коль-та",
+"ru": "ты (м) сказал",
+"en": "You (m.) said",
+"audio": [
+"verbs/qal",
+"past-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ قُلْتَ"
+},
+"anti": {
+"segs": [
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "أَنْتِ قُلْتِ",
+"lat": "anti qulti",
+"rus": "анти коль-ти",
+"ru": "ты (ж) сказала",
+"en": "You (f.) said",
+"audio": [
+"verbs/qal",
+"past-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ قُلْتِ"
+},
+"antum": {
+"segs": [
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "أَنْتُمْ قُلْتُمْ",
+"lat": "antum qultum",
+"rus": "антом коль-том",
+"ru": "вы сказали",
+"en": "You (pl.) said",
+"audio": [
+"verbs/qal",
+"past-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ قُلْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"rt",
+"قَالَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ قَالَ",
+"lat": "huwa qāla",
+"rus": "хуа ка-ла",
+"ru": "он сказал",
+"en": "He said",
+"audio": [
+"verbs/qal",
+"past-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ قَالَ"
+},
+"hiya": {
+"segs": [
+[
+"rt",
+"قَالَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هِيَ قَالَتْ",
+"lat": "hiya qālat",
+"rus": "хия каль-ат",
+"ru": "она сказала",
+"en": "She said",
+"audio": [
+"verbs/qal",
+"past-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ قَالَتْ"
+},
+"hum": {
+"segs": [
+[
+"rt",
+"قَالُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ قَالُوا",
+"lat": "hum qālū",
+"rus": "хом каль-о",
+"ru": "они сказали",
+"en": "They said",
+"audio": [
+"verbs/qal",
+"past-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ قَالُو"
+},
+"nahnu": {
+"segs": [
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "نَحْنُ قُلْنَا",
+"lat": "naḥnu qulnā",
+"rus": "нахно коль-на",
+"ru": "мы сказали",
+"en": "We said",
+"audio": [
+"verbs/qal",
+"past-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ قُلْنَا"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَمْ أَقُلْ",
+"lat": "anā lam aqul",
+"rus": "ана лам ако-л",
+"ru": "я не сказал(а)",
+"en": "I didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَمْ أَقُلْ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَمْ تَقُلْ",
+"lat": "anta lam taqul",
+"rus": "анта лам тако-л",
+"ru": "ты (м) не сказал",
+"en": "You (m.) didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَمْ تَقُلْ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَمْ تَقُولِي",
+"lat": "anti lam taqūlī",
+"rus": "анти лам тако-ли",
+"ru": "ты (ж) не сказала",
+"en": "You (f.) didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَمْ تَقُولِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَمْ تَقُولُوا",
+"lat": "antum lam taqūlū",
+"rus": "антом лам тако-ло",
+"ru": "вы не сказали",
+"en": "You (pl.) didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَمْ تَقُولُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَمْ يَقُلْ",
+"lat": "huwa lam yaqul",
+"rus": "хуа лам яко-л",
+"ru": "он не сказал",
+"en": "He didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَمْ يَقُلْ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَمْ تَقُلْ",
+"lat": "hiya lam taqul",
+"rus": "хия лам тако-л",
+"ru": "она не сказала",
+"en": "She didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَمْ تَقُلْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَمْ يَقُولُوا",
+"lat": "hum lam yaqūlū",
+"rus": "хом лам яко-ло",
+"ru": "они не сказали",
+"en": "They didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَمْ يَقُولُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَمْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَمْ نَقُلْ",
+"lat": "naḥnu lam naqul",
+"rus": "нахно лам нако-л",
+"ru": "мы не сказали",
+"en": "We didn't say",
+"audio": [
+"verbs/qal",
+"past-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَمْ نَقُلْ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تُ"
+]
+],
+"phrase": "هَلْ أَنَا قُلْتُ",
+"lat": "hal anā qultu?",
+"rus": "халь ана коль-то?",
+"ru": "я сказал(а)?",
+"en": "Did I say?",
+"audio": [
+"verbs/qal",
+"past-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا قُلْتُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تَ"
+]
+],
+"phrase": "هَلْ أَنْتَ قُلْتَ",
+"lat": "hal anta qulta?",
+"rus": "халь анта коль-та?",
+"ru": "ты (м) сказал?",
+"en": "Did you (m.) say?",
+"audio": [
+"verbs/qal",
+"past-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ قُلْتَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تِ"
+]
+],
+"phrase": "هَلْ أَنْتِ قُلْتِ",
+"lat": "hal anti qulti?",
+"rus": "халь анти коль-ти?",
+"ru": "ты (ж) сказала?",
+"en": "Did you (f.) say?",
+"audio": [
+"verbs/qal",
+"past-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ قُلْتِ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"تُمْ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ قُلْتُمْ",
+"lat": "hal antum qultum?",
+"rus": "халь антом коль-том?",
+"ru": "вы сказали?",
+"en": "Did you (pl.) say?",
+"audio": [
+"verbs/qal",
+"past-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ قُلْتُمْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قَالَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ قَالَ",
+"lat": "hal huwa qāla?",
+"rus": "халь хуа ка-ла?",
+"ru": "он сказал?",
+"en": "Did he say?",
+"audio": [
+"verbs/qal",
+"past-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ قَالَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قَالَ"
+],
+[
+"af",
+"تْ"
+]
+],
+"phrase": "هَلْ هِيَ قَالَتْ",
+"lat": "hal hiya qālat?",
+"rus": "халь хия каль-ат?",
+"ru": "она сказала?",
+"en": "Did she say?",
+"audio": [
+"verbs/qal",
+"past-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ قَالَتْ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قَالُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هَلْ هُمْ قَالُوا",
+"lat": "hal hum qālū?",
+"rus": "халь хом каль-о?",
+"ru": "они сказали?",
+"en": "Did they say?",
+"audio": [
+"verbs/qal",
+"past-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ قَالُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"rt",
+"قُلْ"
+],
+[
+"af",
+"نَا"
+]
+],
+"phrase": "هَلْ نَحْنُ قُلْنَا",
+"lat": "hal naḥnu qulnā?",
+"rus": "халь нахно коль-на?",
+"ru": "мы сказали?",
+"en": "Did we say?",
+"audio": [
+"verbs/qal",
+"past-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ قُلْنَا"
+}
+}
+},
+"pres": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا أَقُولُ",
+"lat": "anā aqūlu",
+"rus": "ана ако-ло",
+"ru": "я говорю",
+"en": "I say",
+"audio": [
+"verbs/qal",
+"pres-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا أَقُولُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ تَقُولُ",
+"lat": "anta taqūlu",
+"rus": "анта тако-ло",
+"ru": "ты (м) говоришь",
+"en": "You (m.) say",
+"audio": [
+"verbs/qal",
+"pres-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ تَقُولُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ تَقُولِينَ",
+"lat": "anti taqūlīn",
+"rus": "анти тако-лин",
+"ru": "ты (ж) говоришь",
+"en": "You (f.) say",
+"audio": [
+"verbs/qal",
+"pres-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ تَقُولِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ تَقُولُونَ",
+"lat": "antum taqūlūn",
+"rus": "антом тако-лон",
+"ru": "вы говорите",
+"en": "You (pl.) say",
+"audio": [
+"verbs/qal",
+"pres-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ تَقُولُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ يَقُولُ",
+"lat": "huwa yaqūlu",
+"rus": "хуа яко-ло",
+"ru": "он говорит",
+"en": "He says",
+"audio": [
+"verbs/qal",
+"pres-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ يَقُولُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ تَقُولُ",
+"lat": "hiya taqūlu",
+"rus": "хия тако-ло",
+"ru": "она говорит",
+"en": "She says",
+"audio": [
+"verbs/qal",
+"pres-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ تَقُولُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ يَقُولُونَ",
+"lat": "hum yaqūlūn",
+"rus": "хом яко-лон",
+"ru": "они говорят",
+"en": "They say",
+"audio": [
+"verbs/qal",
+"pres-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ يَقُولُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ نَقُولُ",
+"lat": "naḥnu naqūlu",
+"rus": "нахно нако-ло",
+"ru": "мы говорим",
+"en": "We say",
+"audio": [
+"verbs/qal",
+"pres-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ نَقُولُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَا أَقُولُ",
+"lat": "anā lā aqūlu",
+"rus": "ана ла ако-ло",
+"ru": "я не говорю",
+"en": "I don't say",
+"audio": [
+"verbs/qal",
+"pres-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَا أَقُولُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَا تَقُولُ",
+"lat": "anta lā taqūlu",
+"rus": "анта ла тако-ло",
+"ru": "ты (м) не говоришь",
+"en": "You (m.) don't say",
+"audio": [
+"verbs/qal",
+"pres-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَا تَقُولُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ لَا تَقُولِينَ",
+"lat": "anti lā taqūlīn",
+"rus": "анти ла тако-лин",
+"ru": "ты (ж) не говоришь",
+"en": "You (f.) don't say",
+"audio": [
+"verbs/qal",
+"pres-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَا تَقُولِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ لَا تَقُولُونَ",
+"lat": "antum lā taqūlūn",
+"rus": "антом ла тако-лон",
+"ru": "вы не говорите",
+"en": "You (pl.) don't say",
+"audio": [
+"verbs/qal",
+"pres-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَا تَقُولُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَا يَقُولُ",
+"lat": "huwa lā yaqūlu",
+"rus": "хуа ла яко-ло",
+"ru": "он не говорит",
+"en": "He doesn't say",
+"audio": [
+"verbs/qal",
+"pres-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَا يَقُولُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَا تَقُولُ",
+"lat": "hiya lā taqūlu",
+"rus": "хия ла тако-ло",
+"ru": "она не говорит",
+"en": "She doesn't say",
+"audio": [
+"verbs/qal",
+"pres-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَا تَقُولُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ لَا يَقُولُونَ",
+"lat": "hum lā yaqūlūn",
+"rus": "хом ла яко-лон",
+"ru": "они не говорят",
+"en": "They don't say",
+"audio": [
+"verbs/qal",
+"pres-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَا يَقُولُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَا "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَا نَقُولُ",
+"lat": "naḥnu lā naqūlu",
+"rus": "нахно ла нако-ло",
+"ru": "мы не говорим",
+"en": "We don't say",
+"audio": [
+"verbs/qal",
+"pres-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَا نَقُولُ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا أَقُولُ",
+"lat": "hal anā aqūlu?",
+"rus": "халь ана ако-ло?",
+"ru": "я говорю?",
+"en": "Do I say?",
+"audio": [
+"verbs/qal",
+"pres-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا أَقُولُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ تَقُولُ",
+"lat": "hal anta taqūlu?",
+"rus": "халь анта тако-ло?",
+"ru": "ты (м) говоришь?",
+"en": "Do you (m.) say?",
+"audio": [
+"verbs/qal",
+"pres-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ تَقُولُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ تَقُولِينَ",
+"lat": "hal anti taqūlīn?",
+"rus": "халь анти тако-лин?",
+"ru": "ты (ж) говоришь?",
+"en": "Do you (f.) say?",
+"audio": [
+"verbs/qal",
+"pres-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ تَقُولِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ تَقُولُونَ",
+"lat": "hal antum taqūlūn?",
+"rus": "халь антом тако-лон?",
+"ru": "вы говорите?",
+"en": "Do you (pl.) say?",
+"audio": [
+"verbs/qal",
+"pres-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ تَقُولُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ يَقُولُ",
+"lat": "hal huwa yaqūlu?",
+"rus": "халь хуа яко-ло?",
+"ru": "он говорит?",
+"en": "Does he say?",
+"audio": [
+"verbs/qal",
+"pres-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ يَقُولُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ تَقُولُ",
+"lat": "hal hiya taqūlu?",
+"rus": "халь хия тако-ло?",
+"ru": "она говорит?",
+"en": "Does she say?",
+"audio": [
+"verbs/qal",
+"pres-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ تَقُولُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ يَقُولُونَ",
+"lat": "hal hum yaqūlūn?",
+"rus": "халь хом яко-лон?",
+"ru": "они говорят?",
+"en": "Do they say?",
+"audio": [
+"verbs/qal",
+"pres-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ يَقُولُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ نَقُولُ",
+"lat": "hal naḥnu naqūlu?",
+"rus": "халь нахно нако-ло?",
+"ru": "мы говорим?",
+"en": "Do we say?",
+"audio": [
+"verbs/qal",
+"pres-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ نَقُولُ"
+}
+}
+},
+"fut": {
+"pos": {
+"ana": {
+"segs": [
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا سَأَقُولُ",
+"lat": "anā sa-aqūlu",
+"rus": "ана са-ако-ло",
+"ru": "я скажу",
+"en": "I will say",
+"audio": [
+"verbs/qal",
+"fut-pos-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا سَأَقُولُ"
+},
+"anta": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ سَتَقُولُ",
+"lat": "anta sa-taqūlu",
+"rus": "анта са-тако-ло",
+"ru": "ты (м) скажешь",
+"en": "You (m.) will say",
+"audio": [
+"verbs/qal",
+"fut-pos-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ سَتَقُولُ"
+},
+"anti": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "أَنْتِ سَتَقُولِينَ",
+"lat": "anti sa-taqūlīn",
+"rus": "анти са-тако-лин",
+"ru": "ты (ж) скажешь",
+"en": "You (f.) will say",
+"audio": [
+"verbs/qal",
+"fut-pos-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ سَتَقُولِينْ"
+},
+"antum": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "أَنْتُمْ سَتَقُولُونَ",
+"lat": "antum sa-taqūlūn",
+"rus": "антом са-тако-лон",
+"ru": "вы скажете",
+"en": "You (pl.) will say",
+"audio": [
+"verbs/qal",
+"fut-pos-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ سَتَقُولُونْ"
+},
+"huwa": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ سَيَقُولُ",
+"lat": "huwa sa-yaqūlu",
+"rus": "хуа са-яко-ло",
+"ru": "он скажет",
+"en": "He will say",
+"audio": [
+"verbs/qal",
+"fut-pos-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ سَـيَقُولُ"
+},
+"hiya": {
+"segs": [
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ سَتَقُولُ",
+"lat": "hiya sa-taqūlu",
+"rus": "хия са-тако-ло",
+"ru": "она скажет",
+"en": "She will say",
+"audio": [
+"verbs/qal",
+"fut-pos-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ سَتَقُولُ"
+},
+"hum": {
+"segs": [
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هُمْ سَيَقُولُونَ",
+"lat": "hum sa-yaqūlūn",
+"rus": "хом са-яко-лон",
+"ru": "они скажут",
+"en": "They will say",
+"audio": [
+"verbs/qal",
+"fut-pos-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ سَـيَقُولُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ سَنَقُولُ",
+"lat": "naḥnu sa-naqūlu",
+"rus": "нахно са-нако-ло",
+"ru": "мы скажем",
+"en": "We will say",
+"audio": [
+"verbs/qal",
+"fut-pos-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ سَنَقُولُ"
+}
+},
+"neg": {
+"ana": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"أَ"
+],
+[
+"rt",
+"قُولَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنَا لَنْ أَقُولَ",
+"lat": "anā lan aqūla",
+"rus": "ана лан ако-ла",
+"ru": "я не скажу",
+"en": "I won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-ana.mp3"
+],
+"hal": false,
+"say": "أَنَا لَنْ أَقُولَ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "أَنْتَ لَنْ تَقُولَ",
+"lat": "anta lan taqūla",
+"rus": "анта лан тако-ла",
+"ru": "ты (м) не скажешь",
+"en": "You (m.) won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-anta.mp3"
+],
+"hal": false,
+"say": "أَنْتَ لَنْ تَقُولَ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ي"
+]
+],
+"phrase": "أَنْتِ لَنْ تَقُولِي",
+"lat": "anti lan taqūlī",
+"rus": "анти лан тако-ли",
+"ru": "ты (ж) не скажешь",
+"en": "You (f.) won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-anti.mp3"
+],
+"hal": false,
+"say": "أَنْتِ لَنْ تَقُولِي"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "أَنْتُمْ لَنْ تَقُولُوا",
+"lat": "antum lan taqūlū",
+"rus": "антом лан тако-ло",
+"ru": "вы не скажете",
+"en": "You (pl.) won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-antum.mp3"
+],
+"hal": false,
+"say": "أَنْتُمْ لَنْ تَقُولُو"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هُوَ لَنْ يَقُولَ",
+"lat": "huwa lan yaqūla",
+"rus": "хуа лан яко-ла",
+"ru": "он не скажет",
+"en": "He won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-huwa.mp3"
+],
+"hal": false,
+"say": "هُوَ لَنْ يَقُولَ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"تَ"
+],
+[
+"rt",
+"قُولَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هِيَ لَنْ تَقُولَ",
+"lat": "hiya lan taqūla",
+"rus": "хия лан тако-ла",
+"ru": "она не скажет",
+"en": "She won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-hiya.mp3"
+],
+"hal": false,
+"say": "هِيَ لَنْ تَقُولَ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"يَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"وا"
+]
+],
+"phrase": "هُمْ لَنْ يَقُولُوا",
+"lat": "hum lan yaqūlū",
+"rus": "хом лан яко-ло",
+"ru": "они не скажут",
+"en": "They won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-hum.mp3"
+],
+"hal": false,
+"say": "هُمْ لَنْ يَقُولُو"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"لَنْ "
+],
+[
+"af",
+"نَ"
+],
+[
+"rt",
+"قُولَ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "نَحْنُ لَنْ نَقُولَ",
+"lat": "naḥnu lan naqūla",
+"rus": "нахно лан нако-ла",
+"ru": "мы не скажем",
+"en": "We won't say",
+"audio": [
+"verbs/qal",
+"fut-neg-nahnu.mp3"
+],
+"hal": false,
+"say": "نَحْنُ لَنْ نَقُولَ"
+}
+},
+"q": {
+"ana": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَأَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنَا سَأَقُولُ",
+"lat": "hal anā sa-aqūlu?",
+"rus": "халь ана са-ако-ло?",
+"ru": "я скажу?",
+"en": "Will I say?",
+"audio": [
+"verbs/qal",
+"fut-pos-ana.mp3"
+],
+"hal": true,
+"say": "أَنَا سَأَقُولُ"
+},
+"anta": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ أَنْتَ سَتَقُولُ",
+"lat": "hal anta sa-taqūlu?",
+"rus": "халь анта са-тако-ло?",
+"ru": "ты (м) скажешь?",
+"en": "Will you (m.) say?",
+"audio": [
+"verbs/qal",
+"fut-pos-anta.mp3"
+],
+"hal": true,
+"say": "أَنْتَ سَتَقُولُ"
+},
+"anti": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولِ"
+],
+[
+"af",
+"ينَ"
+]
+],
+"phrase": "هَلْ أَنْتِ سَتَقُولِينَ",
+"lat": "hal anti sa-taqūlīn?",
+"rus": "халь анти са-тако-лин?",
+"ru": "ты (ж) скажешь?",
+"en": "Will you (f.) say?",
+"audio": [
+"verbs/qal",
+"fut-pos-anti.mp3"
+],
+"hal": true,
+"say": "أَنْتِ سَتَقُولِينْ"
+},
+"antum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ أَنْتُمْ سَتَقُولُونَ",
+"lat": "hal antum sa-taqūlūn?",
+"rus": "халь антом са-тако-лон?",
+"ru": "вы скажете?",
+"en": "Will you (pl.) say?",
+"audio": [
+"verbs/qal",
+"fut-pos-antum.mp3"
+],
+"hal": true,
+"say": "أَنْتُمْ سَتَقُولُونْ"
+},
+"huwa": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هُوَ سَيَقُولُ",
+"lat": "hal huwa sa-yaqūlu?",
+"rus": "халь хуа са-яко-ло?",
+"ru": "он скажет?",
+"en": "Will he say?",
+"audio": [
+"verbs/qal",
+"fut-pos-huwa.mp3"
+],
+"hal": true,
+"say": "هُوَ سَـيَقُولُ"
+},
+"hiya": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَتَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ هِيَ سَتَقُولُ",
+"lat": "hal hiya sa-taqūlu?",
+"rus": "халь хия са-тако-ло?",
+"ru": "она скажет?",
+"en": "Will she say?",
+"audio": [
+"verbs/qal",
+"fut-pos-hiya.mp3"
+],
+"hal": true,
+"say": "هِيَ سَتَقُولُ"
+},
+"hum": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَيَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+"ونَ"
+]
+],
+"phrase": "هَلْ هُمْ سَيَقُولُونَ",
+"lat": "hal hum sa-yaqūlūn?",
+"rus": "халь хом са-яко-лон?",
+"ru": "они скажут?",
+"en": "Will they say?",
+"audio": [
+"verbs/qal",
+"fut-pos-hum.mp3"
+],
+"hal": true,
+"say": "هُمْ سَـيَقُولُونْ"
+},
+"nahnu": {
+"segs": [
+[
+"pt",
+"هَلْ "
+],
+[
+"af",
+"سَنَ"
+],
+[
+"rt",
+"قُولُ"
+],
+[
+"af",
+""
+]
+],
+"phrase": "هَلْ نَحْنُ سَنَقُولُ",
+"lat": "hal naḥnu sa-naqūlu?",
+"rus": "халь нахно са-нако-ло?",
+"ru": "мы скажем?",
+"en": "Will we say?",
+"audio": [
+"verbs/qal",
+"fut-pos-nahnu.mp3"
+],
+"hal": true,
+"say": "نَحْنُ سَنَقُولُ"
+}
+}
+}
+}
 }
 ],
 "halAudio": [
 "verbs/common",
 "hal.mp3"
+]
+}
+</script>
+<!-- Special words, nouns, time, adjectives: audio/special/<voice>/q-<id>.mp3, q-<id>-ex.mp3, prep-<id>.mp3, prep-<id>-<person>.mp3; audio/nouns/<voice>/<id>.mp3; audio/time/<voice>/<id>.mp3; audio/adj/<voice>/<id>.mp3, <id>-comp.mp3, <id>-sup.mp3 -->
+<script type="application/json" id="worddb">
+{
+"questions": [
+{
+"id": "what",
+"ar": "مَاذَا / مَا",
+"lat": "mādhā / mā",
+"rus": "ма-за / ма",
+"ru": "что?",
+"en": "what?",
+"say": "مَاذَا، مَا",
+"ex": {
+"pre": "",
+"w": "مَاذَا",
+"post": " تَكْتُبُ؟",
+"lat": "mādhā taktubu?",
+"rus": "ма-за тактобо?",
+"ru": "Что ты пишешь?",
+"en": "What are you writing?",
+"say": "مَاذَا تَكْتُبُ",
+"audio": [
+"special",
+"q-what-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-what.mp3"
+]
+},
+{
+"id": "who",
+"ar": "مَنْ",
+"lat": "man",
+"rus": "мань",
+"ru": "кто?",
+"en": "who?",
+"say": "مَنْ",
+"ex": {
+"pre": "",
+"w": "مَنْ",
+"post": " أَنْتَ؟",
+"lat": "man anta?",
+"rus": "мань анта?",
+"ru": "Кто ты?",
+"en": "Who are you?",
+"say": "مَنْ أَنْتَ",
+"audio": [
+"special",
+"q-who-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-who.mp3"
+]
+},
+{
+"id": "when",
+"ar": "مَتَى",
+"lat": "matā",
+"rus": "ма-та",
+"ru": "когда?",
+"en": "when?",
+"say": "مَتَى",
+"ex": {
+"pre": "",
+"w": "مَتَى",
+"post": " طَائِرَتُكَ؟",
+"lat": "matā ṭāʾiratuka?",
+"rus": "ма-та таиратока?",
+"ru": "Когда твой самолёт?",
+"en": "When is your plane?",
+"say": "مَتَى طَائِرَتُكَ",
+"audio": [
+"special",
+"q-when-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-when.mp3"
+]
+},
+{
+"id": "where",
+"ar": "أَيْنَ",
+"lat": "ayna",
+"rus": "айна",
+"ru": "где?",
+"en": "where?",
+"say": "أَيْنَ",
+"ex": {
+"pre": "",
+"w": "أَيْنَ",
+"post": " مَكْتَبُهُ؟",
+"lat": "ayna maktabuhu?",
+"rus": "айна мактабохо?",
+"ru": "Где его офис?",
+"en": "Where is his office?",
+"say": "أَيْنَ مَكْتَبُهُ",
+"audio": [
+"special",
+"q-where-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-where.mp3"
+]
+},
+{
+"id": "whereto",
+"ar": "إِلَى أَيْنَ",
+"lat": "ilā ayna",
+"rus": "ила айна",
+"ru": "куда?",
+"en": "where to?",
+"say": "إِلَى أَيْنَ",
+"ex": {
+"pre": "",
+"w": "إِلَى أَيْنَ",
+"post": " سَتَذْهَبُ؟",
+"lat": "ilā ayna sa-tadhhabu?",
+"rus": "ила айна са-тазхабо?",
+"ru": "Куда ты пойдёшь?",
+"en": "Where will you go?",
+"say": "إِلَى أَيْنَ سَتَذْهَبُ",
+"audio": [
+"special",
+"q-whereto-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-whereto.mp3"
+]
+},
+{
+"id": "wherefrom",
+"ar": "مِنْ أَيْنَ",
+"lat": "min ayna",
+"rus": "мен айна",
+"ru": "откуда?",
+"en": "where from?",
+"say": "مِنْ أَيْنَ",
+"ex": {
+"pre": "",
+"w": "مِنْ أَيْنَ",
+"post": " أَنْتَ؟",
+"lat": "min ayna anta?",
+"rus": "мен айна анта?",
+"ru": "Откуда ты?",
+"en": "Where are you from?",
+"say": "مِنْ أَيْنَ أَنْتَ",
+"audio": [
+"special",
+"q-wherefrom-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-wherefrom.mp3"
+]
+},
+{
+"id": "how",
+"ar": "كَيْفَ",
+"lat": "kayfa",
+"rus": "кайфа",
+"ru": "как?",
+"en": "how?",
+"say": "كَيْفَ",
+"ex": {
+"pre": "",
+"w": "كَيْفَ",
+"post": " سَتَذْهَبُ إِلَى مَنْزِلِكَ؟",
+"lat": "kayfa sa-tadhhabu ilā manzilika?",
+"rus": "кайфа са-тазхабо ила манзелика?",
+"ru": "Как ты доберёшься домой?",
+"en": "How will you get home?",
+"say": "كَيْفَ سَتَذْهَبُ إِلَى مَنْزِلِكَ",
+"audio": [
+"special",
+"q-how-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-how.mp3"
+]
+},
+{
+"id": "why",
+"ar": "لِمَاذَا",
+"lat": "limādhā",
+"rus": "лимаза",
+"ru": "почему?",
+"en": "why?",
+"say": "لِمَاذَا",
+"ex": {
+"pre": "",
+"w": "لِمَاذَا",
+"post": " لَمْ تَذْهَبْ؟",
+"lat": "limādhā lam tadhhab?",
+"rus": "лимаза лам тазхаб?",
+"ru": "Почему ты не пошёл?",
+"en": "Why didn't you go?",
+"say": "لِمَاذَا لَمْ تَذْهَبْ",
+"audio": [
+"special",
+"q-why-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-why.mp3"
+]
+},
+{
+"id": "howmany",
+"ar": "كَمْ",
+"lat": "kam",
+"rus": "камь",
+"ru": "сколько?",
+"en": "how many? how much?",
+"say": "كَمْ",
+"ex": {
+"pre": "",
+"w": "كَمْ",
+"post": " عُمْرُكَ؟",
+"lat": "kam ʿumruka?",
+"rus": "камь омрока?",
+"ru": "Сколько тебе лет?",
+"en": "How old are you?",
+"say": "كَمْ عُمْرُكَ",
+"audio": [
+"special",
+"q-howmany-ex.mp3"
+]
+},
+"audio": [
+"special",
+"q-howmany.mp3"
+]
+}
+],
+"preps": [
+{
+"id": "maa",
+"ar": "مَعَ",
+"lat": "maʿa",
+"rus": "ма-а",
+"ru": "с",
+"en": "with",
+"say": "مَعَ",
+"forms": [
+{
+"p": "ana",
+"ar": "مَعِي",
+"lat": "maʿī",
+"rus": "ма-и",
+"ru": "со мной",
+"en": "with me",
+"say": "مَعِي",
+"audio": [
+"special",
+"prep-maa-ana.mp3"
+]
+},
+{
+"p": "anta",
+"ar": "مَعَكَ",
+"lat": "maʿaka",
+"rus": "ма-ака",
+"ru": "с тобой (м)",
+"en": "with you (m.)",
+"say": "مَعَكَ",
+"audio": [
+"special",
+"prep-maa-anta.mp3"
+]
+},
+{
+"p": "anti",
+"ar": "مَعَكِ",
+"lat": "maʿaki",
+"rus": "ма-аки",
+"ru": "с тобой (ж)",
+"en": "with you (f.)",
+"say": "مَعَكِ",
+"audio": [
+"special",
+"prep-maa-anti.mp3"
+]
+},
+{
+"p": "antum",
+"ar": "مَعَكُمْ",
+"lat": "maʿakum",
+"rus": "ма-аком",
+"ru": "с вами",
+"en": "with you (pl.)",
+"say": "مَعَكُمْ",
+"audio": [
+"special",
+"prep-maa-antum.mp3"
+]
+},
+{
+"p": "huwa",
+"ar": "مَعَهُ",
+"lat": "maʿahu",
+"rus": "ма-ахо",
+"ru": "с ним",
+"en": "with him",
+"say": "مَعَهُ",
+"audio": [
+"special",
+"prep-maa-huwa.mp3"
+]
+},
+{
+"p": "hiya",
+"ar": "مَعَهَا",
+"lat": "maʿahā",
+"rus": "ма-аха",
+"ru": "с ней",
+"en": "with her",
+"say": "مَعَهَا",
+"audio": [
+"special",
+"prep-maa-hiya.mp3"
+]
+},
+{
+"p": "hum",
+"ar": "مَعَهُمْ",
+"lat": "maʿahum",
+"rus": "ма-ахом",
+"ru": "с ними",
+"en": "with them",
+"say": "مَعَهُمْ",
+"audio": [
+"special",
+"prep-maa-hum.mp3"
+]
+},
+{
+"p": "nahnu",
+"ar": "مَعَنَا",
+"lat": "maʿanā",
+"rus": "ма-ана",
+"ru": "с нами",
+"en": "with us",
+"say": "مَعَنَا",
+"audio": [
+"special",
+"prep-maa-nahnu.mp3"
+]
+}
+],
+"audio": [
+"special",
+"prep-maa.mp3"
+]
+},
+{
+"id": "bidun",
+"ar": "بِدُون",
+"lat": "bidūn",
+"rus": "бидун",
+"ru": "без",
+"en": "without",
+"say": "بِدُونْ",
+"forms": [
+{
+"p": "ana",
+"ar": "بِدُونِي",
+"lat": "bidūnī",
+"rus": "бидуни",
+"ru": "без меня",
+"en": "without me",
+"say": "بِدُونِي",
+"audio": [
+"special",
+"prep-bidun-ana.mp3"
+]
+},
+{
+"p": "anta",
+"ar": "بِدُونِكَ",
+"lat": "bidūnika",
+"rus": "бидуника",
+"ru": "без тебя (м)",
+"en": "without you (m.)",
+"say": "بِدُونِكَ",
+"audio": [
+"special",
+"prep-bidun-anta.mp3"
+]
+},
+{
+"p": "anti",
+"ar": "بِدُونِكِ",
+"lat": "bidūniki",
+"rus": "бидуники",
+"ru": "без тебя (ж)",
+"en": "without you (f.)",
+"say": "بِدُونِكِ",
+"audio": [
+"special",
+"prep-bidun-anti.mp3"
+]
+},
+{
+"p": "antum",
+"ar": "بِدُونِكُمْ",
+"lat": "bidūnikum",
+"rus": "бидуником",
+"ru": "без вас",
+"en": "without you (pl.)",
+"say": "بِدُونِكُمْ",
+"audio": [
+"special",
+"prep-bidun-antum.mp3"
+]
+},
+{
+"p": "huwa",
+"ar": "بِدُونِهِ",
+"lat": "bidūnihi",
+"rus": "бидунихи",
+"ru": "без него",
+"en": "without him",
+"say": "بِدُونِهِ",
+"audio": [
+"special",
+"prep-bidun-huwa.mp3"
+]
+},
+{
+"p": "hiya",
+"ar": "بِدُونِهَا",
+"lat": "bidūnihā",
+"rus": "бидуниха",
+"ru": "без неё",
+"en": "without her",
+"say": "بِدُونِهَا",
+"audio": [
+"special",
+"prep-bidun-hiya.mp3"
+]
+},
+{
+"p": "hum",
+"ar": "بِدُونِهِمْ",
+"lat": "bidūnihim",
+"rus": "бидунихим",
+"ru": "без них",
+"en": "without them",
+"say": "بِدُونِهِمْ",
+"audio": [
+"special",
+"prep-bidun-hum.mp3"
+]
+},
+{
+"p": "nahnu",
+"ar": "بِدُونِنَا",
+"lat": "bidūninā",
+"rus": "бидунина",
+"ru": "без нас",
+"en": "without us",
+"say": "بِدُونِنَا",
+"audio": [
+"special",
+"prep-bidun-nahnu.mp3"
+]
+}
+],
+"audio": [
+"special",
+"prep-bidun.mp3"
+]
+},
+{
+"id": "an",
+"ar": "عَنْ",
+"lat": "ʿan",
+"rus": "а-ан",
+"ru": "о (об)",
+"en": "about",
+"say": "عَنْ",
+"forms": [
+{
+"p": "ana",
+"ar": "عَنِّي",
+"lat": "ʿannī",
+"rus": "анни",
+"ru": "обо мне",
+"en": "about me",
+"say": "عَنِّي",
+"audio": [
+"special",
+"prep-an-ana.mp3"
+]
+},
+{
+"p": "anta",
+"ar": "عَنْكَ",
+"lat": "ʿanka",
+"rus": "анка",
+"ru": "о тебе (м)",
+"en": "about you (m.)",
+"say": "عَنْكَ",
+"audio": [
+"special",
+"prep-an-anta.mp3"
+]
+},
+{
+"p": "anti",
+"ar": "عَنْكِ",
+"lat": "ʿanki",
+"rus": "анки",
+"ru": "о тебе (ж)",
+"en": "about you (f.)",
+"say": "عَنْكِ",
+"audio": [
+"special",
+"prep-an-anti.mp3"
+]
+},
+{
+"p": "antum",
+"ar": "عَنْكُمْ",
+"lat": "ʿankum",
+"rus": "анком",
+"ru": "о вас",
+"en": "about you (pl.)",
+"say": "عَنْكُمْ",
+"audio": [
+"special",
+"prep-an-antum.mp3"
+]
+},
+{
+"p": "huwa",
+"ar": "عَنْهُ",
+"lat": "ʿanhu",
+"rus": "анхо",
+"ru": "о нём",
+"en": "about him",
+"say": "عَنْهُ",
+"audio": [
+"special",
+"prep-an-huwa.mp3"
+]
+},
+{
+"p": "hiya",
+"ar": "عَنْهَا",
+"lat": "ʿanhā",
+"rus": "анха",
+"ru": "о ней",
+"en": "about her",
+"say": "عَنْهَا",
+"audio": [
+"special",
+"prep-an-hiya.mp3"
+]
+},
+{
+"p": "hum",
+"ar": "عَنْهُمْ",
+"lat": "ʿanhum",
+"rus": "анхом",
+"ru": "о них",
+"en": "about them",
+"say": "عَنْهُمْ",
+"audio": [
+"special",
+"prep-an-hum.mp3"
+]
+},
+{
+"p": "nahnu",
+"ar": "عَنَّا",
+"lat": "ʿannā",
+"rus": "анна",
+"ru": "о нас",
+"en": "about us",
+"say": "عَنَّا",
+"audio": [
+"special",
+"prep-an-nahnu.mp3"
+]
+}
+],
+"audio": [
+"special",
+"prep-an.mp3"
+]
+},
+{
+"id": "lada",
+"ar": "لَدَى",
+"lat": "ladā",
+"rus": "лада",
+"ru": "у … есть",
+"en": "have (at)",
+"say": "لَدَى",
+"forms": [
+{
+"p": "ana",
+"ar": "لَدَيَّ",
+"lat": "ladayya",
+"rus": "ладайя",
+"ru": "у меня есть",
+"en": "I have",
+"say": "لَدَيَّ",
+"audio": [
+"special",
+"prep-lada-ana.mp3"
+]
+},
+{
+"p": "anta",
+"ar": "لَدَيْكَ",
+"lat": "ladayka",
+"rus": "ладайка",
+"ru": "у тебя (м) есть",
+"en": "you (m.) have",
+"say": "لَدَيْكَ",
+"audio": [
+"special",
+"prep-lada-anta.mp3"
+]
+},
+{
+"p": "anti",
+"ar": "لَدَيْكِ",
+"lat": "ladayki",
+"rus": "ладайки",
+"ru": "у тебя (ж) есть",
+"en": "you (f.) have",
+"say": "لَدَيْكِ",
+"audio": [
+"special",
+"prep-lada-anti.mp3"
+]
+},
+{
+"p": "antum",
+"ar": "لَدَيْكُمْ",
+"lat": "ladaykum",
+"rus": "ладайком",
+"ru": "у вас есть",
+"en": "you (pl.) have",
+"say": "لَدَيْكُمْ",
+"audio": [
+"special",
+"prep-lada-antum.mp3"
+]
+},
+{
+"p": "huwa",
+"ar": "لَدَيْهِ",
+"lat": "ladayhi",
+"rus": "ладайхи",
+"ru": "у него есть",
+"en": "he has",
+"say": "لَدَيْهِ",
+"audio": [
+"special",
+"prep-lada-huwa.mp3"
+]
+},
+{
+"p": "hiya",
+"ar": "لَدَيْهَا",
+"lat": "ladayhā",
+"rus": "ладайха",
+"ru": "у неё есть",
+"en": "she has",
+"say": "لَدَيْهَا",
+"audio": [
+"special",
+"prep-lada-hiya.mp3"
+]
+},
+{
+"p": "hum",
+"ar": "لَدَيْهِمْ",
+"lat": "ladayhim",
+"rus": "ладайхим",
+"ru": "у них есть",
+"en": "they have",
+"say": "لَدَيْهِمْ",
+"audio": [
+"special",
+"prep-lada-hum.mp3"
+]
+},
+{
+"p": "nahnu",
+"ar": "لَدَيْنَا",
+"lat": "ladaynā",
+"rus": "ладайна",
+"ru": "у нас есть",
+"en": "we have",
+"say": "لَدَيْنَا",
+"audio": [
+"special",
+"prep-lada-nahnu.mp3"
+]
+}
+],
+"audio": [
+"special",
+"prep-lada.mp3"
+]
+}
+],
+"nouns": [
+{
+"id": "maktab",
+"ar": "مَكْتَب",
+"lat": "maktab",
+"rus": "мактаб",
+"ru": "офис",
+"en": "office",
+"say": "مَكْتَب",
+"audio": [
+"nouns",
+"maktab.mp3"
+]
+},
+{
+"id": "kitab",
+"ar": "كِتَاب",
+"lat": "kitāb",
+"rus": "китаб",
+"ru": "книга",
+"en": "book",
+"say": "كِتَاب",
+"audio": [
+"nouns",
+"kitab.mp3"
+]
+},
+{
+"id": "madrasa",
+"ar": "مَدْرَسَة",
+"lat": "madrasah",
+"rus": "мадрасат",
+"ru": "школа",
+"en": "school",
+"say": "مَدْرَسَتْ",
+"audio": [
+"nouns",
+"madrasa.mp3"
+]
+},
+{
+"id": "manzil",
+"ar": "مَنْزِل",
+"lat": "manzil",
+"rus": "манзел",
+"ru": "дом",
+"en": "house",
+"say": "مَنْزِل",
+"audio": [
+"nouns",
+"manzil.mp3"
+]
+},
+{
+"id": "bayt",
+"ar": "بَيْت",
+"lat": "bayt",
+"rus": "байт",
+"ru": "квартира, дом",
+"en": "home, apartment",
+"say": "بَيْت",
+"audio": [
+"nouns",
+"bayt.mp3"
+]
+},
+{
+"id": "madina",
+"ar": "مَدِينَة",
+"lat": "madīnah",
+"rus": "мадинат",
+"ru": "город",
+"en": "city",
+"say": "مَدِينَتْ",
+"audio": [
+"nouns",
+"madina.mp3"
+]
+},
+{
+"id": "matar",
+"ar": "مَطَار",
+"lat": "maṭār",
+"rus": "мат-ар",
+"ru": "аэропорт",
+"en": "airport",
+"say": "مَطَار",
+"audio": [
+"nouns",
+"matar.mp3"
+]
+},
+{
+"id": "taira",
+"ar": "طَائِرَة",
+"lat": "ṭāʾirah",
+"rus": "тай-ра",
+"ru": "самолёт",
+"en": "airplane",
+"say": "طَائِرَه",
+"audio": [
+"nouns",
+"taira.mp3"
+]
+},
+{
+"id": "sayyara",
+"ar": "سَيَّارَة",
+"lat": "sayyārah",
+"rus": "сая-рат",
+"ru": "машина",
+"en": "car",
+"say": "سَيْيَارَتْ",
+"audio": [
+"nouns",
+"sayyara.mp3"
+]
+},
+{
+"id": "matjar",
+"ar": "مَتْجَر",
+"lat": "matjar",
+"rus": "матжар",
+"ru": "магазин",
+"en": "shop",
+"say": "مَتْجَر",
+"audio": [
+"nouns",
+"matjar.mp3"
+]
+}
+],
+"time": [
+{
+"id": "ahad",
+"ar": "الأَحَد",
+"lat": "al-aḥad",
+"rus": "аль-ахад",
+"ru": "воскресенье",
+"en": "Sunday",
+"say": "الأَحَد",
+"grp": "day",
+"audio": [
+"time",
+"ahad.mp3"
+]
+},
+{
+"id": "ithnayn",
+"ar": "الإِثْنَيْن",
+"lat": "al-ithnayn",
+"rus": "аль-иснайн",
+"ru": "понедельник",
+"en": "Monday",
+"say": "اَلْإِثْنَيْن",
+"grp": "day",
+"audio": [
+"time",
+"ithnayn.mp3"
+]
+},
+{
+"id": "thulatha",
+"ar": "الثُّلَاثَاء",
+"lat": "ath-thulāthāʾ",
+"rus": "ас-сулясаа",
+"ru": "вторник",
+"en": "Tuesday",
+"say": "اَثْثُلَاثَاء",
+"grp": "day",
+"audio": [
+"time",
+"thulatha.mp3"
+]
+},
+{
+"id": "arbia",
+"ar": "الأَرْبِعَاء",
+"lat": "al-arbiʿāʾ",
+"rus": "аль-арби-аа",
+"ru": "среда",
+"en": "Wednesday",
+"say": "الأَرْبِعَاء",
+"grp": "day",
+"audio": [
+"time",
+"arbia.mp3"
+]
+},
+{
+"id": "khamis",
+"ar": "الخَمِيس",
+"lat": "al-khamīs",
+"rus": "аль-хамис",
+"ru": "четверг",
+"en": "Thursday",
+"say": "الخَمِيس",
+"grp": "day",
+"audio": [
+"time",
+"khamis.mp3"
+]
+},
+{
+"id": "jumua",
+"ar": "الجُمْعَة",
+"lat": "al-jumʿah",
+"rus": "аль-жум-а",
+"ru": "пятница",
+"en": "Friday",
+"say": "اَلْجُمْعَه",
+"grp": "day",
+"audio": [
+"time",
+"jumua.mp3"
+]
+},
+{
+"id": "sabt",
+"ar": "السَّبْت",
+"lat": "as-sabt",
+"rus": "ас-сабт",
+"ru": "суббота",
+"en": "Saturday",
+"say": "اَسْسَبْت",
+"grp": "day",
+"audio": [
+"time",
+"sabt.mp3"
+]
+},
+{
+"id": "yawm",
+"ar": "يَوْم",
+"lat": "yawm",
+"rus": "яум",
+"ru": "день",
+"en": "day",
+"say": "يَوْم",
+"grp": "word",
+"audio": [
+"time",
+"yawm.mp3"
+]
+},
+{
+"id": "alyawm",
+"ar": "اليَوْم",
+"lat": "al-yawm",
+"rus": "аль-яум",
+"ru": "сегодня",
+"en": "today",
+"say": "اليَوْم",
+"grp": "word",
+"audio": [
+"time",
+"alyawm.mp3"
+]
+},
+{
+"id": "ghadan",
+"ar": "غَدًا",
+"lat": "ghadan",
+"rus": "гадан",
+"ru": "завтра",
+"en": "tomorrow",
+"say": "غَدَنْ",
+"grp": "word",
+"audio": [
+"time",
+"ghadan.mp3"
+]
+},
+{
+"id": "ams",
+"ar": "أَمْس",
+"lat": "ams",
+"rus": "амс",
+"ru": "вчера",
+"en": "yesterday",
+"say": "أَمْس",
+"grp": "word",
+"audio": [
+"time",
+"ams.mp3"
+]
+},
+{
+"id": "shahr",
+"ar": "شَهْر",
+"lat": "shahr",
+"rus": "шахр",
+"ru": "месяц",
+"en": "month",
+"say": "شَهْر",
+"grp": "word",
+"audio": [
+"time",
+"shahr.mp3"
+]
+},
+{
+"id": "sana",
+"ar": "سَنَة",
+"lat": "sanah",
+"rus": "сана",
+"ru": "год",
+"en": "year",
+"say": "سَنَه",
+"grp": "word",
+"audio": [
+"time",
+"sana.mp3"
+]
+}
+],
+"adjs": [
+{
+"id": "jamil",
+"ar": "جَمِيل",
+"lat": "jamīl",
+"rus": "жамиль",
+"ru": "красивый",
+"en": "beautiful",
+"say": "جَمِيل",
+"comp": {
+"ar": "أَجْمَل",
+"lat": "ajmal",
+"rus": "ажмаль",
+"ru": "красивее",
+"en": "more beautiful",
+"say": "أَجْمَل",
+"audio": [
+"adj",
+"jamil-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَجْمَل",
+"lat": "al-ajmal",
+"rus": "аль-ажмаль",
+"ru": "самый красивый",
+"en": "the most beautiful",
+"say": "الأَجْمَل",
+"audio": [
+"adj",
+"jamil-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"jamil.mp3"
+]
+},
+{
+"id": "kabir",
+"ar": "كَبِير",
+"lat": "kabīr",
+"rus": "кабир",
+"ru": "большой",
+"en": "big",
+"say": "كَبِير",
+"comp": {
+"ar": "أَكْبَر",
+"lat": "akbar",
+"rus": "акбар",
+"ru": "больше (размер)",
+"en": "bigger",
+"say": "أَكْبَر",
+"audio": [
+"adj",
+"kabir-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَكْبَر",
+"lat": "al-akbar",
+"rus": "аль-акбар",
+"ru": "самый большой",
+"en": "the biggest",
+"say": "الأَكْبَر",
+"audio": [
+"adj",
+"kabir-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"kabir.mp3"
+]
+},
+{
+"id": "saghir",
+"ar": "صَغِير",
+"lat": "ṣaghīr",
+"rus": "сагир",
+"ru": "маленький",
+"en": "small",
+"say": "صَغِير",
+"comp": {
+"ar": "أَصْغَر",
+"lat": "aṣghar",
+"rus": "асгар",
+"ru": "меньше (размер)",
+"en": "smaller",
+"say": "أَصْغَر",
+"audio": [
+"adj",
+"saghir-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَصْغَر",
+"lat": "al-aṣghar",
+"rus": "аль-асгар",
+"ru": "самый маленький",
+"en": "the smallest",
+"say": "الأَصْغَر",
+"audio": [
+"adj",
+"saghir-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"saghir.mp3"
+]
+},
+{
+"id": "ghali",
+"ar": "غَالِي",
+"lat": "ghālī",
+"rus": "галий",
+"ru": "дорогой",
+"en": "expensive",
+"say": "غَالِي",
+"comp": {
+"ar": "أَغْلَى",
+"lat": "aghlā",
+"rus": "аглаа",
+"ru": "дороже",
+"en": "more expensive",
+"say": "أَغْلَا",
+"audio": [
+"adj",
+"ghali-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَغْلَى",
+"lat": "al-aghlā",
+"rus": "аль-аглаа",
+"ru": "самый дорогой",
+"en": "the most expensive",
+"say": "اَلْأَغْلَا",
+"audio": [
+"adj",
+"ghali-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"ghali.mp3"
+]
+},
+{
+"id": "rakhis",
+"ar": "رَخِيص",
+"lat": "rakhīṣ",
+"rus": "рахис",
+"ru": "дешёвый",
+"en": "cheap",
+"say": "رَخِيص",
+"comp": {
+"ar": "أَرْخَص",
+"lat": "arkhaṣ",
+"rus": "архас",
+"ru": "дешевле",
+"en": "cheaper",
+"say": "أَرْخَص",
+"audio": [
+"adj",
+"rakhis-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَرْخَص",
+"lat": "al-arkhaṣ",
+"rus": "аль-архас",
+"ru": "самый дешёвый",
+"en": "the cheapest",
+"say": "الأَرْخَص",
+"audio": [
+"adj",
+"rakhis-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"rakhis.mp3"
+]
+},
+{
+"id": "qarib",
+"ar": "قَرِيب",
+"lat": "qarīb",
+"rus": "кариб",
+"ru": "близкий",
+"en": "near, close",
+"say": "قَرِيب",
+"comp": {
+"ar": "أَقْرَب",
+"lat": "aqrab",
+"rus": "акраб",
+"ru": "ближе",
+"en": "nearer",
+"say": "أَقْرَب",
+"audio": [
+"adj",
+"qarib-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَقْرَب",
+"lat": "al-aqrab",
+"rus": "аль-акраб",
+"ru": "самый близкий",
+"en": "the nearest",
+"say": "الأَقْرَب",
+"audio": [
+"adj",
+"qarib-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"qarib.mp3"
+]
+},
+{
+"id": "baid",
+"ar": "بَعِيد",
+"lat": "baʿīd",
+"rus": "баи-ид",
+"ru": "далёкий",
+"en": "far",
+"say": "بَعِيد",
+"comp": {
+"ar": "أَبْعَد",
+"lat": "abʿad",
+"rus": "аба-ад",
+"ru": "дальше",
+"en": "farther",
+"say": "أَبْعَد",
+"audio": [
+"adj",
+"baid-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَبْعَد",
+"lat": "al-abʿad",
+"rus": "аль-аба-ад",
+"ru": "самый далёкий",
+"en": "the farthest",
+"say": "الأَبْعَد",
+"audio": [
+"adj",
+"baid-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"baid.mp3"
+]
+},
+{
+"id": "kathir",
+"ar": "كَثِير",
+"lat": "kathīr",
+"rus": "касир",
+"ru": "много",
+"en": "many, much",
+"say": "كَثِير",
+"comp": {
+"ar": "أَكْثَر",
+"lat": "akthar",
+"rus": "аксар",
+"ru": "больше (количество)",
+"en": "more",
+"say": "أَكْثَر",
+"audio": [
+"adj",
+"kathir-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَكْثَر",
+"lat": "al-akthar",
+"rus": "аль-аксар",
+"ru": "больше всего",
+"en": "the most",
+"say": "الأَكْثَر",
+"audio": [
+"adj",
+"kathir-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"kathir.mp3"
+]
+},
+{
+"id": "qalil",
+"ar": "قَلِيل",
+"lat": "qalīl",
+"rus": "калил",
+"ru": "мало",
+"en": "few, little",
+"say": "قَلِيل",
+"comp": {
+"ar": "أَقَلّ",
+"lat": "aqall",
+"rus": "акаль",
+"ru": "меньше (количество)",
+"en": "less, fewer",
+"say": "أَقَلْل",
+"audio": [
+"adj",
+"qalil-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَقَلّ",
+"lat": "al-aqall",
+"rus": "аль-акаль",
+"ru": "меньше всего",
+"en": "the least",
+"say": "اَلْأَقَلْل",
+"audio": [
+"adj",
+"qalil-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"qalil.mp3"
+]
+},
+{
+"id": "jadid",
+"ar": "جَدِيد",
+"lat": "jadīd",
+"rus": "жадид",
+"ru": "новый",
+"en": "new",
+"say": "جَدِيد",
+"comp": {
+"ar": "أَجْدَد",
+"lat": "ajdad",
+"rus": "аждад",
+"ru": "новее",
+"en": "newer",
+"say": "أَجْدَد",
+"audio": [
+"adj",
+"jadid-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَجْدَد",
+"lat": "al-ajdad",
+"rus": "аль-аждад",
+"ru": "самый новый",
+"en": "the newest",
+"say": "الأَجْدَد",
+"audio": [
+"adj",
+"jadid-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"jadid.mp3"
+]
+},
+{
+"id": "qadim",
+"ar": "قَدِيم",
+"lat": "qadīm",
+"rus": "кадим",
+"ru": "старый",
+"en": "old",
+"say": "قَدِيم",
+"comp": {
+"ar": "أَقْدَم",
+"lat": "aqdam",
+"rus": "акдам",
+"ru": "старее",
+"en": "older",
+"say": "أَقْدَم",
+"audio": [
+"adj",
+"qadim-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَقْدَم",
+"lat": "al-aqdam",
+"rus": "аль-акдам",
+"ru": "самый старый",
+"en": "the oldest",
+"say": "الأَقْدَم",
+"audio": [
+"adj",
+"qadim-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"qadim.mp3"
+]
+},
+{
+"id": "jayyid",
+"ar": "جَيِّد",
+"lat": "jayyid",
+"rus": "жаиед",
+"ru": "хороший",
+"en": "good",
+"say": "جَيِدْ",
+"comp": {
+"ar": "أَفْضَل",
+"lat": "afḍal",
+"rus": "афдаль",
+"ru": "лучше",
+"en": "better",
+"say": "أَفْضَل",
+"audio": [
+"adj",
+"jayyid-comp.mp3"
+]
+},
+"sup": {
+"ar": "الأَفْضَل",
+"lat": "al-afḍal",
+"rus": "аль-афдаль",
+"ru": "самый лучший",
+"en": "the best",
+"say": "الأَفْضَل",
+"audio": [
+"adj",
+"jayyid-sup.mp3"
+]
+},
+"audio": [
+"adj",
+"jayyid.mp3"
+]
+}
 ]
 }
 </script>
@@ -15521,6 +27577,14 @@ for (const t of Object.keys(VTENSE)) for (const p of VP) ALL.push({id:`vpat-${t}
 for (const x of VERBDB.particles) ALL.push({id:`vprt-${x.id}`, deck:'verbs', kind:'prt', x});
 for (const v of VERBDB.verbs) for (const t of Object.keys(VTENSE)) for (const m of Object.keys(VMODE)) for (const p of VP)
   ALL.push({id:`vc-${v.id}-${t}-${m}-${p}`, deck:'verbs', kind:'conj', v:v.id, t, m, p});
+/* special words + nouns */
+const WORDDB = JSON.parse(document.getElementById('worddb').textContent);
+for (const q of WORDDB.questions) ALL.push({id:`sw-q-${q.id}`, deck:'special', kind:'q', w:q});
+for (const p of WORDDB.preps) ALL.push({id:`sw-p-${p.id}`, deck:'special', kind:'prep', w:p});
+for (const n of WORDDB.nouns) ALL.push({id:`nn-${n.id}`, deck:'nouns', kind:'noun', w:n});
+for (const t of WORDDB.time) ALL.push({id:`tm-${t.id}`, deck:'time', kind:'time', w:t});
+for (const a of WORDDB.adjs) ALL.push({id:`adj-${a.id}`, deck:'adj', kind:'adj', w:a});
+const WDECKS = new Set(['special', 'nouns', 'time', 'adj']);
 const BYID = Object.fromEntries(ALL.map(c => [c.id, c]));
 const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩';
 const toArabicDigits = n => String(n).replace(/[0-9]/g, d => AR_DIGITS[d]);
@@ -15530,13 +27594,18 @@ const numKey = (n, f) => f.g ? `${n.id}-${f.g}` : n.id;
 /* ---------- Storage (this browser only) ---------- */
 const KEY = 'arabicFlashcards.v3', OLD_KEY = 'arabicLetterCards.v2';   // v3 keeps its own progress; v2 progress is copied the first time
 const DEFAULT_CFG = {deck:'letters', ngroup:'all', letters:'all', picked:[], types:'AB', focus:'mix', len:'20', voice:'both',
-  vpart:'all', vtenses:['past','pres','fut'], vverbs:VERBDB.verbs.map(v => v.id), vmodes:['pos'], vdir:'mix'};
+  vpart:'all', vtenses:['past','pres','fut'], vverbs:VERBDB.verbs.map(v => v.id), vmodes:['pos'], vdir:'mix', swgroup:'all', tgroup:'all'};
 let storageOK = true;
 function load(){
   try {
     let s = JSON.parse(localStorage.getItem(KEY));
     if (!s) { const o = JSON.parse(localStorage.getItem(OLD_KEY)); if (o && o.cards) s = {cards:o.cards, sessions:o.sessions||[], cfg:o.cfg||{}}; }
-    if (s && s.cards) return {cards:s.cards, sessions:s.sessions||[], cfg:{...DEFAULT_CFG, ...(s.cfg||{})}};
+    if (s && s.cards) {
+      const cfg = {...DEFAULT_CFG, ...(s.cfg||{})};
+      if (!s.cfg || !s.cfg.vknown) { cfg.vverbs = [...new Set([...(cfg.vverbs||[]), ...DEFAULT_CFG.vverbs])]; }
+      cfg.vknown = DEFAULT_CFG.vverbs.length;
+      return {cards:s.cards, sessions:s.sessions||[], cfg};
+    }
   }
   catch(e){ storageOK = false; }
   return {cards:{}, sessions:[], cfg:{...DEFAULT_CFG}};
@@ -15565,6 +27634,9 @@ function poolFor(cfg){
     const b = boxOf(c.id);
     const fOK0 = cfg.focus==='mix' || (cfg.focus==='new' ? b===0 : (b>=1 && b<=2));
     if (c.deck === 'numbers') return (cfg.ngroup==='all' || c.n.group===cfg.ngroup) && fOK0;
+    if (c.deck === 'special') return (cfg.swgroup === 'all' || c.kind === cfg.swgroup) && fOK0;
+    if (c.deck === 'nouns' || c.deck === 'adj') return fOK0;
+    if (c.deck === 'time') return (cfg.tgroup === 'all' || c.w.grp === cfg.tgroup) && fOK0;
     if (c.deck === 'verbs') {
       const part = {all:['pron','pat','prt','conj'], pronpat:['pron','pat','prt'], pron:['pron'], pat:['pat','prt'], conj:['conj']}[cfg.vpart] || [];
       if (!part.includes(c.kind) || !fOK0) return false;
@@ -15595,6 +27667,8 @@ function renderSetup(){
   const isNum = cfg.deck === 'numbers', isVerb = cfg.deck === 'verbs', isLet = cfg.deck === 'letters';
   const conj = isVerb && ['all','conj'].includes(cfg.vpart);
   $('fNum').hidden = !isNum; $('fLetters').hidden = !isLet; $('fTypes').hidden = !isLet;
+  $('fSW').hidden = cfg.deck !== 'special';
+  $('fTG').hidden = cfg.deck !== 'time';
   $('fVPart').hidden = !isVerb; $('fVTenses').hidden = !isVerb || cfg.vpart === 'pron';
   $('fVVerbs').hidden = !conj; $('fVModes').hidden = !conj; $('fVDir').hidden = !conj;
   $('picker').hidden = !isLet || cfg.letters !== 'pick';
@@ -15629,7 +27703,7 @@ function legendHTML(){ return [0,1,2,3,4,5].map(i => `<span><i style="background
 function renderHome(){
   const deckCards = ALL.filter(c => c.deck === S.cfg.deck);
   const counts = [0,0,0,0,0,0]; deckCards.forEach(c => counts[boxOf(c.id)]++);
-  $('progDeck').textContent = S.cfg.deck;
+  $('progDeck').textContent = {special:'special words', adj:'adjectives'}[S.cfg.deck] || S.cfg.deck;
   $('ovBtn').hidden = S.cfg.deck !== 'letters'; $('vtBtn').hidden = S.cfg.deck !== 'verbs';
   $('stKnown').textContent = counts[4] + counts[5];
   $('stLearn').textContent = counts[1] + counts[2] + counts[3];
@@ -15738,15 +27812,17 @@ function renderNumBack(c){
 function renderFront(c){
   if (c.deck === 'numbers') return renderNumFront(c);
   if (c.deck === 'verbs') return renderVFront(c);
+  if (WDECKS.has(c.deck)) return renderWFront(c);
   const main = c.opt==='B' ? `<div class="f-name">${nameHTML(c.L)}</div>` : `<div class="ar f-glyph">${formGlyph(c.L, c.form)}</div>`;
   front.innerHTML = `<div class="front-main">${main}</div>
     <button class="flipbtn" id="flipBtn" aria-label="Show the answer">${ICON.flip}</button>`;
   $('flipBtn').onclick = () => flip(true);
 }
 function renderBack(c){
-  back.classList.remove('vsolo');
+  back.classList.remove('vsolo', 'wprep');
   if (c.deck === 'numbers') return renderNumBack(c);
   if (c.deck === 'verbs') return renderVBack(c);
+  if (WDECKS.has(c.deck)) return renderWBack(c);
   const cells = FORM_ORDER.map(f => isValid(c.L, f) ? `
     <div class="cell ${f===c.form?'on':''}"><div class="g ar">${formGlyph(c.L,f)}</div><div class="lb">${DB.forms[f].en}<br>${DB.forms[f].ru}</div></div>`
     : `<div class="cell empty"></div>`).join('');
@@ -15779,7 +27855,7 @@ function renderBack(c){
     </div>`;
 }
 back.addEventListener('click', e => {
-  const snd = e.target.closest('.snd, .vrow');
+  const snd = e.target.closest('.snd, .vrow, .prow');
   if (snd && snd.dataset.adir) { playVerb([snd.dataset.adir, snd.dataset.afile], snd.dataset.hal === '1', snd.dataset.text, snd); return; }
   if (snd && snd.dataset.src) { play(snd.dataset.src, snd.dataset.text, snd, +snd.dataset.gap || 500); return; }
   const ab = e.target.closest('.abtn'); if (ab) { answer(ab.dataset.ok==='1'); return; }
@@ -15821,10 +27897,15 @@ function finish(){
   $('sumMiss').innerHTML = sess.bad.map(id => { const c = BYID[id];
     if (c.deck === 'numbers') return `<span class="chip lat">${toArabicDigits(c.n.value)} · ${fmtNum(c.n.value)}</span>`;
     if (c.deck === 'verbs') return `<span class="chip ar">${vChipText(c)}</span>`;
+    if (WDECKS.has(c.deck)) return `<span class="chip ar">${c.w.ar}</span>`;
     return c.opt==='A' ? `<span class="chip ar">${formGlyph(c.L,c.form)}</span>` : `<span class="chip lat">${c.L.name}</span>`; }).join('');
   showScreen('summary');
 }
 function cfgLabel(cfg){
+  if (cfg.deck === 'special') return 'Special words' + ({all:'', q:' · questions', prep:' · with/without/about/have'}[cfg.swgroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
+  if (cfg.deck === 'nouns') return 'Nouns' + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
+  if (cfg.deck === 'time') return 'Time' + ({all:'', day:' · days of the week', word:' · day, month, year…'}[cfg.tgroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
+  if (cfg.deck === 'adj') return 'Adjectives' + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   if (cfg.deck === 'verbs') return 'Verbs · ' + ({all:'all', pronpat:'pronouns + patterns', pron:'pronouns', pat:'patterns', conj:'conjugation'}[cfg.vpart]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   if (cfg.deck === 'numbers') return 'Numbers' + (cfg.ngroup==='all' ? '' : ' ' + NUMDB.groups[cfg.ngroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   const l = {all:'All letters', base:'Alphabet', variant:'Variants', pick:`${cfg.picked.length} letters`}[cfg.letters];
@@ -15935,7 +28016,7 @@ function tableRows(rowsFor, current){
 }
 function renderVBack(c){
   let b1 = '', b2 = '';
-  back.classList.remove('vsolo');
+  back.classList.remove('vsolo', 'wprep');
   if (c.kind === 'pron') {   // pronoun: one centred section (no table), buttons at the bottom
     const p = PRON[c.p];
     back.classList.add('vsolo');
@@ -15991,6 +28072,68 @@ $('vtBack').onclick = () => { stopAudio(); renderHome(); showScreen('home'); };
 $('vtVerb').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { vtVerb = b.dataset.v; renderVTables(); } });
 $('vtMode').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { vtMode = b.dataset.v; renderVTables(); } });
 $('vtBody').addEventListener('click', e => { const r = e.target.closest('.vrow'); if (r) playVerb([r.dataset.adir, r.dataset.afile], r.dataset.hal === '1', r.dataset.text, r); });
+
+/* ================= Special words + nouns ================= */
+/* split a personal form into stem + ending at a letter boundary: مَعِ|ي، مَعَ|كَ، عَ|نِّي، بِدُونِ|نَا، لَدَيْ|كَ، لَدَ|يَّ */
+const PREP_STEM = {lada:'لَدَيْ'};
+const units = s => { const u=[]; for (const ch of s) { if (MARKS.test(ch) && u.length) u[u.length-1]+=ch; else u.push(ch); } return u; };
+function prepSegs(p, form){
+  const st = units(PREP_STEM[p.id] || p.ar), fu = units(form);
+  let k = 0; while (k < st.length && k < fu.length && base(st[k]) === base(fu[k])) k++;
+  if (k >= fu.length) k = fu.length - 1;
+  if (k > 0 && fu[k-1].includes('\u0651') && !(st[k-1]||'').includes('\u0651')) k--;   // عَنْ + نِي → عَ|نِّي (doubled n belongs to the ending)
+  return [['rt', fu.slice(0,k).join('')], ['af', fu.slice(k).join('')]];
+}
+const qMarkAll = ar => ar.split(' / ').map(x => x + '؟').join(' / ');
+function renderWFront(c){
+  const w = c.w, big = c.kind === 'q' ? qMarkAll(w.ar) : w.ar;
+  const lbl = {q:'question word', prep:'preposition', noun:'noun', time: w.grp === 'day' ? 'day of the week' : 'time', adj:'adjective'}[c.kind];
+  front.innerHTML = `<div class="front-main v-front"><div class="lbl">${lbl}</div><div class="big fitme">${big}</div></div>
+    <button class="flipbtn" id="flipBtn" aria-label="Show the answer">${ICON.flip}</button>`;
+  $('flipBtn').onclick = () => flip(true);
+  fitText(front);
+}
+function renderWBack(c){
+  const w = c.w;
+  back.classList.remove('vsolo');
+  back.classList.toggle('wprep', c.kind === 'prep');
+  if (c.kind === 'noun' || c.kind === 'time') {   // one centred section, like the pronoun cards
+    back.classList.add('vsolo');
+    back.innerHTML = `<div class="v-solo">
+        <button class="snd" ${sndAttrs(w.audio, false, w.ar)} aria-label="Play">${ICON.speaker}</button>
+        <div class="lbl">${c.kind === 'noun' ? 'noun' : w.grp === 'day' ? 'day of the week' : 'time'}</div>
+        <div class="ph fitme"><span class="vrt">${w.ar}</span></div>
+        <div class="tl"><b class="nw">${w.lat}</b><span class="sep">|</span><span class="nw">${w.rus}</span></div>
+        <div class="mru">${w.ru}</div><div class="men">${w.en}</div>
+      </div><div class="v-b2 solo">${answerHTML()}</div>`;
+    fitText(back); return;
+  }
+  const b1 = `<div class="w-b1"><div class="lbl">${{q:'question word', prep:'preposition', adj:'adjective'}[c.kind]}</div>
+      <div class="wd fitme">${c.kind === 'q' ? qMarkAll(w.ar) : w.ar}</div>
+      <div class="tl"><b>${w.lat}</b><span class="sep">|</span>${w.rus}</div>
+      <div class="tr">${w.ru} · ${w.en}</div>
+      <button class="snd" ${sndAttrs(w.audio, false, w.ar)} aria-label="Play">${ICON.speaker}</button></div>`;
+  let b2;
+  if (c.kind === 'q') {
+    const x = w.ex;
+    b2 = `<div class="w-ex"><div class="lbl">example</div>
+      <div class="sent fitme">${x.pre}<span class="hw">${x.w}</span>${x.post}</div>
+      <div class="tl"><b>${x.lat}</b></div><div class="tl rs">${x.rus}</div>
+      <div class="tr">${x.ru} · ${x.en}</div>
+      <button class="snd" ${sndAttrs(x.audio, false, x.pre + x.w + x.post)} aria-label="Play the example">${ICON.speaker}</button></div>`;
+  } else if (c.kind === 'adj') {   // comparative + superlative, the أَفْعَل pattern's prefix in green
+    const row = (f, pre, lb) => `<button class="prow arow" ${sndAttrs(f.audio, false, f.ar)}>
+        <span class="pa fitme">${segHTML([['af', pre], ['rt', f.ar.slice(pre.length)]])}</span>
+        <span class="pt"><span class="k">${lb}</span><br><span class="m">${f.ru} · ${f.en}</span><br><span class="t">${f.lat} | ${f.rus}</span></span></button>`;
+    b2 = `<div class="v-tab">${row(w.comp, 'أَ', 'comparative · сравн.')}${row(w.sup, 'الأَ', 'superlative · превосх.')}</div>`;
+  } else {
+    b2 = `<div class="v-tab">${w.forms.map(f => `<button class="prow" ${sndAttrs(f.audio, false, f.ar)}>
+        <span class="pa fitme">${segHTML(prepSegs(w, f.ar))}</span>
+        <span class="pt"><span class="m">${f.ru} · ${f.en}</span><br><span class="t">${f.lat} | ${f.rus}</span></span></button>`).join('')}</div>`;
+  }
+  back.innerHTML = `${b1}<div class="v-b2">${b2}${answerHTML()}</div>`;
+  fitText(back);
+}
 
 renderHome();
 </script>
