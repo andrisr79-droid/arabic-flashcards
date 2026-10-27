@@ -327,7 +327,7 @@
     </div>
     <div class="field" id="fVPart"><label>Cards</label>
       <div class="seg" id="cfgVPart" data-key="vpart">
-        <button data-v="all">All</button><button data-v="pronpat">Pronouns + patterns</button><button data-v="pron">Pronouns</button><button data-v="pat">Patterns</button><button data-v="conj">Conjugation</button>
+        <button data-v="all">All</button><button data-v="pronpat">Pronouns + patterns</button><button data-v="pron">Pronouns</button><button data-v="pat">Patterns</button><button data-v="conj">Conjugation</button><button data-v="read">Verbs</button>
       </div>
     </div>
     <div class="field" id="fVTenses"><label>Tenses</label>
@@ -27638,7 +27638,7 @@ function poolFor(cfg){
     if (c.deck === 'nouns' || c.deck === 'adj') return fOK0;
     if (c.deck === 'time') return (cfg.tgroup === 'all' || c.w.grp === cfg.tgroup) && fOK0;
     if (c.deck === 'verbs') {
-      const part = {all:['pron','pat','prt','conj'], pronpat:['pron','pat','prt'], pron:['pron'], pat:['pat','prt'], conj:['conj']}[cfg.vpart] || [];
+      const part = {all:['pron','pat','prt','conj'], pronpat:['pron','pat','prt'], pron:['pron'], pat:['pat','prt'], conj:['conj'], read:['conj']}[cfg.vpart] || [];
       if (!part.includes(c.kind) || !fOK0) return false;
       if (c.kind === 'pat') return cfg.vtenses.includes(c.t);
       if (c.kind === 'conj') return cfg.vtenses.includes(c.t) && cfg.vverbs.includes(c.v) && cfg.vmodes.includes(c.m);
@@ -27665,12 +27665,12 @@ function renderSetup(){
     seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', Array.isArray(val) ? val.includes(b.dataset.v) : b.dataset.v===String(val)));
   }
   const isNum = cfg.deck === 'numbers', isVerb = cfg.deck === 'verbs', isLet = cfg.deck === 'letters';
-  const conj = isVerb && ['all','conj'].includes(cfg.vpart);
+  const conj = isVerb && ['all','conj','read'].includes(cfg.vpart);
   $('fNum').hidden = !isNum; $('fLetters').hidden = !isLet; $('fTypes').hidden = !isLet;
   $('fSW').hidden = cfg.deck !== 'special';
   $('fTG').hidden = cfg.deck !== 'time';
   $('fVPart').hidden = !isVerb; $('fVTenses').hidden = !isVerb || cfg.vpart === 'pron';
-  $('fVVerbs').hidden = !conj; $('fVModes').hidden = !conj; $('fVDir').hidden = !conj;
+  $('fVVerbs').hidden = !conj; $('fVModes').hidden = !conj; $('fVDir').hidden = !conj || cfg.vpart === 'read';   // "Verbs": always Arabic form → meaning
   $('picker').hidden = !isLet || cfg.letters !== 'pick';
   $('picker').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', cfg.picked.includes(b.dataset.id)));
   const n = poolFor(cfg).length, take = Math.min(n, +cfg.len || n);
@@ -27906,7 +27906,7 @@ function cfgLabel(cfg){
   if (cfg.deck === 'nouns') return 'Nouns' + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   if (cfg.deck === 'time') return 'Time' + ({all:'', day:' · days of the week', word:' · day, month, year…'}[cfg.tgroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   if (cfg.deck === 'adj') return 'Adjectives' + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  if (cfg.deck === 'verbs') return 'Verbs · ' + ({all:'all', pronpat:'pronouns + patterns', pron:'pronouns', pat:'patterns', conj:'conjugation'}[cfg.vpart]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
+  if (cfg.deck === 'verbs') return 'Verbs · ' + ({all:'all', pronpat:'pronouns + patterns', pron:'pronouns', pat:'patterns', conj:'conjugation', read:'verbs (Arabic → meaning)'}[cfg.vpart]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   if (cfg.deck === 'numbers') return 'Numbers' + (cfg.ngroup==='all' ? '' : ' ' + NUMDB.groups[cfg.ngroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
   const l = {all:'All letters', base:'Alphabet', variant:'Variants', pick:`${cfg.picked.length} letters`}[cfg.letters];
   const t = {AB:'', A:', forms', B:', names'}[cfg.types];
@@ -27990,6 +27990,7 @@ function vChipText(c){
 }
 function cardDir(c){
   if (c.kind !== 'conj') return 'produce';
+  if (S.cfg.vpart === 'read') return 'recognise';
   sess.dirs = sess.dirs || {};
   if (!sess.dirs[sess.i]) sess.dirs[sess.i] = S.cfg.vdir === 'mix' ? (Math.random() < .5 ? 'produce' : 'recognise') : S.cfg.vdir;
   return sess.dirs[sess.i];
