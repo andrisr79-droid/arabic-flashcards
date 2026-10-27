@@ -73,6 +73,59 @@ NOUNS = [  # Russian transcription from page 9 of the PDF; voice follows it (-а
   N('matjar', 'مَتْجَر', 'matjar', 'матжар', 'магазин', 'shop'),
 ]
 
+def T(id, ar, lat, rus, ru, en, say=None, grp='day'): return dict(id=id, ar=ar, lat=lat, rus=rus, ru=ru, en=en, say=say or ar, grp=grp)
+TIME = [  # not in the PDFs: Russian in the PDF's style (ث → с, ج → ж, ع → дефис, ة → пауза)
+  T('ahad', 'الأَحَد', 'al-aḥad', 'аль-ахад', 'воскресенье', 'Sunday'),
+  T('ithnayn', 'الإِثْنَيْن', 'al-ithnayn', 'аль-иснайн', 'понедельник', 'Monday', say='اَلْإِثْنَيْن'),
+  T('thulatha', 'الثُّلَاثَاء', 'ath-thulāthāʾ', 'ас-сулясаа', 'вторник', 'Tuesday', say='اَثْثُلَاثَاء'),
+  T('arbia', 'الأَرْبِعَاء', 'al-arbiʿāʾ', 'аль-арби-аа', 'среда', 'Wednesday'),
+  T('khamis', 'الخَمِيس', 'al-khamīs', 'аль-хамис', 'четверг', 'Thursday'),
+  T('jumua', 'الجُمْعَة', 'al-jumʿah', 'аль-жум-а', 'пятница', 'Friday', say='اَلْجُمْعَه'),
+  T('sabt', 'السَّبْت', 'as-sabt', 'ас-сабт', 'суббота', 'Saturday', say='اَسْسَبْت'),
+  T('yawm', 'يَوْم', 'yawm', 'яум', 'день', 'day', grp='word'),
+  T('alyawm', 'اليَوْم', 'al-yawm', 'аль-яум', 'сегодня', 'today', grp='word'),
+  T('ghadan', 'غَدًا', 'ghadan', 'гадан', 'завтра', 'tomorrow', say='غَدَنْ', grp='word'),
+  T('ams', 'أَمْس', 'ams', 'амс', 'вчера', 'yesterday', grp='word'),
+  T('shahr', 'شَهْر', 'shahr', 'шахр', 'месяц', 'month', grp='word'),
+  T('sana', 'سَنَة', 'sanah', 'сана', 'год', 'year', say='سَنَه', grp='word'),
+]
+
+def A(id, base, comp, sup):   # each: (ar, lat, rus, ru, en[, say])
+    mk = lambda f: dict(ar=f[0], lat=f[1], rus=f[2], ru=f[3], en=f[4], say=f[5] if len(f) > 5 else f[0])
+    return dict(id=id, **mk(base), comp=mk(comp), sup=mk(sup))
+ADJS = [  # Russian transcription as in the user's list
+  A('jamil',  ('جَمِيل','jamīl','жамиль','красивый','beautiful'), ('أَجْمَل','ajmal','ажмаль','красивее','more beautiful'), ('الأَجْمَل','al-ajmal','аль-ажмаль','самый красивый','the most beautiful')),
+  A('kabir',  ('كَبِير','kabīr','кабир','большой','big'), ('أَكْبَر','akbar','акбар','больше (размер)','bigger'), ('الأَكْبَر','al-akbar','аль-акбар','самый большой','the biggest')),
+  A('saghir', ('صَغِير','ṣaghīr','сагир','маленький','small'), ('أَصْغَر','aṣghar','асгар','меньше (размер)','smaller'), ('الأَصْغَر','al-aṣghar','аль-асгар','самый маленький','the smallest')),
+  A('ghali',  ('غَالِي','ghālī','галий','дорогой','expensive'), ('أَغْلَى','aghlā','аглаа','дороже','more expensive','أَغْلَا'), ('الأَغْلَى','al-aghlā','аль-аглаа','самый дорогой','the most expensive','اَلْأَغْلَا')),
+  A('rakhis', ('رَخِيص','rakhīṣ','рахис','дешёвый','cheap'), ('أَرْخَص','arkhaṣ','архас','дешевле','cheaper'), ('الأَرْخَص','al-arkhaṣ','аль-архас','самый дешёвый','the cheapest')),
+  A('qarib',  ('قَرِيب','qarīb','кариб','близкий','near, close'), ('أَقْرَب','aqrab','акраб','ближе','nearer'), ('الأَقْرَب','al-aqrab','аль-акраб','самый близкий','the nearest')),
+  A('baid',   ('بَعِيد','baʿīd','баи-ид','далёкий','far'), ('أَبْعَد','abʿad','аба-ад','дальше','farther'), ('الأَبْعَد','al-abʿad','аль-аба-ад','самый далёкий','the farthest')),
+  A('kathir', ('كَثِير','kathīr','касир','много','many, much'), ('أَكْثَر','akthar','аксар','больше (количество)','more'), ('الأَكْثَر','al-akthar','аль-аксар','больше всего','the most')),
+  A('qalil',  ('قَلِيل','qalīl','калил','мало','few, little'), ('أَقَلّ','aqall','акаль','меньше (количество)','less, fewer','أَقَلْل'), ('الأَقَلّ','al-aqall','аль-акаль','меньше всего','the least','اَلْأَقَلْل')),
+  A('jadid',  ('جَدِيد','jadīd','жадид','новый','new'), ('أَجْدَد','ajdad','аждад','новее','newer'), ('الأَجْدَد','al-ajdad','аль-аждад','самый новый','the newest')),
+  A('qadim',  ('قَدِيم','qadīm','кадим','старый','old'), ('أَقْدَم','aqdam','акдам','старее','older'), ('الأَقْدَم','al-aqdam','аль-акдам','самый старый','the oldest')),
+  A('jayyid', ('جَيِّد','jayyid','жаиед','хороший','good','جَيِدْ'), ('أَفْضَل','afḍal','афдаль','лучше','better'), ('الأَفْضَل','al-afḍal','аль-афдаль','самый лучший','the best')),
+]
+
+def FM(id, ar, lat, rus, ru, en, say=None): return dict(id=id, ar=ar, lat=lat, rus=rus, ru=ru, en=en, say=say or ar)
+FAMILY = [  # Глаголы 3.pdf, page 7; Russian transcription as in the PDF
+  FM('insan', 'إِنْسَان', 'insān', 'инсан', 'человек', 'person, human'),
+  FM('rajul', 'رَجُل', 'rajul', 'ражол', 'мужчина', 'man'),
+  FM('imraa', 'اِمْرَأَة', 'imraʾah', 'имра-а', 'женщина', 'woman', say='إِمْرَأَه'),
+  FM('ab', 'أَب / وَالِد', 'ab / wālid', 'а-аб / уалид', 'отец', 'father', say='أَبْ، وَالِدْ'),
+  FM('umm', 'أُمّ / وَالِدَة', 'umm / wālidah', 'омь / уалида', 'мать', 'mother', say='أُمْ، وَالِدَه'),
+  FM('akh', 'أَخ', 'akh', 'ахь', 'брат', 'brother'),
+  FM('ukht', 'أُخْت', 'ukht', 'охить', 'сестра', 'sister'),
+  FM('ibn', 'اِبْن', 'ibn', 'ибин', 'сын', 'son', say='إِبْن'),
+  FM('ibna', 'اِبْنَة', 'ibnah', 'ибна', 'дочь', 'daughter', say='إِبْنَه'),
+  FM('zawj', 'زَوْج', 'zawj', 'зауж', 'муж', 'husband'),
+  FM('zawja', 'زَوْجَة', 'zawjah', 'заужа', 'жена', 'wife', say='زَوْجَه'),
+  FM('bint', 'بِنْت', 'bint', 'бенит', 'девочка', 'girl'),
+  FM('tifl', 'طِفْل', 'ṭifl', 'тофел', 'ребёнок', 'child'),
+  FM('shabb', 'شَابّ', 'shābb', 'ша-аб', 'парень', 'young man', say='شَابْ'),
+]
+
 if __name__ == '__main__':
     for q in QUESTIONS:
         q['audio'] = ['special', f"q-{q['id']}.mp3"]; q['ex']['audio'] = ['special', f"q-{q['id']}-ex.mp3"]
@@ -80,5 +133,9 @@ if __name__ == '__main__':
         p['audio'] = ['special', f"prep-{p['id']}.mp3"]
         for f in p['forms']: f['audio'] = ['special', f"prep-{p['id']}-{f['p']}.mp3"]
     for n in NOUNS: n['audio'] = ['nouns', f"{n['id']}.mp3"]
-    json.dump({'questions': QUESTIONS, 'preps': PREPS, 'nouns': NOUNS}, open('/home/claude/build/words.json', 'w'), ensure_ascii=False, indent=0)
-    print(len(QUESTIONS), 'question words,', len(PREPS), 'prepositions ×', len(PERSONS), 'forms,', len(NOUNS), 'nouns')
+    for t in TIME: t['audio'] = ['time', f"{t['id']}.mp3"]
+    for f in FAMILY: f['audio'] = ['family', f"{f['id']}.mp3"]
+    for a in ADJS:
+        a['audio'] = ['adj', f"{a['id']}.mp3"]; a['comp']['audio'] = ['adj', f"{a['id']}-comp.mp3"]; a['sup']['audio'] = ['adj', f"{a['id']}-sup.mp3"]
+    json.dump({'questions': QUESTIONS, 'preps': PREPS, 'nouns': NOUNS, 'time': TIME, 'adjs': ADJS, 'family': FAMILY}, open('/home/claude/build/words.json', 'w'), ensure_ascii=False, indent=0)
+    print(len(QUESTIONS), 'question words,', len(PREPS), 'prepositions ×', len(PERSONS), 'forms,', len(NOUNS), 'nouns,', len(TIME), 'time words,', len(ADJS), 'adjectives,', len(FAMILY), 'family words')

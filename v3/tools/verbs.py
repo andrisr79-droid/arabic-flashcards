@@ -30,6 +30,8 @@ JUSS = {'ana': (SUKUN, ''), 'anta': (SUKUN, ''), 'anti': (KASRA, 'ي'), 'antum':
         'huwa': (SUKUN, ''), 'hiya': (SUKUN, ''), 'hum': (DAMMA, 'وا'), 'nahnu': (SUKUN, '')}
 SUBJ = {'ana': (FATHA, ''), 'anta': (FATHA, ''), 'anti': (KASRA, 'ي'), 'antum': (DAMMA, 'وا'),
         'huwa': (FATHA, ''), 'hiya': (FATHA, ''), 'hum': (DAMMA, 'وا'), 'nahnu': (FATHA, '')}
+PREFIX_U = {p: x[0] + DAMMA for p, x in PREFIX.items()}   # أُ تُ يُ نُ (forms III, IV)
+def pfx(v, p): return (PREFIX_U if v.get('pfx') == 'u' else PREFIX)[p]
 PARTICLE = {'lam': 'لَمْ', 'la': 'لَا', 'lan': 'لَنْ', 'hal': 'هَلْ', 'sa': 'سَ'}
 
 # ---- regular verbs (no weak letters, no doubled root) ----
@@ -60,6 +62,31 @@ VERBS += [
   dict(id='qal', past='قَال', past_short='قُل', pres='قُول', pres_short='قُل', en=('say', 'said', 'says'), ru=('сказать', ('сказал', 'сказала', 'сказали'),
        ('говорю', 'говоришь', 'говорите', 'говорит', 'говорят', 'говорим'), ('скажу', 'скажешь', 'скажете', 'скажет', 'скажут', 'скажем'))),
 ]
+
+# Глаголы 3.pdf (2026-10-27) — shown only in the "Verbs" sub-section and the verb tables (readOnly).
+# pfx='u': forms III/IV take a damma prefix (أُ تُ يُ نُ); juss_v: vowel of the jussive with no suffix (geminate أحبّ → لَمْ يُحِبَّ).
+VERBS += [
+  dict(id='intazar', ro=True, past='اِنْتَظَر', pres='نْتَظِر', en=('wait', 'waited', 'waits'), ru=('ждать', ('ждал', 'ждала', 'ждали'),
+       ('жду', 'ждёшь', 'ждёте', 'ждёт', 'ждут', 'ждём'), ('буду ждать', 'будешь ждать', 'будете ждать', 'будет ждать', 'будут ждать', 'будем ждать'))),
+  dict(id='fatah', ro=True, past='فَتَح', pres='فْتَح', en=('open', 'opened', 'opens'), ru=('открывать', ('открыл', 'открыла', 'открыли'),
+       ('открываю', 'открываешь', 'открываете', 'открывает', 'открывают', 'открываем'), ('открою', 'откроешь', 'откроете', 'откроет', 'откроют', 'откроем'))),
+  dict(id='dakhal', ro=True, past='دَخَل', pres='دْخُل', en=('enter', 'entered', 'enters'), ru=('входить', ('вошёл', 'вошла', 'вошли'),
+       ('вхожу', 'входишь', 'входите', 'входит', 'входят', 'входим'), ('войду', 'войдёшь', 'войдёте', 'войдёт', 'войдут', 'войдём'))),
+  dict(id='kharaj', ro=True, past='خَرَج', pres='خْرُج', en=('go out', 'went out', 'goes out'), ru=('выходить', ('вышел', 'вышла', 'вышли'),
+       ('выхожу', 'выходишь', 'выходите', 'выходит', 'выходят', 'выходим'), ('выйду', 'выйдешь', 'выйдете', 'выйдет', 'выйдут', 'выйдем'))),
+  dict(id='ahabb', ro=True, pfx='u', past='أَحَبّ', past_short='أَحْبَب', pres='حِبّ', juss_v=FATHA, en=('love', 'loved', 'loves'), ru=('любить', ('любил', 'любила', 'любили'),
+       ('люблю', 'любишь', 'любите', 'любит', 'любят', 'любим'), ('буду любить', 'будешь любить', 'будете любить', 'будет любить', 'будут любить', 'будем любить'))),
+  dict(id='amil', ro=True, past='عَمِل', pres='عْمَل', en=('work', 'worked', 'works'), ru=('работать', ('работал', 'работала', 'работали'),
+       ('работаю', 'работаешь', 'работаете', 'работает', 'работают', 'работаем'), ('буду работать', 'будешь работать', 'будете работать', 'будет работать', 'будут работать', 'будем работать'))),
+  dict(id='faal', ro=True, past='فَعَل', pres='فْعَل', en=('do', 'did', 'does'), ru=('делать', ('делал', 'делала', 'делали'),
+       ('делаю', 'делаешь', 'делаете', 'делает', 'делают', 'делаем'), ('сделаю', 'сделаешь', 'сделаете', 'сделает', 'сделают', 'сделаем'))),
+  dict(id='arad', ro=True, pfx='u', past='أَرَاد', past_short='أَرَد', pres='رِيد', pres_short='رِد', en=('want', 'wanted', 'wants'), ru=('хотеть', ('хотел', 'хотела', 'хотели'),
+       ('хочу', 'хочешь', 'хотите', 'хочет', 'хотят', 'хотим'), ('захочу', 'захочешь', 'захотите', 'захочет', 'захотят', 'захотим'))),
+  dict(id='maras', ro=True, pfx='u', past='مَارَس', pres='مَارِس', en=('practise', 'practised', 'practises'), ru=('заниматься', ('занимался', 'занималась', 'занимались'),
+       ('занимаюсь', 'занимаешься', 'занимаетесь', 'занимается', 'занимаются', 'занимаемся'), ('буду заниматься', 'будешь заниматься', 'будете заниматься', 'будет заниматься', 'будут заниматься', 'будем заниматься'))),
+  dict(id='saad', ro=True, pfx='u', past='سَاعَد', pres='سَاعِد', en=('help', 'helped', 'helps'), ru=('помогать', ('помогал', 'помогала', 'помогали'),
+       ('помогаю', 'помогаешь', 'помогаете', 'помогает', 'помогают', 'помогаем'), ('помогу', 'поможешь', 'поможете', 'поможет', 'помогут', 'поможем'))),
+]
 # Russian transcription from Глаголы 2.pdf (past and present tables, persons in the usual order).
 # Obvious typos in the PDF corrected: akal nahnu "наколко"→"наколо", sharib huwa "шараба"→"шареба" (Arabic شَرِبَ),
 # jalas anta/anti "тажлосо/тажлосин"→"тажлисо/тажлисин" (like the other present forms).
@@ -72,8 +99,22 @@ PDF2_RUS = {
   'waqaf':    ('уакафто уакафта уакафти уакафтом уакафа уакафат уакафо уакафна', 'акефо такефо такефин такефон якефо такефо якефон накефо'),
   'jalas':    ('жаласто жаласта жаласти жаластом жаласа жаласат жаласо жаласна', 'ажлисо тажлисо тажлисин тажлисон яжлисо тажлисо яжлисон нажлисо'),
   'qal':      ('коль-то коль-та коль-ти коль-том ка-ла каль-ат каль-о коль-на', 'ако-ло тако-ло тако-лин тако-лон яко-ло тако-ло яко-лон нако-ло'),
+  # Глаголы 3.pdf. Typos corrected: intazar antum "иназартом"→"интазартом", kharaj nahnu "нахрохо"→"нахрожо",
+  # ahabb anti "тахобин"→"тахибин", amil huwa/hiya "амала/амалат"→"амила/амилат" (Arabic عَمِلَ, like амилто/амило).
+  'intazar':  ('интазарто интазарта интазарти интазартом инта-зара интазарат интазаро интазарна', 'антазиро тантазиро тантазирин тантазирон янтазиро тантазиро янтазирон нантазиро'),
+  'fatah':    ('фатахто фатахта фатахти фатахтом фата-ха фатахат фатахо фатахна', 'афтахо тафтахо тафтахин тафтахон яфтахо тафтахо яфтахон нафтахо'),
+  'dakhal':   ('дахалто дахалта дахалти дахалтом да-хала дахалат дахало дахална', 'адхоло тадхоло тадхолин тадхолон ядхоло тадхоло ядхолон надхоло'),
+  'kharaj':   ('харажто харажта харажти харажтом ха-ража харажат харажо харажна', 'ахрожо тахрожо тахрожин тахрожон яхрожо тахрожо яхрожон нахрожо'),
+  'ahabb':    ('ахбабто ахбабта ахбабти ахбабтом ахаба ахабат ахабо ахбабна', 'ахибо тахибо тахибин тахибон яхибо тахибо яхибон нахибо'),
+  'amil':     ('амилто амилта амилти амилтом амила амилат амило амилна', 'а-амало та-мало та-малин та-малон я-мало та-мало я-малон на-мало'),
+  'faal':     ('фа-алто фа-алта фа-алти фа-алтом фа-ала фа-алат фа-ало фа-ална', 'афало тафало тафалин тафалон я-фало та-фало я-фалон на-фало'),
+  'arad':     ('арадто арадта арадти арадтом ара-да арадат арадо арадна', 'оридо торидо торидин торидон юридо торидо юридон норидо'),
+  'maras':    ('мара-сто мара-ста мара-сти мара-стом ма-ра-са мара-сат мара-со мара-сна', 'омари-со томари-со томари-син томари-сон юмари-со томари-со юмари-сон номари-со'),
+  'saad':     ('са-адто са-адта са-адти са-адтом са-ада са-адат са-адо са-адна', 'осаидо тосаидо тосаидин тосаидон юсаидо тосаидо юсаидон носаидо'),
 }
-def _juss(x): return x[:-2] + 'и' if x.endswith('ин') else x[:-2] + 'о' if x.endswith('он') else x[:-1] if x.endswith('о') else x
+def _juss(x):
+    y = x[:-2] + 'и' if x.endswith('ин') else x[:-2] + 'о' if x.endswith('он') else x[:-1] if x.endswith('о') else x
+    return re.sub(r'-(\w)$', r'\1', y)   # юмари-со → юмарис (no hyphen before a lone final consonant)
 def _subj(x): return x[:-2] + 'и' if x.endswith('ин') else x[:-2] + 'о' if x.endswith('он') else x[:-1] + 'а' if x.endswith('о') else x
 def pdf2_verb_rus(vid, tense, mode, i):
     past, pres = (t.split() for t in PDF2_RUS[vid])
@@ -118,7 +159,7 @@ def translit_word(w, rus):
             continue
         if ch == 'آ':
             out.append(['' if (first or rus) else 'ʾ', 'а' if rus else 'ā']); continue
-        cons = '' if (first and ch in 'أإ') else (RUS if rus else LAT)[ch]
+        cons = '' if (first and ch in 'أإا') else (RUS if rus else LAT)[ch]
         if SHADDA in mk: cons = cons * 2
         v = (VRUS if rus else VLAT).get(vowel, '') if vowel else ''
         if rus:
@@ -146,6 +187,7 @@ def tts_text(phrase):
     t = re.sub('(.)' + '([' + FATHA + KASRA + DAMMA + '])' + SHADDA, lambda m: m.group(1) + SUKUN + m.group(1) + m.group(2), t)
     t = re.sub('(.)' + SHADDA + '([' + FATHA + KASRA + DAMMA + '])', lambda m: m.group(1) + SUKUN + m.group(1) + m.group(2), t)
     t = t.replace('سَيَ', 'سَـيَ')   # future ya-: otherwise read as sa-i-a
+    t = t.replace('سَيُ', 'سَـيُ')   # same for yu- (forms III/IV)
     return t
 
 # ---- building forms as coloured segments: pt = particle, af = affix, rt = root ----
@@ -164,14 +206,15 @@ def _verb_segments(v, tense, mode, p):
         return [('rt', stem + vw), ('af', suf)]
     if tense == 'past' and mode == 'neg':
         vw, suf = JUSS[p]; stem = v.get('pres_short') if (not suf and v.get('pres_short')) else v['pres']
-        return [('pt', PARTICLE['lam'] + ' '), ('af', PREFIX[p]), ('rt', stem + vw), ('af', suf)]
+        if not suf and v.get('juss_v'): vw = v['juss_v']
+        return [('pt', PARTICLE['lam'] + ' '), ('af', pfx(v, p)), ('rt', stem + vw), ('af', suf)]
     if tense == 'pres':
-        vw, suf = INDIC[p]; segs = [('af', PREFIX[p]), ('rt', v['pres'] + vw), ('af', suf)]
+        vw, suf = INDIC[p]; segs = [('af', pfx(v, p)), ('rt', v['pres'] + vw), ('af', suf)]
         return ([('pt', PARTICLE['la'] + ' ')] if mode == 'neg' else []) + segs
     if tense == 'fut' and mode in ('pos', 'q'):
-        vw, suf = INDIC[p]; return [('af', PARTICLE['sa'] + PREFIX[p]), ('rt', v['pres'] + vw), ('af', suf)]
+        vw, suf = INDIC[p]; return [('af', PARTICLE['sa'] + pfx(v, p)), ('rt', v['pres'] + vw), ('af', suf)]
     if tense == 'fut' and mode == 'neg':
-        vw, suf = SUBJ[p]; return [('pt', PARTICLE['lan'] + ' '), ('af', PREFIX[p]), ('rt', v['pres'] + vw), ('af', suf)]
+        vw, suf = SUBJ[p]; return [('pt', PARTICLE['lan'] + ' '), ('af', pfx(v, p)), ('rt', v['pres'] + vw), ('af', suf)]
 
 def segs_text(segs): return ''.join(t for _, t in segs)
 
@@ -266,10 +309,10 @@ def build():
     verbs_out = []
     for v in VERBS:
         forms = {t: {m: {p: form_record(v, t, m, p) for p in PERSONS} for m in MODES} for t in TENSES}
-        dict_form = v['past'] + FATHA + ' – ' + 'يَ' + v['pres'] + DAMMA
-        verbs_out.append({'id': v['id'], 'dict': dict_form, 'dictLat': translit(v['past'] + FATHA, False) + ' – ' + translit('يَ' + v['pres'] + DAMMA, False),
-                          'dictRus': translit(v['past'] + FATHA, True) + ' – ' + translit('يَ' + v['pres'] + DAMMA, True),
-                          'en': 'to ' + v['en'][0], 'ru': v['ru'][0], 'forms': forms})
+        ya = pfx(v, 'huwa'); dict_form = v['past'] + FATHA + ' – ' + ya + v['pres'] + DAMMA
+        verbs_out.append({'id': v['id'], 'dict': dict_form, 'dictLat': translit(v['past'] + FATHA, False) + ' – ' + translit(ya + v['pres'] + DAMMA, False),
+                          'dictRus': translit(v['past'] + FATHA, True) + ' – ' + translit(ya + v['pres'] + DAMMA, True),
+                          'en': 'to ' + v['en'][0], 'ru': v['ru'][0], 'forms': forms, **({'readOnly': True} if v.get('ro') else {})})
     pron = [{'id': p, 'ar': PRONOUN[p][0], 'lat': PRONOUN[p][1], 'rus': PRONOUN[p][2], 'ru': PRONOUN[p][3], 'en': PRONOUN[p][4],
              'audio': ['verbs/common', f'pron-{p}.mp3'], 'say': PRONOUN[p][0]} for p in PERSONS]
     pats = {t: {p: pattern(t, p) for p in PERSONS} for t in TENSES}

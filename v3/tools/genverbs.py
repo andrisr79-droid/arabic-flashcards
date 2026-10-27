@@ -1,4 +1,4 @@
-# usage: python3 genverbs.py <miro|dii> <male|female> [verb ids and/or 'words', comma-separated]
+# usage: python3 genverbs.py <miro|dii> <male|female> [verb ids and/or 'words' (all) / 'words2' (time+adjectives) / 'family', comma-separated]
 # generates v3/audio/<dir>/<male|female>/<file> for every verb phrase, pronoun and هل
 import json, sys, os, subprocess, numpy as np, soundfile as sf, sherpa_onnx
 d=json.load(open('/home/claude/build/verbs.json'))
@@ -13,11 +13,14 @@ for v in d['verbs']:
 if not only:
   for pr in d['pronouns']: jobs.append((pr['audio'][0], pr['audio'][1], pr['say']))
   jobs.append((d['halAudio'][0], d['halAudio'][1], 'هَلْ'))
-if not only or 'words' in only:   # special words + nouns (words.json)
+if not only or 'words' in only or 'words2' in only or 'family' in only:   # special words + nouns (words.json)
   w=json.load(open('/home/claude/build/words.json'))
+  if only and 'words2' in only: w = {**w, 'questions': [], 'preps': [], 'nouns': [], 'family': []}   # only time + adjectives
+  if only and 'family' in only and 'words' not in only: w = {**w, 'questions': [], 'preps': [], 'nouns': [], 'time': [], 'adjs': []}
   for q in w['questions']: jobs += [(*q['audio'], q['say']), (*q['ex']['audio'], q['ex']['say'])]
   for p in w['preps']: jobs += [(*p['audio'], p['say'])] + [(*f['audio'], f['say']) for f in p['forms']]
-  for n in w['nouns']: jobs.append((*n['audio'], n['say']))
+  for n in w['nouns'] + w['time'] + w.get('family', []): jobs.append((*n['audio'], n['say']))
+  for a in w['adjs']: jobs += [(*a['audio'], a['say']), (*a['comp']['audio'], a['comp']['say']), (*a['sup']['audio'], a['sup']['say'])]
 voice, gender = sys.argv[1], sys.argv[2]
 dd=f'/home/claude/tts/vits-piper-ar_JO-SA_{voice}-high/'
 tts=sherpa_onnx.OfflineTts(sherpa_onnx.OfflineTtsConfig(model=sherpa_onnx.OfflineTtsModelConfig(vits=sherpa_onnx.OfflineTtsVitsModelConfig(
