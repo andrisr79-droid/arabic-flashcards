@@ -60,10 +60,12 @@
   .btn.small{padding:6px 10px;font-size:13px}
   .linkbtn{background:none;border:0;padding:4px 0;color:var(--ink-soft);text-decoration:underline;cursor:pointer;font-size:13px}
   h1{font-size:20px;margin:4px 0 0;text-align:center}
-  #home{position:relative} #home > h1{padding:0 64px}
-  .langsw{position:absolute;top:0;right:0;display:flex;border:1px solid var(--border-strong);border-radius:999px;overflow:hidden}
-  .langsw button{border:0;background:var(--surface);color:var(--ink-soft);font:600 11px/1 var(--ui);letter-spacing:.04em;padding:6px 8px;cursor:pointer}
-  .langsw button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  #home{position:relative} #home > h1{padding:0 68px}
+  .langsw{position:absolute;top:2px;right:0;display:flex;gap:6px}
+  .langsw button{border:0;background:none;padding:3px;border-radius:6px;cursor:pointer;line-height:0;opacity:.45;filter:saturate(.6);transition:opacity .15s,filter .15s}
+  .langsw button svg{width:26px;height:18px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.18)}
+  .langsw button:hover{opacity:.8}
+  .langsw button[aria-pressed="true"]{opacity:1;filter:none;box-shadow:0 0 0 2px var(--ink)}
   h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:0 0 8px;font-weight:600}
   .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
   .muted{color:var(--ink-soft);font-size:13px}
@@ -300,7 +302,7 @@
 
 <!-- ============ HOME ============ -->
 <main class="wrap" id="home">
-  <div class="langsw" id="langSw" role="group" aria-label="Interface language"><button data-l="en">EN</button><button data-l="ru">RU</button></div>
+  <div class="langsw" id="langSw" role="group" aria-label="Interface language"><button data-l="en" title="English" aria-label="English"><svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><clipPath id="ukS"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="ukT"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#ukS)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#ukT)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg></button><button data-l="ru" title="Русский" aria-label="Русский"><svg viewBox="0 0 9 6" preserveAspectRatio="none" aria-hidden="true"><rect width="9" height="2" fill="#fff"/><rect y="2" width="9" height="2" fill="#0039A6"/><rect y="4" width="9" height="2" fill="#D52B1E"/></svg></button></div>
   <h1 data-i18n>Arabic Flashcards</h1>
 
   <section class="panel" aria-labelledby="h-progress">
