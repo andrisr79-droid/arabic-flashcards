@@ -60,6 +60,10 @@
   .btn.small{padding:6px 10px;font-size:13px}
   .linkbtn{background:none;border:0;padding:4px 0;color:var(--ink-soft);text-decoration:underline;cursor:pointer;font-size:13px}
   h1{font-size:20px;margin:4px 0 0;text-align:center}
+  #home{position:relative} #home > h1{padding:0 64px}
+  .langsw{position:absolute;top:0;right:0;display:flex;border:1px solid var(--border-strong);border-radius:999px;overflow:hidden}
+  .langsw button{border:0;background:var(--surface);color:var(--ink-soft);font:600 11px/1 var(--ui);letter-spacing:.04em;padding:6px 8px;cursor:pointer}
+  .langsw button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
   h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:0 0 8px;font-weight:600}
   .panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
   .muted{color:var(--ink-soft);font-size:13px}
@@ -296,107 +300,108 @@
 
 <!-- ============ HOME ============ -->
 <main class="wrap" id="home">
-  <h1>Arabic Flashcards</h1>
+  <div class="langsw" id="langSw" role="group" aria-label="Interface language"><button data-l="en">EN</button><button data-l="ru">RU</button></div>
+  <h1 data-i18n>Arabic Flashcards</h1>
 
   <section class="panel" aria-labelledby="h-progress">
-    <h2 id="h-progress">Your progress · <span id="progDeck">letters</span></h2>
+    <h2 id="h-progress"><span data-i18n>Your progress</span> · <span id="progDeck">letters</span></h2>
     <div class="stats">
-      <div class="stat"><b id="stKnown">0</b><span>known</span></div>
-      <div class="stat"><b id="stLearn">0</b><span>still learning</span></div>
-      <div class="stat"><b id="stNew">0</b><span>new</span></div>
+      <div class="stat"><b id="stKnown">0</b><span data-i18n>known</span></div>
+      <div class="stat"><b id="stLearn">0</b><span data-i18n>still learning</span></div>
+      <div class="stat"><b id="stNew">0</b><span data-i18n>new</span></div>
     </div>
     <div class="boxbar" id="boxbar"></div>
     <div class="legend" id="legend"></div>
   </section>
 
   <section class="panel" aria-labelledby="h-setup">
-    <h2 id="h-setup">New session</h2>
-    <div class="field"><label>Deck</label>
+    <h2 id="h-setup" data-i18n>New session</h2>
+    <div class="field"><label data-i18n>Deck</label>
       <div class="seg" id="cfgDeck" data-key="deck">
-        <button data-v="letters">Letters</button><button data-v="numbers">Numbers</button><button data-v="verbs">Verbs</button><button data-v="special">Special words</button><button data-v="nouns">Nouns</button><button data-v="time">Time</button><button data-v="adj">Adjectives</button>
+        <button data-v="letters" data-i18n>Letters</button><button data-v="numbers" data-i18n>Numbers</button><button data-v="verbs" data-i18n>Verbs</button><button data-v="special" data-i18n>Special words</button><button data-v="nouns" data-i18n>Nouns</button><button data-v="time" data-i18n>Time</button><button data-v="adj" data-i18n>Adjectives</button>
       </div>
     </div>
-    <div class="field" id="fNum"><label>Numbers</label>
+    <div class="field" id="fNum"><label data-i18n>Numbers</label>
       <div class="seg" id="cfgNum" data-key="ngroup">
-        <button data-v="all">All</button><button data-v="units">0–10</button><button data-v="teens">11–19</button><button data-v="tens">20–90</button><button data-v="hundreds">100–900</button><button data-v="big">1000+</button>
+        <button data-v="all" data-i18n>All</button><button data-v="units">0–10</button><button data-v="teens">11–19</button><button data-v="tens">20–90</button><button data-v="hundreds">100–900</button><button data-v="big">1000+</button>
       </div>
     </div>
-    <div class="field" id="fSW"><label>Words</label>
+    <div class="field" id="fSW"><label data-i18n>Words</label>
       <div class="seg" id="cfgSW" data-key="swgroup">
-        <button data-v="all">All</button><button data-v="q">Question words</button><button data-v="prep">With · without · about · have</button>
+        <button data-v="all" data-i18n>All</button><button data-v="q" data-i18n>Question words</button><button data-v="prep" data-i18n>With · without · about · have</button>
       </div>
     </div>
-    <div class="field" id="fTG"><label>Words</label>
+    <div class="field" id="fTG"><label data-i18n>Words</label>
       <div class="seg" id="cfgTG" data-key="tgroup">
-        <button data-v="all">All</button><button data-v="day">Days of the week</button><button data-v="word">Day · month · year …</button>
+        <button data-v="all" data-i18n>All</button><button data-v="day" data-i18n>Days of the week</button><button data-v="word" data-i18n>Day · month · year …</button>
       </div>
     </div>
-    <div class="field" id="fVPart"><label>Cards</label>
+    <div class="field" id="fVPart"><label data-i18n>Cards</label>
       <div class="seg" id="cfgVPart" data-key="vpart">
-        <button data-v="all">All</button><button data-v="pronpat">Pronouns + patterns</button><button data-v="pron">Pronouns</button><button data-v="pat">Patterns</button><button data-v="conj">Conjugation</button><button data-v="read">Verbs</button>
+        <button data-v="all" data-i18n>All</button><button data-v="pronpat" data-i18n>Pronouns + patterns</button><button data-v="pron" data-i18n>Pronouns</button><button data-v="pat" data-i18n>Patterns</button><button data-v="conj" data-i18n>Conjugation</button><button data-v="read" data-i18n>Verbs</button>
       </div>
     </div>
-    <div class="field" id="fVTenses"><label>Tenses</label>
+    <div class="field" id="fVTenses"><label data-i18n>Tenses</label>
       <div class="seg multi" id="cfgVTenses" data-key="vtenses">
-        <button data-v="past">Past</button><button data-v="pres">Present</button><button data-v="fut">Future</button>
+        <button data-v="past" data-i18n>Past</button><button data-v="pres" data-i18n>Present</button><button data-v="fut" data-i18n>Future</button>
       </div>
     </div>
-    <div class="field" id="fVVerbs"><label>Verbs</label>
+    <div class="field" id="fVVerbs"><label data-i18n>Verbs</label>
       <div class="seg multi vverbs" id="cfgVVerbs" data-key="vverbs"></div>
     </div>
-    <div class="field" id="fVModes"><label>Forms</label>
+    <div class="field" id="fVModes"><label data-i18n>Forms</label>
       <div class="seg multi" id="cfgVModes" data-key="vmodes">
-        <button data-v="pos">+ affirmative</button><button data-v="neg">− negative</button><button data-v="q">? question</button>
+        <button data-v="pos" data-i18n>+ affirmative</button><button data-v="neg" data-i18n>− negative</button><button data-v="q" data-i18n>? question</button>
       </div>
     </div>
-    <div class="field" id="fVDir"><label>Conjugation cards show</label>
+    <div class="field" id="fVDir"><label data-i18n>Conjugation cards show</label>
       <div class="seg" id="cfgVDir" data-key="vdir">
-        <button data-v="mix">Mixed</button><button data-v="produce">Task → form</button><button data-v="recognise">Form → meaning</button>
+        <button data-v="mix" data-i18n>Mixed</button><button data-v="produce" data-i18n>Task → form</button><button data-v="recognise" data-i18n>Form → meaning</button>
       </div>
     </div>
-    <div class="field" id="fLetters"><label>Letters</label>
+    <div class="field" id="fLetters"><label data-i18n>Letters</label>
       <div class="seg" id="cfgLetters" data-key="letters">
-        <button data-v="all">All</button><button data-v="base">Alphabet</button><button data-v="variant">ء ة ى لا</button><button data-v="pick">Choose…</button>
+        <button data-v="all" data-i18n>All</button><button data-v="base" data-i18n>Alphabet</button><button data-v="variant">ء ة ى لا</button><button data-v="pick" data-i18n>Choose…</button>
       </div>
       <div class="picker" id="picker" hidden></div>
     </div>
-    <div class="field" id="fTypes"><label>Cards</label>
+    <div class="field" id="fTypes"><label data-i18n>Cards</label>
       <div class="seg" id="cfgTypes" data-key="types">
-        <button data-v="AB">Forms + names</button><button data-v="A">Letter forms</button><button data-v="B">Letter names</button>
+        <button data-v="AB" data-i18n>Forms + names</button><button data-v="A" data-i18n>Letter forms</button><button data-v="B" data-i18n>Letter names</button>
       </div>
     </div>
-    <div class="field"><label>Focus</label>
+    <div class="field"><label data-i18n>Focus</label>
       <div class="seg" id="cfgFocus" data-key="focus">
-        <button data-v="mix">Smart mix</button><button data-v="learn">Still learning</button><button data-v="new">New only</button>
+        <button data-v="mix" data-i18n>Smart mix</button><button data-v="learn" data-i18n>Still learning</button><button data-v="new" data-i18n>New only</button>
       </div>
     </div>
-    <div class="field"><label>Length</label>
+    <div class="field"><label data-i18n>Length</label>
       <div class="seg" id="cfgLen" data-key="len">
-        <button data-v="10">10</button><button data-v="20">20</button><button data-v="40">40</button><button data-v="0">All</button>
+        <button data-v="10">10</button><button data-v="20">20</button><button data-v="40">40</button><button data-v="0" data-i18n>All</button>
       </div>
     </div>
-    <div class="field"><label>Pronunciation</label>
+    <div class="field"><label data-i18n>Pronunciation</label>
       <div class="seg" id="cfgVoice" data-key="voice">
-        <button data-v="both">Male + female</button><button data-v="male">Male</button><button data-v="female">Female</button>
+        <button data-v="both" data-i18n>Male + female</button><button data-v="male" data-i18n>Male</button><button data-v="female" data-i18n>Female</button>
       </div>
     </div>
     <div class="startrow">
       <span class="muted" id="avail"></span>
-      <button class="btn primary" id="startBtn">Start</button>
+      <button class="btn primary" id="startBtn" data-i18n>Start</button>
     </div>
   </section>
 
   <section class="panel" aria-labelledby="h-hist" id="histPanel">
-    <h2 id="h-hist">Recent sessions</h2>
+    <h2 id="h-hist" data-i18n>Recent sessions</h2>
     <ul class="hist" id="hist"></ul>
   </section>
 
   <div class="tools">
-    <button class="linkbtn" id="ovBtn">Letter overview</button>
-    <button class="linkbtn" id="vtBtn">Verb tables</button>
-    <button class="linkbtn" id="exportBtn">Save backup</button>
-    <button class="linkbtn" id="importBtn">Restore backup</button>
-    <button class="linkbtn" id="resetBtn">Reset progress</button>
+    <button class="linkbtn" id="ovBtn" data-i18n>Letter overview</button>
+    <button class="linkbtn" id="vtBtn" data-i18n>Verb tables</button>
+    <button class="linkbtn" id="exportBtn" data-i18n>Save backup</button>
+    <button class="linkbtn" id="importBtn" data-i18n>Restore backup</button>
+    <button class="linkbtn" id="resetBtn" data-i18n>Reset progress</button>
     <input type="file" id="importFile" accept="application/json,.json" hidden>
   </div>
   <p class="muted" style="text-align:center;margin:0" id="storeNote"></p>
@@ -405,7 +410,7 @@
 <!-- ============ SESSION ============ -->
 <main id="session" hidden>
   <div class="sbar">
-    <button class="btn small" id="endBtn">End</button>
+    <button class="btn small" id="endBtn" data-i18n>End</button>
     <div class="prog"><div class="track"><div class="fill" id="pfill"></div></div><div class="num" id="pnum"></div></div>
     <div class="tally"><span class="h" id="tH"></span><span class="s" id="tS"></span></div>
   </div>
@@ -421,7 +426,7 @@
 
 <!-- ============ SUMMARY ============ -->
 <main class="wrap" id="summary" hidden>
-  <h1>Session complete</h1>
+  <h1 data-i18n>Session complete</h1>
   <section class="panel">
     <div class="big">
       <div><b id="sumOk">0</b><span class="muted" id="sumOkL"></span></div>
@@ -429,34 +434,34 @@
     </div>
   </section>
   <section class="panel" id="sumMissPanel">
-    <h2>Still to learn</h2>
+    <h2 data-i18n>Still to learn</h2>
     <div class="chips" id="sumMiss"></div>
   </section>
   <div class="startrow" style="justify-content:center;gap:10px;flex-wrap:wrap">
-    <button class="btn primary" id="repeatBtn">Repeat my mistakes</button>
-    <button class="btn" id="homeBtn">Home</button>
+    <button class="btn primary" id="repeatBtn" data-i18n>Repeat my mistakes</button>
+    <button class="btn" id="homeBtn" data-i18n>Home</button>
   </div>
 </main>
 
 <!-- ============ OVERVIEW ============ -->
 <main class="wrap" id="overview" hidden>
-  <h1>Letter overview</h1>
-  <p class="muted" style="text-align:center;margin:0">Each bar is one form (isolated, initial, medial, final); the dot is the name card.</p>
+  <h1 data-i18n>Letter overview</h1>
+  <p class="muted" style="text-align:center;margin:0" data-i18n>Each bar is one form (isolated, initial, medial, final); the dot is the name card.</p>
   <div class="legend" id="legend2" style="justify-content:center"></div>
   <div class="ov" id="ov"></div>
-  <div style="text-align:center"><button class="btn" id="ovBack">Home</button></div>
+  <div style="text-align:center"><button class="btn" id="ovBack" data-i18n>Home</button></div>
 </main>
 
 <!-- ============ VERB TABLES ============ -->
 <main class="wrap" id="vtables" hidden>
-  <h1>Verb tables</h1>
+  <h1 data-i18n>Verb tables</h1>
   <div class="seg" id="vtVerb" style="justify-content:center"></div>
   <div class="seg" id="vtMode" style="justify-content:center">
-    <button data-v="pos" aria-pressed="true">+ affirmative</button><button data-v="neg">− negative</button><button data-v="q">? question</button>
+    <button data-v="pos" aria-pressed="true" data-i18n>+ affirmative</button><button data-v="neg" data-i18n>− negative</button><button data-v="q" data-i18n>? question</button>
   </div>
   <p class="muted" style="text-align:center;margin:0" id="vtMean"></p>
   <div id="vtBody" style="display:flex;flex-direction:column;gap:10px"></div>
-  <div style="text-align:center"><button class="btn" id="vtBack">Home</button></div>
+  <div style="text-align:center"><button class="btn" id="vtBack" data-i18n>Home</button></div>
 </main>
 
 <div class="toast" id="toast" hidden></div>
@@ -27600,7 +27605,7 @@ const numKey = (n, f) => f.g ? `${n.id}-${f.g}` : n.id;
 /* ---------- Storage (this browser only) ---------- */
 const KEY = 'arabicFlashcards.v3', OLD_KEY = 'arabicLetterCards.v2';   // v3 keeps its own progress; v2 progress is copied the first time
 const DEFAULT_CFG = {deck:'letters', ngroup:'all', letters:'all', picked:[], types:'AB', focus:'mix', len:'20', voice:'both',
-  vpart:'all', vtenses:['past','pres','fut'], vverbs:VERBDB.verbs.map(v => v.id), vmodes:['pos'], vdir:'mix', swgroup:'all', tgroup:'all'};
+  vpart:'all', vtenses:['past','pres','fut'], vverbs:VERBDB.verbs.map(v => v.id), vmodes:['pos'], vdir:'mix', swgroup:'all', tgroup:'all', lang:'en'};
 let storageOK = true;
 function load(){
   try {
@@ -27680,8 +27685,9 @@ function renderSetup(){
   $('picker').hidden = !isLet || cfg.letters !== 'pick';
   $('picker').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', cfg.picked.includes(b.dataset.id)));
   const n = poolFor(cfg).length, take = Math.min(n, +cfg.len || n);
-  $('avail').textContent = n ? `${n} cards match` : (cfg.focus==='learn' ? 'No cards in “still learning” yet' : cfg.focus==='new' ? 'No new cards left here' : (isNum ? 'No cards here' : 'Choose at least one letter'));
-  $('startBtn').textContent = n ? `Start · ${take} cards` : 'Start';
+  $('avail').textContent = n ? (isRU() ? `Подходит: ${n} ${ruPlural(n,'карточка','карточки','карточек')}` : `${n} cards match`)
+    : t(cfg.focus==='learn' ? 'No cards in “still learning” yet' : cfg.focus==='new' ? 'No new cards left here' : (isNum ? 'No cards here' : 'Choose at least one letter'));
+  $('startBtn').textContent = n ? (isRU() ? `Начать · ${take}` : `Start · ${take} cards`) : t('Start');
   $('startBtn').disabled = !n;
 }
 document.querySelectorAll('#home .seg').forEach(seg => seg.addEventListener('click', e => {
@@ -27695,7 +27701,6 @@ document.querySelectorAll('#home .seg').forEach(seg => seg.addEventListener('cli
   save();
   if (k === 'deck') renderHome(); else renderSetup();
 }));
-$('cfgVVerbs').innerHTML = VERBDB.verbs.map(v => `<button data-v="${v.id}"><span class="ar">${v.dict.split(' – ')[0]}</span>${v.en.replace('to ','')}</button>`).join('');
 $('picker').innerHTML = DB.letters.map(L => `<button data-id="${L.id}" title="${L.name}">${L.char}</button>`).join('');
 $('picker').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
@@ -27705,16 +27710,17 @@ $('picker').addEventListener('click', e => {
 
 /* ---------- Home: progress + history ---------- */
 const BOXCOL = i => `var(--b${i})`;
-function legendHTML(){ return [0,1,2,3,4,5].map(i => `<span><i style="background:${BOXCOL(i)}"></i>${BOX_LABEL[i]}</span>`).join(''); }
+function legendHTML(){ return [0,1,2,3,4,5].map(i => `<span><i style="background:${BOXCOL(i)}"></i>${t(BOX_LABEL[i])}</span>`).join(''); }
 function renderHome(){
+  applyLang();
   const deckCards = ALL.filter(c => c.deck === S.cfg.deck);
   const counts = [0,0,0,0,0,0]; deckCards.forEach(c => counts[boxOf(c.id)]++);
-  $('progDeck').textContent = {special:'special words', adj:'adjectives'}[S.cfg.deck] || S.cfg.deck;
+  $('progDeck').textContent = t({special:'special words', adj:'adjectives'}[S.cfg.deck] || S.cfg.deck);
   $('ovBtn').hidden = S.cfg.deck !== 'letters'; $('vtBtn').hidden = S.cfg.deck !== 'verbs';
   $('stKnown').textContent = counts[4] + counts[5];
   $('stLearn').textContent = counts[1] + counts[2] + counts[3];
   $('stNew').textContent = counts[0];
-  $('boxbar').innerHTML = [1,2,3,4,5,0].map(i => counts[i] ? `<i style="width:${counts[i]/deckCards.length*100}%;background:${BOXCOL(i)}" title="${BOX_LABEL[i]}: ${counts[i]}"></i>` : '').join('');
+  $('boxbar').innerHTML = [1,2,3,4,5,0].map(i => counts[i] ? `<i style="width:${counts[i]/deckCards.length*100}%;background:${BOXCOL(i)}" title="${t(BOX_LABEL[i])}: ${counts[i]}"></i>` : '').join('');
   $('legend').innerHTML = legendHTML();
   const hs = S.sessions.slice(0, 6);
   $('histPanel').hidden = !hs.length;
@@ -27722,11 +27728,128 @@ function renderHome(){
     const d = new Date(s.d);
     return `<li><span>${d.toLocaleDateString(undefined,{day:'numeric',month:'short'})} ${d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'})} · ${s.label}</span><span class="r">${s.ok} ✓ · ${s.bad} ✗</span></li>`;
   }).join('');
-  $('storeNote').textContent = storageOK ? 'Progress is saved in this browser on this device.' : 'This browser is not saving progress (private mode or blocked storage).';
+  $('storeNote').textContent = t(storageOK ? 'Progress is saved in this browser on this device.' : 'This browser is not saving progress (private mode or blocked storage).');
   renderSetup();
 }
 
 /* ---------- Screens ---------- */
+/* ---------- Interface language (EN / RU): start page, summary, tables — cards are not translated ---------- */
+const RU = {
+"Arabic Flashcards": "Арабские карточки",
+"Your progress": "Ваш прогресс",
+"known": "знаю",
+"still learning": "учу",
+"new": "новые",
+"New session": "Новая тренировка",
+"Deck": "Колода",
+"Letters": "Буквы",
+"Numbers": "Числа",
+"Verbs": "Глаголы",
+"Special words": "Особые слова",
+"Nouns": "Существительные",
+"Time": "Время",
+"Adjectives": "Прилагательные",
+"All": "Все",
+"Words": "Слова",
+"Question words": "Вопросительные слова",
+"With · without · about · have": "С · без · о · у … есть",
+"Days of the week": "Дни недели",
+"Day · month · year …": "День · месяц · год …",
+"Cards": "Карточки",
+"Pronouns + patterns": "Местоимения + модели",
+"Pronouns": "Местоимения",
+"Patterns": "Модели",
+"Conjugation": "Спряжение",
+"Tenses": "Времена",
+"Past": "Прошедшее",
+"Present": "Настоящее",
+"Future": "Будущее",
+"Forms": "Формы",
+"+ affirmative": "+ утверждение",
+"− negative": "− отрицание",
+"? question": "? вопрос",
+"Conjugation cards show": "Карточки спряжения",
+"Mixed": "Вперемешку",
+"Task → form": "Задание → форма",
+"Form → meaning": "Форма → значение",
+"Alphabet": "Алфавит",
+"Choose…": "Выбрать…",
+"Forms + names": "Формы + названия",
+"Letter forms": "Формы букв",
+"Letter names": "Названия букв",
+"Focus": "Фокус",
+"Smart mix": "Умный микс",
+"Still learning": "Ещё учу",
+"New only": "Только новые",
+"Length": "Количество",
+"Pronunciation": "Произношение",
+"Male + female": "Муж. + жен.",
+"Male": "Мужской",
+"Female": "Женский",
+"Start": "Начать",
+"Recent sessions": "Последние тренировки",
+"Letter overview": "Обзор букв",
+"Verb tables": "Таблицы глаголов",
+"Save backup": "Сохранить копию",
+"Restore backup": "Восстановить из копии",
+"Reset progress": "Сбросить прогресс",
+"Tap again to erase all progress": "Нажмите ещё раз, чтобы стереть весь прогресс",
+"Progress is saved in this browser on this device.": "Прогресс сохраняется в этом браузере на этом устройстве.",
+"This browser is not saving progress (private mode or blocked storage).": "Этот браузер не сохраняет прогресс (приватный режим или заблокированное хранилище).",
+"box 1 · just missed": "ящик 1 · только что ошибка",
+"box 2": "ящик 2",
+"box 3": "ящик 3",
+"box 4": "ящик 4",
+"box 5 · well known": "ящик 5 · хорошо знаю",
+"letters": "буквы",
+"numbers": "числа",
+"verbs": "глаголы",
+"special words": "особые слова",
+"nouns": "существительные",
+"time": "время",
+"adjectives": "прилагательные",
+"No cards in “still learning” yet": "Пока нет карточек «ещё учу»",
+"No new cards left here": "Новых карточек здесь не осталось",
+"No cards here": "Здесь нет карточек",
+"Choose at least one letter": "Выберите хотя бы одну букву",
+"End": "Завершить",
+"Session complete": "Тренировка завершена",
+"knew": "знаю",
+"to learn": "учить",
+"Still to learn": "Ещё учить",
+"Repeat my mistakes": "Повторить ошибки",
+"Home": "На главную",
+"Mistakes again": "Ошибки ещё раз",
+"Each bar is one form (isolated, initial, medial, final); the dot is the name card.": "Каждая полоска — одна форма (отдельная, начальная, срединная, конечная); точка — карточка названия.",
+"Backup file saved": "Файл копии сохранён",
+"Progress restored": "Прогресс восстановлен",
+"That file is not a progress backup": "Этот файл не является копией прогресса",
+"Progress erased": "Прогресс стёрт",
+"questions": "вопросы",
+"with/without/about/have": "с/без/о/у … есть",
+"days of the week": "дни недели",
+"day, month, year…": "день, месяц, год…",
+"all": "все",
+"pronouns + patterns": "местоимения + модели",
+"pronouns": "местоимения",
+"patterns": "модели",
+"conjugation": "спряжение",
+"verbs (Arabic → meaning)": "глаголы (арабский → значение)",
+"All letters": "Все буквы",
+"Variants": "Варианты",
+"forms": "формы",
+"names": "названия"
+};
+const isRU = () => S.cfg.lang === 'ru';
+const t = en => (isRU() && RU[en]) || en;
+const ruPlural = (n, one, few, many) => { const a = n % 10, b = n % 100; return a === 1 && b !== 11 ? one : a >= 2 && a <= 4 && (b < 12 || b > 14) ? few : many; };
+function applyLang(){
+  document.documentElement.lang = isRU() ? 'ru' : 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el => { if (el.dataset.en === undefined) el.dataset.en = el.textContent; el.textContent = t(el.dataset.en); });
+  $('langSw').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === (S.cfg.lang || 'en')));
+  $('cfgVVerbs').innerHTML = VERBDB.verbs.map(v => `<button data-v="${v.id}"><span class="ar">${v.dict.split(' – ')[0]}</span>${isRU() ? v.ru : v.en.replace('to ','')}</button>`).join('');
+}
+$('langSw').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; S.cfg.lang = b.dataset.l; save(); renderHome(); });
 function showScreen(id){ for (const s of ['home','session','summary','overview','vtables']) $(s).hidden = s!==id; window.scrollTo(0,0); }
 function toast(msg){ const t=$('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>t.hidden=true, 2200); }
 
@@ -27897,8 +28020,8 @@ function finish(){
   const n = sess.ok.length + sess.bad.length;
   if (n) { S.sessions.unshift({d:Date.now(), label:sess.label, n, ok:sess.ok.length, bad:sess.bad.length}); S.sessions = S.sessions.slice(0,50); save(); }
   $('sumOk').textContent = sess.ok.length; $('sumBad').textContent = sess.bad.length;
-  $('sumOkL').innerHTML = ' ' + ICON.happy.replace('<svg','<svg style="color:var(--happy)"') + ' knew';
-  $('sumBadL').innerHTML = ' ' + ICON.sad.replace('<svg','<svg style="color:var(--sad)"') + ' to learn';
+  $('sumOkL').innerHTML = ' ' + ICON.happy.replace('<svg','<svg style="color:var(--happy)"') + ' ' + t('knew');
+  $('sumBadL').innerHTML = ' ' + ICON.sad.replace('<svg','<svg style="color:var(--sad)"') + ' ' + t('to learn');
   $('sumMissPanel').hidden = !sess.bad.length; $('repeatBtn').hidden = !sess.bad.length;
   $('sumMiss').innerHTML = sess.bad.map(id => { const c = BYID[id];
     if (c.deck === 'numbers') return `<span class="chip lat">${toArabicDigits(c.n.value)} · ${fmtNum(c.n.value)}</span>`;
@@ -27908,20 +28031,20 @@ function finish(){
   showScreen('summary');
 }
 function cfgLabel(cfg){
-  if (cfg.deck === 'special') return 'Special words' + ({all:'', q:' · questions', prep:' · with/without/about/have'}[cfg.swgroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  if (cfg.deck === 'nouns') return 'Nouns' + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  if (cfg.deck === 'time') return 'Time' + ({all:'', day:' · days of the week', word:' · day, month, year…'}[cfg.tgroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  if (cfg.deck === 'adj') return 'Adjectives' + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  if (cfg.deck === 'verbs') return 'Verbs · ' + ({all:'all', pronpat:'pronouns + patterns', pron:'pronouns', pat:'patterns', conj:'conjugation', read:'verbs (Arabic → meaning)'}[cfg.vpart]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  if (cfg.deck === 'numbers') return 'Numbers' + (cfg.ngroup==='all' ? '' : ' ' + NUMDB.groups[cfg.ngroup]) + ({mix:'', learn:', still learning', new:', new'}[cfg.focus]);
-  const l = {all:'All letters', base:'Alphabet', variant:'Variants', pick:`${cfg.picked.length} letters`}[cfg.letters];
-  const t = {AB:'', A:', forms', B:', names'}[cfg.types];
-  const f = {mix:'', learn:', still learning', new:', new'}[cfg.focus];
-  return l + t + f;
+  const focus = cfg.focus === 'mix' ? '' : ', ' + t(cfg.focus === 'learn' ? 'still learning' : 'new');
+  if (cfg.deck === 'special') return t('Special words') + ({all:'', q:' · ' + t('questions'), prep:' · ' + t('with/without/about/have')}[cfg.swgroup]) + focus;
+  if (cfg.deck === 'nouns') return t('Nouns') + focus;
+  if (cfg.deck === 'time') return t('Time') + ({all:'', day:' · ' + t('days of the week'), word:' · ' + t('day, month, year…')}[cfg.tgroup]) + focus;
+  if (cfg.deck === 'adj') return t('Adjectives') + focus;
+  if (cfg.deck === 'verbs') return t('Verbs') + ' · ' + t({all:'all', pronpat:'pronouns + patterns', pron:'pronouns', pat:'patterns', conj:'conjugation', read:'verbs (Arabic → meaning)'}[cfg.vpart]) + focus;
+  if (cfg.deck === 'numbers') return t('Numbers') + (cfg.ngroup==='all' ? '' : ' ' + NUMDB.groups[cfg.ngroup]) + focus;
+  const l = cfg.letters === 'pick' ? (isRU() ? `${cfg.picked.length} ${ruPlural(cfg.picked.length,'буква','буквы','букв')}` : `${cfg.picked.length} letters`) : t({all:'All letters', base:'Alphabet', variant:'Variants'}[cfg.letters]);
+  const ty = {AB:'', A:', ' + t('forms'), B:', ' + t('names')}[cfg.types];
+  return l + ty + focus;
 }
 $('startBtn').onclick = () => startSession(drawCards(S.cfg), cfgLabel(S.cfg));
 $('endBtn').onclick = () => finish();
-$('repeatBtn').onclick = () => startSession(shuffle([...sess.bad]), 'Mistakes again');
+$('repeatBtn').onclick = () => startSession(shuffle([...sess.bad]), t('Mistakes again'));
 $('homeBtn').onclick = () => { renderHome(); showScreen('home'); };
 
 /* ---------- Overview ---------- */
@@ -27941,7 +28064,7 @@ $('exportBtn').onclick = () => {
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
   a.download = `arabic-cards-progress-${new Date().toISOString().slice(0,10)}.json`;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
-  toast('Backup file saved');
+  toast(t('Backup file saved'));
 };
 $('importBtn').onclick = () => $('importFile').click();
 $('importFile').onchange = async e => {
@@ -27949,14 +28072,14 @@ $('importFile').onchange = async e => {
   try {
     const d = JSON.parse(await f.text());
     if (!d || typeof d.cards !== 'object') throw new Error();
-    S = {cards:d.cards, sessions:d.sessions||[], cfg:{...DEFAULT_CFG, ...(d.cfg||{})}}; save(); renderHome(); toast('Progress restored');
-  } catch(err) { toast('That file is not a progress backup'); }
+    S = {cards:d.cards, sessions:d.sessions||[], cfg:{...DEFAULT_CFG, ...(d.cfg||{})}}; save(); renderHome(); toast(t('Progress restored'));
+  } catch(err) { toast(t('That file is not a progress backup')); }
 };
 $('resetBtn').onclick = () => {
   const b = $('resetBtn');
-  if (!b.classList.contains('confirm')) { b.classList.add('confirm'); b.textContent = 'Tap again to erase all progress';
-    setTimeout(() => { b.classList.remove('confirm'); b.textContent = 'Reset progress'; }, 4000); return; }
-  S = {cards:{}, sessions:[], cfg:S.cfg}; save(); b.classList.remove('confirm'); b.textContent = 'Reset progress'; renderHome(); toast('Progress erased');
+  if (!b.classList.contains('confirm')) { b.classList.add('confirm'); b.textContent = t('Tap again to erase all progress');
+    setTimeout(() => { b.classList.remove('confirm'); b.textContent = t('Reset progress'); }, 4000); return; }
+  S = {cards:{}, sessions:[], cfg:S.cfg}; save(); b.classList.remove('confirm'); b.textContent = t('Reset progress'); renderHome(); toast(t('Progress erased'));
 };
 
 /* ---------- Keyboard ---------- */
